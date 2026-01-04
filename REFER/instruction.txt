@@ -1,0 +1,40 @@
+Create Your Database and Collection
+
+
+With a fresh local server, your campus-connect database won't exist yet. You need to create it.
+
+1.After connecting, you'll see a list of default databases (admin, local, config). Click the green CREATE DATABASE button.
+
+2.A dialog box will appear. Enter the following:
+
+Database Name: campus-connect
+Collection Name: users
+
+3.Click Create Database.
+
+
+
+
+Add a User Document
+
+1.From the database list, click on campus-connect and then on the users collection.
+2.Click the green ADD DATA button and select Insert Document.
+3.A window will pop up. Delete the existing {} and paste the user data below.
+4.Click INSERT.
+
+Document to Insert
+JSON
+
+{
+  "name": "Kris",
+  "usn": "4SO23CS123",
+  "dateOfBirth": {
+    "$date": "2005-02-01T00:00:00.000Z"
+  },
+  "branch": "CSE"
+}
+
+fake a payment in Razorpay's test mode
+For Test UPI:
+
+Enter success@razorpay as the UPI ID and click "Pay".

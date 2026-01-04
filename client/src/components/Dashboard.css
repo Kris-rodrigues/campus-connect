@@ -1,0 +1,88 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.dashboard-header h1 { 
+    font-size: 2rem; 
+    font-weight: 600; 
+    color: var(--font-light);
+}
+.share-btn {
+    background-color: var(--primary-teal);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.share-btn:hover { background-color: #009688; }
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.status-message {
+    font-size: 1.1rem;
+    color: var(--font-med);
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    grid-column: 1 / -1; /* Make it span the full grid */
+}
+.status-message.error {
+    color: #f48fb1; /* A light red for errors */
+}
+
+/* --- Styles for Upgrade Card --- */
+.upgrade-card {
+    background-color: var(--background-med);
+    border: 2px dashed var(--primary-green);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 1; 
+}
+.upgrade-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-green);
+    font-size: 1.4rem;
+}
+.upgrade-card p {
+    color: var(--font-med);
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.upgrade-btn {
+    background-color: var(--primary-green);
+    color: var(--font-dark);
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.upgrade-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(139, 195, 74, 0.4);
+}

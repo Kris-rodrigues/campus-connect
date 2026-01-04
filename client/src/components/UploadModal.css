@@ -1,0 +1,120 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--background-med);
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; /* Made modal wider for new fields */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-height: 90vh; /* Allow scrolling on small screens */
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--font-med);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--font-light);
+}
+
+.modal-content .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.modal-content label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--font-med);
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    background-color: var(--background-light);
+    border: 1px solid #5f6368;
+    padding: 0.75rem;
+    border-radius: 6px;
+    color: var(--font-light);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.modal-content select {
+    color: var(--font-light); /* Default color */
+}
+.modal-content select:required:invalid {
+    color: #999; /* Placeholder color */
+}
+.modal-content select option {
+    background-color: var(--background-light);
+    color: var(--font-light);
+}
+
+.modal-content input[type="file"] {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1; /* Makes each group take equal space */
+}
+
+.submit-btn {
+    background-color: var(--primary-teal);
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #009688;
+}
+
+.status-message {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+.status-message.success {
+    color: var(--primary-green);
+}
+.status-message.error {
+    color: #f48fb1;
+}

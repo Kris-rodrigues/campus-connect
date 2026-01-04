@@ -1,0 +1,361 @@
+/* =========================================
+   MODAL LAYOUT & OVERLAY
+   ========================================= */
+
+.pdf-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Content Box */
+.pdf-modal-content {
+    background: #202124;
+    border-radius: 10px;
+    width: 95%;
+    height: 90vh;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    transition: all 0.3s ease; /* Smooth resize animation */
+    overflow: hidden;
+}
+
+/* Split View: PDF and Chat side-by-side */
+.pdf-modal-content.split-view {
+    flex-direction: row;
+    gap: 1rem;
+}
+
+/* Full View: PDF takes full width (Chat Minimized) */
+.pdf-modal-content.full-view {
+    flex-direction: column;
+}
+
+/* =========================================
+   PDF VIEWER SECTION
+   ========================================= */
+
+.pdf-view-container {
+    flex: 2; /* In split view, takes 2/3 width */
+    background: #3c4043;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* When in full view, override flex to take full height/width */
+.full-view .pdf-view-container {
+    flex: 1;
+    height: 100%;
+}
+
+.pdf-view-container iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+/* =========================================
+   BUTTONS & CONTROLS
+   ========================================= */
+
+/* Close Modal Button */
+.pdf-close-btn {
+    position: absolute;
+    /* Position it hanging off the top-right corner */
+    top: 20px;
+    right: 27px;
+    
+    /* Red Circle Styling */
+    background: #d93025; /* Deep red */
+    border: 2px solid #ffffff; /* White border to make it pop against dark bg */
+    color: white;
+    border-radius: 50%; /* Perfect circle */
+    width: 36px;
+    height: 36px;
+    
+    /* Centering the 'X' icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding-bottom: 3px; /* Optical adjustment for the character */
+    
+    cursor: pointer;
+    z-index: 150; /* Ensure it's above everything else */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Depth shadow */
+    
+    /* The Twist: A bouncy transition */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pdf-close-btn:hover {
+    background-color: #ff4f4f; /* Brighter red on hover */
+    /* The Twist: scale up and rotate slightly */
+    transform: scale(1.15) rotate(90deg); 
+    box-shadow: 0 6px 16px rgba(255, 79, 79, 0.4); /* Add a red glow */
+}
+
+/* Rate Note Button (Top Left of PDF) */
+.pdf-rate-btn {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.2s;
+}
+.pdf-rate-btn:hover {
+    background-color: #004d40;
+}
+
+/* Floating Chat Bubble (Visible when chat is minimized) */
+.floating-chat-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 50;
+    animation: popIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+.floating-chat-btn:hover {
+    background-color: #009688;
+    transform: translateY(-2px);
+}
+
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   CHAT INTERFACE
+   ========================================= */
+
+.chat-container {
+    flex: 1; /* In split view, takes 1/3 width */
+    background: #2c3e50;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #5f6368;
+}
+
+/* Chat Header */
+.chat-header {
+    padding: 12px 15px;
+    padding-right: 60px;
+    background: #00796b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #5f6368;
+    flex-shrink: 0;
+}
+.chat-header h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+
+.chat-minimize-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+    font-weight: bold;
+    line-height: 0.8;
+    transition: color 0.2s;
+}
+.chat-minimize-btn:hover { color: #ddd; opacity: 0.7;}
+
+/* Messages Area */
+.chat-message-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #2c3e50;
+}
+
+.chat-message {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    max-width: 85%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    background-color: #00796b;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.chat-message.ai {
+    background-color: #3c4043;
+    color: #e8eaed;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+.chat-message p { margin: 0; }
+
+/* --- Quick Action Toolbar --- */
+.quick-actions {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    background-color: #2c3e50;
+    border-top: 1px solid #5f6368;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-items: center;
+    /* Hide scrollbars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.quick-actions::-webkit-scrollbar { display: none; }
+
+.quick-actions button {
+    background-color: transparent;
+    color: #e8eaed;
+    border: 1px solid #80868b;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.quick-actions button:hover {
+    background-color: #00796b;
+    border-color: #00796b;
+    color: white;
+    transform: translateY(-1px);
+}
+.quick-actions button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* --- Chat Input --- */
+.chat-input-form {
+    display: flex;
+    padding: 10px 15px 15px 15px; /* Padding: Top Right Bottom Left */
+    background-color: #2c3e50;
+    flex-shrink: 0;
+}
+
+.chat-input-form input {
+    flex-grow: 1;
+    background-color: #3c4043;
+    border: 1px solid #5f6368;
+    border-radius: 20px 0 0 20px;
+    padding: 10px 15px;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+}
+.chat-input-form input::placeholder { color: #9aa0a6; }
+
+.chat-input-form button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chat-input-form button:hover { background-color: #004d40; }
+.chat-input-form button:disabled { background-color: #5f6368; cursor: not-allowed; }
+
+/* --- Loading Animation --- */
+.chat-message.loading {
+    padding: 1rem;
+}
+.loading .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #bdc1c6;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+.loading .dot:nth-child(1) { animation-delay: -0.32s; }
+.loading .dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+    .pdf-modal-content.split-view {
+        flex-direction: column;
+    }
+    .pdf-view-container {
+        flex: 1;
+        min-height: 50%;
+        width: 100%;
+    }
+    .chat-container {
+        flex: 1;
+        min-height: 45%;
+        width: 100%;
+    }
+    .pdf-rate-btn {
+        top: 5px;
+        padding: 0.3rem 1rem;
+        font-size: 0.8rem;
+    }
+}

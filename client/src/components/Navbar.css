@@ -1,0 +1,63 @@
+.main-navbar {
+  background-color: var(--background-med);
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid var(--background-light);
+}
+.navbar-left { display: flex; align-items: center; gap: 2rem; }
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--font-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.campus-connect-logo-small { font-size: 1.5rem; position: relative; }
+.campus-connect-logo-small .arrow { color: var(--primary-green); position: absolute; top: -8px; font-size: 0.6em; transform: rotate(-30deg); }
+.campus-connect-logo-small .arrow:nth-child(2) { left: 4px; transform: rotate(0); }
+.campus-connect-logo-small .arrow:nth-child(3) { left: 8px; transform: rotate(30deg); }
+.campus-connect-logo-small .c-letter { position: relative; left: 10px; }
+.navbar-links { display: flex; gap: 1rem; }
+.nav-link {
+  color: var(--font-med);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+.nav-link:hover { color: var(--font-light); background-color: var(--background-light); }
+.nav-link.active { color: var(--primary-green); border-bottom: 2px solid var(--primary-green); font-weight: 600; }
+.navbar-right { position: relative; }
+.user-menu { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 0.5rem; border-radius: 6px; }
+.user-menu:hover { background-color: var(--background-light); }
+.user-avatar { font-size: 1.5rem; }
+.dropdown-arrow { font-size: 0.7rem; }
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: var(--background-light);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  overflow: hidden;
+  z-index: 1000;
+}
+.dropdown-menu a, .dropdown-menu button {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--font-light);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.9rem;
+}
+.dropdown-menu a:hover, .dropdown-menu button:hover { background-color: var(--primary-teal); }

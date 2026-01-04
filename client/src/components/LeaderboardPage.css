@@ -1,0 +1,82 @@
+.leaderboard-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    color: #e8eaed;
+}
+
+.lb-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.lb-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fbbc05, #ff9f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.lb-header p { color: #9aa0a6; }
+
+/* User Stats Card */
+.user-stats-card {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+}
+.user-stats-card h3 { margin-top: 0; margin-bottom: 1.5rem; color: white; }
+.stats-row { display: flex; justify-content: space-around; }
+.stat-item { display: flex; flex-direction: column; }
+.stat-val { font-size: 2rem; font-weight: bold; color: #fff; }
+.stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Leaderboard Table */
+.leaderboard-list {
+    background-color: #202124;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #3c4043;
+}
+.lb-table { width: 100%; border-collapse: collapse; }
+.lb-table th {
+    background-color: #303134;
+    padding: 1rem;
+    text-align: left;
+    color: #9aa0a6;
+    font-weight: 600;
+    border-bottom: 1px solid #3c4043;
+}
+.lb-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #3c4043;
+    font-size: 1rem;
+}
+.lb-table tr:last-child td { border-bottom: none; }
+
+/* Rank Styles */
+.rank-cell { font-size: 1.2rem; font-weight: bold; width: 60px; text-align: center; }
+.rank-1 { background-color: rgba(251, 188, 5, 0.1); } /* Gold tint */
+.rank-2 { background-color: rgba(192, 192, 192, 0.1); } /* Silver tint */
+.rank-3 { background-color: rgba(205, 127, 50, 0.1); } /* Bronze tint */
+
+.name-cell { font-weight: 500; color: white; }
+.me-badge { color: #8ab4f8; font-size: 0.8rem; }
+.score-cell { font-weight: bold; color: #81c995; }
+
+/* Badges */
+.badge-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.badge-pill.gold { background: #fbbc05; color: #202124; }
+.badge-pill.silver { background: #bdc1c6; color: #202124; }
+.badge-pill.bronze { background: #cd7f32; color: white; }
+.badge-pill.participation { background: #3c4043; color: #9aa0a6; border: 1px solid #5f6368; }
+
+.loading-text { text-align: center; padding: 2rem; color: #9aa0a6; }

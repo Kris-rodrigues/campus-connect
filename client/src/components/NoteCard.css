@@ -1,0 +1,156 @@
+.note-card-simple {
+  background-color: var(--background-light);
+  border: 1px solid #5f6368;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.note-card-simple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.card-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+  color: var(--font-light);
+}
+.card-subject {
+  margin: 0 0 1rem 0;
+  color: var(--primary-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--font-med);
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+.card-footer-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #5f6368;
+  padding-top: 1rem;
+}
+.card-average-rating {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fbbc05;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.uploader-name {
+  color: var(--font-med);
+  font-size: 0.85rem;
+}
+
+.view-btn-simple {
+  background-color: var(--primary-teal);
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.view-btn-simple:hover {
+  background-color: #009688;
+}
+
+/* --- Styles for inline admin buttons --- */
+.action-buttons-inline {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-buttons-inline button {
+    border: none;
+    padding: 0.4rem 0.8rem; /* Make buttons smaller */
+    border-radius: 5px;
+    font-size: 0.8rem; /* Smaller font */
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.action-buttons-inline button:hover {
+    transform: scale(1.05);
+}
+
+.action-buttons-inline .view-btn-simple.small {
+    background-color: var(--primary-teal);
+    color: white;
+}
+.action-buttons-inline .edit-btn.small {
+    background-color: #fbbc05; /* Yellow */
+    color: #202124;
+}
+.action-buttons-inline .delete-btn.small {
+    background-color: #d93025; /* Red */
+    color: white;
+}
+
+/* --- Styles for AI buttons --- */
+.ai-features {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 2rem;
+    margin-top: 1rem; /* Space above the buttons */
+    margin-bottom: 1rem; /* Space below the buttons */
+    padding-top: 1rem;
+    border-top: 1px solid #5f6368; /* Separator line */
+}
+
+.ai-features button {
+    background: none;
+    border: 1px solid var(--primary-teal);
+    color: var(--primary-teal);
+    font-size: 1.2rem; /* Make icons slightly larger */
+    border-radius: 50%; /* Circular buttons */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    position: relative; /* Needed for lock icon positioning */
+}
+
+.lock-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8rem;
+    background: #fbbc05; /* Yellow warning color */
+    color: #202124; /* Dark text on yellow */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.lock-icon-btn {
+    margin-left: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.ai-features button:hover {
+    background-color: var(--primary-teal);
+    color: white;
+}
