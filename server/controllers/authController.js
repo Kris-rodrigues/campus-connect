@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
         const inputDob = dateOfBirth;
 
         // 1. SUPER ADMIN LOGIN (Hardcoded)
-        if (loginType !== 'teacher' && usn && usn.toUpperCase() === 'ADMIN' && inputDob === '2005-02-01') {
+        if (((usn && usn.toUpperCase() === 'ADMIN') || (name && name.toLowerCase() === 'admin')) && inputDob === '2005-02-01') {
             const adminPayload = { id: 'admin_user', name: 'Admin', role: 'admin', isSubscribed: true };
             const token = jwt.sign(adminPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
             return res.status(200).json({ token, name: 'Admin', role: 'admin', isSubscribed: true });

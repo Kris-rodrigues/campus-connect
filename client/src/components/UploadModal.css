@@ -1,120 +1,158 @@
+/* ================================================================
+   UPLOAD MODAL — Bauhaus Theme
+   ================================================================ */
+
+/* Shared modal overlay & content (used by UploadModal, EditNoteModal, SubscriptionModal) */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .modal-content {
-    background: var(--background-med);
-    padding: 2rem 2.5rem;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 600px; /* Made modal wider for new fields */
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    max-height: 90vh; /* Allow scrolling on small screens */
-    overflow-y: auto;
+  background: var(--bg-white);
+  border: 3px solid var(--border-dark);
+  box-shadow: 8px 8px 0px var(--border-dark);
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
 }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--font-med);
-    font-size: 2rem;
-    cursor: pointer;
+.modal-content .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border: 2px solid var(--border-dark);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+
+.modal-content .close-btn:hover {
+  background: var(--accent-red);
 }
 
 .modal-content h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--font-light);
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-dark);
 }
 
+/* Form Groups */
 .modal-content .form-group {
-    margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-.modal-content label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--font-med);
+.modal-content .form-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
 }
 
-.modal-content input[type="text"],
-.modal-content textarea,
-.modal-content select {
-    width: 100%;
-    background-color: var(--background-light);
-    border: 1px solid #5f6368;
-    padding: 0.75rem;
-    border-radius: 6px;
-    color: var(--font-light);
-    font-size: 1rem;
-    box-sizing: border-box;
+.modal-content .form-group input,
+.modal-content .form-group select,
+.modal-content .form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--border-dark);
+  background: var(--bg-cream);
+  font-family: var(--font-family);
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  border-radius: 0;
 }
 
-.modal-content select {
-    color: var(--font-light); /* Default color */
-}
-.modal-content select:required:invalid {
-    color: #999; /* Placeholder color */
-}
-.modal-content select option {
-    background-color: var(--background-light);
-    color: var(--font-light);
+.modal-content .form-group input:focus,
+.modal-content .form-group select:focus,
+.modal-content .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-yellow);
 }
 
-.modal-content input[type="file"] {
-    width: 100%;
-    font-size: 0.9rem;
+.modal-content .form-group input::placeholder {
+  color: var(--text-light);
+}
+
+.modal-content .form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-content .form-group input[type="file"] {
+  padding: 0.5rem;
+  background: var(--bg-white);
 }
 
 .form-row {
-    display: flex;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.form-row .form-group {
-    flex: 1; /* Makes each group take equal space */
-}
-
+/* Submit button */
 .submit-btn {
-    background-color: var(--primary-teal);
-    color: white;
-    width: 100%;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 1rem;
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border: 2px solid var(--border-dark);
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-top: 0.5rem;
 }
 
 .submit-btn:hover {
-    background-color: #009688;
+  background: var(--primary-yellow);
+  color: var(--text-dark);
 }
 
-.status-message {
-    text-align: center;
-    font-weight: 600;
-    margin-top: 1rem;
+/* Status messages */
+.modal-content .status-message {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
-.status-message.success {
-    color: var(--primary-green);
+
+.modal-content .status-message.success {
+  background: var(--accent-green-light);
+  border-left: 3px solid var(--accent-green);
+  color: var(--accent-green);
 }
-.status-message.error {
-    color: #f48fb1;
+
+.modal-content .status-message.error {
+  background: var(--accent-red-light);
+  border-left: 3px solid var(--accent-red);
+  color: var(--accent-red);
 }

@@ -89,27 +89,24 @@ const ViewPdfModal = ({ noteId, closeModal }) => {
 
     return (
         <>
-            {isRatingOpen && <RatingModal noteId={noteId} closeModal={() => setIsRatingOpen(false)} onReviewSubmitted={() => setIsRatingOpen(false)} />}
-
             <div className="pdf-modal-overlay" onClick={closeModal}>
                 <div className={`pdf-modal-content ${canChat && isChatVisible ? 'split-view' : 'full-view'}`} onClick={e => e.stopPropagation()}>
                     
-                    <button className="pdf-close-btn" onClick={closeModal}>&times;</button>
-                    
-                    <div className="pdf-view-container">
-                        
-                        {/* --- FIX: Only show Rate button if NOT staff (i.e., only for students) --- */}
+                    {/* Toolbar row: Rate button + spacer + Chat toggle + Close */}
+                    <div className="pdf-toolbar">
                         {!isStaff && (
-                            <button className="pdf-rate-btn" onClick={() => setIsRatingOpen(true)}>Rate Note</button>
+                            <button className="pdf-rate-btn" onClick={() => setIsRatingOpen(true)}>⭐ Rate Note</button>
                         )}
-                        {/* ----------------------------------------------------------------------- */}
-                        
+                        <div className="pdf-toolbar-spacer"></div>
                         {canChat && !isChatVisible && (
                             <button className="floating-chat-btn" onClick={() => setIsChatVisible(true)} title="Open Chat">
                                 💬 Chat with PDF
                             </button>
                         )}
-
+                        <button className="pdf-close-btn" onClick={closeModal}>&times;</button>
+                    </div>
+                    
+                    <div className="pdf-view-container">
                         {loadingPdf ? (
                             <p style={{color: 'white', textAlign: 'center', paddingTop: '20%'}}>Loading PDF...</p>
                         ) : pdfSrc ? (
@@ -150,6 +147,9 @@ const ViewPdfModal = ({ noteId, closeModal }) => {
                     )}
                 </div>
             </div>
+
+            {/* Rating modal rendered AFTER pdf overlay so it sits on top */}
+            {isRatingOpen && <RatingModal noteId={noteId} closeModal={() => setIsRatingOpen(false)} onReviewSubmitted={() => setIsRatingOpen(false)} />}
         </>
     );
 };

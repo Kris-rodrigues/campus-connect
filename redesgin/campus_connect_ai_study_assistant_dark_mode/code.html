@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - AI Study Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-bright": "#393939",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "primary-fixed": "#ffdad7",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#4d3e00",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#ba1724",
+                        "tertiary-fixed": "#ffe17a",
+                        "on-primary-fixed-variant": "#930014",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#aec6ff",
+                        "surface-container": "#201f1f",
+                        "on-secondary-container": "#dbe4ff",
+                        "on-primary-fixed": "#410004",
+                        "secondary-fixed": "#d8e2ff",
+                        "background": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#ff5352",
+                        "on-secondary-fixed-variant": "#004397",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#eac31b",
+                        "outline": "#ab8986",
+                        "on-tertiary-fixed": "#231b00",
+                        "outline-variant": "#5b403e",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "on-secondary": "#002e6b",
+                        "on-secondary-fixed": "#001a43",
+                        "on-primary": "#68000b",
+                        "secondary": "#aec6ff",
+                        "tertiary": "#ebc31c",
+                        "primary": "#ffb3ae",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface": "#131313",
+                        "on-primary-container": "#5c0008",
+                        "tertiary-container": "#cca800",
+                        "secondary-container": "#0661d2",
+                        "on-tertiary": "#3b2f00",
+                        "surface-tint": "#ffb3ae",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#e4beba",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Neo-Brutalist utility classes */
+        .hard-shadow-primary {
+            box-shadow: 4px 4px 0px 0px theme('colors.primary');
+        }
+        .hard-shadow-secondary {
+            box-shadow: 4px 4px 0px 0px theme('colors.secondary');
+        }
+        .hard-shadow-tertiary {
+            box-shadow: 4px 4px 0px 0px theme('colors.tertiary');
+        }
+        .hard-shadow-on-background {
+            box-shadow: 4px 4px 0px 0px theme('colors.on-background');
+        }
+        
+        .hover-lift:hover {
+            transform: translate(-2px, -2px);
+        }
+        .active-press:active {
+            transform: translate(0, 0);
+            box-shadow: none;
+        }
+
+        /* Scrollbar styling for Bauhaus feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: theme('colors.background');
+            border-left: 2px solid theme('colors.on-background');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.primary');
+            border: 2px solid theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="flex flex-col h-full fixed left-0 top-0 pt-xl pb-lg px-sm gap-unit bg-surface dark:bg-surface text-secondary dark:text-secondary font-label-md text-label-md h-screen w-64 border-r-2 border-on-background border-r-2 border-on-background no-shadow z-40 hidden md:flex">
+<div class="flex items-center gap-md px-md mb-lg">
+<div class="w-10 h-10 bg-primary border-2 border-on-background flex items-center justify-center hard-shadow-on-background">
+<span class="material-symbols-outlined text-on-background" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h1 class="font-display text-headline-md text-primary tracking-tighter">Main Menu</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">LMS Dashboard</p>
+</div>
+</div>
+<ul class="flex flex-col gap-unit flex-grow">
+<!-- Inactive Tab -->
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<!-- Inactive Tab -->
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                    My Courses
+                </a>
+</li>
+<!-- Active Tab - Study Tools -->
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+                    Study Tools
+                </a>
+</li>
+<!-- Inactive Tab -->
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">library_books</span>
+                    Library
+                </a>
+</li>
+<!-- Inactive Tab -->
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                    Leaderboard
+                </a>
+</li>
+</ul>
+<button class="bg-tertiary text-on-tertiary border-2 border-on-background py-sm px-md font-label-md text-label-md hard-shadow-on-background hover-lift active-press transition-transform mx-sm mb-md">
+            Join Study Group
+        </button>
+<ul class="flex flex-col gap-unit mt-auto border-t-2 border-on-background pt-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Help
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-grow flex flex-col md:ml-64 h-full relative">
+<!-- TopNavBar (Mobile Only for this layout to save space, assuming SideNav handles primary nav on desktop) -->
+<header class="flex justify-between items-center px-gutter py-md w-full sticky top-0 z-50 bg-background dark:bg-background border-b-2 border-on-background md:hidden">
+<div class="flex items-center gap-sm">
+<button class="p-sm border-2 border-transparent hover:border-on-background active:translate-y-1 transition-all">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display text-headline-md font-bold text-primary dark:text-primary tracking-tighter">Campus Connect</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm border-2 border-transparent hover:border-on-background active:translate-y-1 transition-all text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm border-2 border-transparent hover:border-on-background active:translate-y-1 transition-all text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 bg-surface-variant border-2 border-on-background overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small square user avatar image showing a highly stylized geometric portrait in a minimalist dark mode aesthetic with stark black and white contrasts and a hint of neon blue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC42NyKUUoY2GfKccQwCIAM4_TmuGGvy2QOaplvAavtuu2yhYuf2D9m3-3EmLcJK3cOtezfO7_GoQ6p4fOwsK9_FM1ODDganlfY2a3psDEPLXDfV3E_atPG9YjlvKGe7zC9k3SSIdZkratj0FmvAvTiRXlVeyToprAvN1VMP_rDp8zxki_AvVuVgH247zKA316IP53o18okYVkftochaqxZYof22Hca_Y3Ixi9BA4Me5AkzrAqy7h88Ng"/>
+</div>
+</div>
+</header>
+<!-- Split Screen Layout -->
+<main class="flex flex-col md:flex-row flex-grow overflow-hidden">
+<!-- Left Panel: Document Viewer (The Context) -->
+<section class="flex-1 border-r-2 border-on-background flex flex-col bg-surface overflow-hidden hidden md:flex">
+<!-- Header -->
+<div class="border-b-2 border-on-background p-md bg-surface-variant flex justify-between items-center shrink-0">
+<div>
+<span class="bg-secondary text-on-secondary font-label-md text-label-md px-sm py-xs border-2 border-on-background mb-xs inline-block">CS101</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Introduction to Algorithms.pdf</h2>
+</div>
+<div class="flex gap-sm">
+<button class="w-10 h-10 border-2 border-on-background bg-surface flex items-center justify-center hover:bg-surface-variant active:translate-y-1 transition-all" title="Zoom Out">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<button class="w-10 h-10 border-2 border-on-background bg-surface flex items-center justify-center hover:bg-surface-variant active:translate-y-1 transition-all" title="Zoom In">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Document Content (Faux PDF) -->
+<div class="flex-grow overflow-y-auto p-lg bg-surface-container-low">
+<div class="bg-surface border-2 border-on-background p-xl max-w-3xl mx-auto hard-shadow-on-background mb-lg">
+<h1 class="font-headline-lg text-headline-lg mb-lg border-b-2 border-on-background pb-sm">Chapter 4: Sorting Algorithms</h1>
+<h3 class="font-headline-md text-headline-md mb-sm mt-lg">4.1 Merge Sort</h3>
+<p class="font-body-md text-body-md mb-md text-on-surface-variant">
+                            Merge sort is a divide-and-conquer algorithm that was invented by John von Neumann in 1945. It works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly.
+                        </p>
+<div class="bg-surface-container border-2 border-on-background p-md mb-md font-mono text-sm overflow-x-auto relative group">
+<span class="absolute top-0 right-0 bg-on-background text-background px-xs py-xs text-xs font-bold font-label-md">PYTHON</span>
+<pre class="text-secondary-fixed">def mergeSort(arr):
+    if len(arr) &gt; 1:
+        mid = len(arr)//2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        mergeSort(L)
+        mergeSort(R)
+
+        i = j = k = 0
+
+        while i &lt; len(L) and j &lt; len(R):
+            if L[i] &lt;= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i &lt; len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j &lt; len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+                            </pre>
+</div>
+<p class="font-body-md text-body-md mb-md text-on-surface-variant">
+                            The time complexity of Merge Sort is <strong class="text-primary font-bold">O(n log n)</strong> in all 3 cases (worst, average and best) as merge sort always divides the array into two halves and takes linear time to merge two halves.
+                        </p>
+<div class="bg-cover bg-center w-full h-64 border-2 border-on-background mb-md hard-shadow-primary" data-alt="A technical diagram illustrating the merge sort algorithm. It shows an array of numbers splitting into smaller arrays and then recombining in sorted order. The style is a stark, high-contrast blueprint in dark mode, utilizing sharp geometric shapes, thin bright red lines, and a deep black background, rejecting soft gradients for brutalist clarity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBodaXRu5Ct2SU54u7qF4pI-iUqSxxB03qIdZNoBX3rdqkKF197_rlzVu4NEkly3zJP93GcfQghJB5sthXA5zFvGwudYrVNtkR0w1RCB-z0tkEDg45uxiKhx-TGmS6wBL26Q147JNIOn18oO-rnug3sBkvqtOMdh_nOq5EhL9lZKWNFoF185umlok2oAODqjcmiviSGsCbhLMwdA2L3T5gNavKNema-4Ti3rCuW0BoZugnaE6uUrBFxzA')"></div>
+</div>
+</div>
+</section>
+<!-- Right Panel: AI Chat Interface (The Action) -->
+<section class="flex-1 flex flex-col bg-background relative z-10 w-full md:max-w-lg lg:max-w-xl border-l-0 md:border-l-2 border-on-background shrink-0">
+<!-- Chat Header -->
+<div class="border-b-2 border-on-background p-md bg-surface flex justify-between items-center shrink-0">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container border-2 border-on-background flex items-center justify-center rounded-none">
+<span class="material-symbols-outlined text-on-primary-container">smart_toy</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface m-0 leading-tight">Study Assistant</h3>
+<span class="font-label-md text-label-md text-primary flex items-center gap-xs">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span> Online
+                            </span>
+</div>
+</div>
+<button class="md:hidden w-10 h-10 border-2 border-on-background bg-surface flex items-center justify-center hover:bg-surface-variant active:translate-y-1 transition-all">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</button>
+</div>
+<!-- Chat Messages Area -->
+<div class="flex-grow overflow-y-auto p-md flex flex-col gap-md bg-surface-container-lowest">
+<!-- Assistant Message (Greeting) -->
+<div class="flex gap-sm max-w-[85%] self-start">
+<div class="w-8 h-8 bg-primary-container border-2 border-on-background flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-primary-container text-sm">smart_toy</span>
+</div>
+<div class="bg-surface border-2 border-on-background p-md text-body-md font-body-md text-on-surface hard-shadow-on-background">
+                            Hello! I'm analyzing <strong>Introduction to Algorithms.pdf</strong>. It looks like you're studying sorting algorithms. How can I help you understand Merge Sort today?
+                        </div>
+</div>
+<!-- User Message -->
+<div class="flex gap-sm max-w-[85%] self-end flex-row-reverse mt-sm">
+<div class="w-8 h-8 bg-tertiary border-2 border-on-background overflow-hidden shrink-0 mt-1">
+<img class="w-full h-full object-cover" data-alt="A small square user avatar image showing a highly stylized geometric portrait in a minimalist dark mode aesthetic with stark black and white contrasts and a hint of neon yellow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAbUVYz2Pv13UULVCwJK0ZbOaC7ye0BoA-vpvjHCktj6NQ86TO_jSNqWUhZZIVhCqqYZAGqhW6-R7lc4mytQm8J4jyvbVBG_HVjgUGBHxFfuT3byMfFkbQponnfoWPlv-JDorsMC_V8pMRaapAZqVb8lZ6NIESnfVowjnOHpaMcRweRk8hq2lz-Vj6Dfhhs9HyM5WKa6ba8z-udPBcmhISrV_Xs2jUYzqSUSP6aCIEYwK_DDyOM1ySVQ"/>
+</div>
+<div class="bg-tertiary text-on-tertiary border-2 border-on-background p-md text-body-md font-body-md hard-shadow-on-background">
+                            Can you explain why the time complexity is O(n log n)? I'm a bit confused about the 'log n' part.
+                        </div>
+</div>
+<!-- Assistant Message (Explanation) -->
+<div class="flex gap-sm max-w-[90%] self-start mt-sm">
+<div class="w-8 h-8 bg-primary-container border-2 border-on-background flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-primary-container text-sm">smart_toy</span>
+</div>
+<div class="bg-surface border-2 border-on-background p-md text-body-md font-body-md text-on-surface hard-shadow-primary">
+<p class="mb-sm">Certainly! Let's break down the <strong>O(n log n)</strong> complexity in brutalist terms:</p>
+<ul class="list-none space-y-2 mb-sm border-l-2 border-primary pl-md ml-xs">
+<li><strong>The 'log n' Part (Dividing):</strong> Think of the tree structure. Every time you divide the array in half, you add a level to the tree. If you start with 8 items: 8 → 4 → 2 → 1. That's 3 divisions. Log base 2 of 8 is 3. So, the height of the dividing tree is exactly <strong>log n</strong>.</li>
+<li><strong>The 'n' Part (Merging):</strong> At every level of that tree, you have to merge all the sub-arrays back together. Merging two sorted arrays takes linear time proportional to their combined length. Across any single level, you are essentially looking at all <em>n</em> elements once to merge them.</li>
+</ul>
+<p>Multiply the number of levels (<strong>log n</strong>) by the work done at each level (<strong>n</strong>), and you get the total structural cost: <strong class="text-primary bg-surface-variant px-xs border border-on-background">O(n log n)</strong>.</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-md bg-surface border-t-2 border-on-background shrink-0">
+<!-- Quick Prompts / Chips -->
+<div class="flex gap-sm mb-sm overflow-x-auto pb-xs">
+<button class="shrink-0 bg-surface-variant text-on-surface border-2 border-on-background px-sm py-xs font-label-md text-xs whitespace-nowrap hover:bg-secondary hover:text-on-secondary transition-colors">Explain code line 15</button>
+<button class="shrink-0 bg-surface-variant text-on-surface border-2 border-on-background px-sm py-xs font-label-md text-xs whitespace-nowrap hover:bg-secondary hover:text-on-secondary transition-colors">Compare with QuickSort</button>
+<button class="shrink-0 bg-surface-variant text-on-surface border-2 border-on-background px-sm py-xs font-label-md text-xs whitespace-nowrap hover:bg-secondary hover:text-on-secondary transition-colors">Give me a quiz</button>
+</div>
+<div class="flex gap-sm">
+<div class="relative flex-grow">
+<input class="w-full bg-surface-variant text-on-surface border-2 border-on-background px-md py-sm font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-0 placeholder-on-surface-variant h-[52px]" placeholder="Ask a question about this document..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary border-2 border-on-background w-[52px] h-[52px] flex items-center justify-center hard-shadow-on-background hover-lift active-press transition-all shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

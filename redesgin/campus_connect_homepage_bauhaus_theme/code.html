@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - AI-Powered LMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary": "#1a1a1a",
+                "tertiary-fixed": "#d6e3ff",
+                "on-tertiary-fixed-variant": "#1a1a1a",
+                "on-tertiary-container": "#1a1a1a",
+                "on-error-container": "#93000a",
+                "outline-variant": "#d0cbc3",
+                "on-secondary-container": "#1a1a1a",
+                "on-secondary": "#1a1a1a",
+                "on-surface": "#1a1a1a",
+                "surface-container-highest": "#e2ddd4",
+                "outline": "#1a1a1a",
+                "surface-tint": "#1a1a1a",
+                "primary-fixed": "#ffcc00",
+                "tertiary-container": "#d6e3ff",
+                "on-primary-container": "#1a1a1a",
+                "surface": "#f5f0e8",
+                "tertiary": "#0055ff",
+                "surface-bright": "#faf7f2",
+                "inverse-surface": "#1a1a1a",
+                "inverse-primary": "#f5f0e8",
+                "on-primary": "#ffffff",
+                "on-secondary-fixed-variant": "#1a1a1a",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#e6b800",
+                "error-container": "#ffdad6",
+                "surface-container-low": "#f2ede5",
+                "inverse-on-surface": "#f5f0e8",
+                "secondary": "#e63b2e",
+                "background": "#f5f0e8",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed": "#ffdad6",
+                "secondary-fixed-dim": "#ffb3ab",
+                "surface-container-lowest": "#ffffff",
+                "on-surface-variant": "#4a4a4a",
+                "surface-container": "#eee9e0",
+                "on-primary-fixed": "#1a1a1a",
+                "tertiary-fixed-dim": "#a8c6ff",
+                "on-background": "#1a1a1a",
+                "on-primary-fixed-variant": "#1a1a1a",
+                "surface-variant": "#e8e3da",
+                "secondary-container": "#ffdad6",
+                "on-tertiary-fixed": "#1a1a1a",
+                "error": "#cc0000",
+                "on-secondary-fixed": "#1a1a1a",
+                "surface-container-high": "#e8e3da",
+                "primary-container": "#ffcc00",
+                "surface-dim": "#d6d1c9"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Space Grotesk"
+                ],
+                "display": [
+                        "Space Grotesk"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Space Grotesk"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+<style>
+        body { background-color: #f5f0e8; color: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .glass-card { background: #ffffff; border: 2px solid #1a1a1a; box-shadow: 4px 4px 0px #1a1a1a; }
+        .ai-glow { box-shadow: 4px 4px 0px #e63b2e; border: 2px solid #1a1a1a; }
+        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .hover-lift:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #1a1a1a; }
+        .brutalist-button { border: 2px solid #1a1a1a; box-shadow: 2px 2px 0px #1a1a1a; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .brutalist-button:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px #1a1a1a; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-16">
+<!-- TopNavBar -->
+<nav class="bg-surface font-body text-base fixed top-0 w-full z-50 border-b-2 border-outline flex justify-between items-center h-16 px-4 md:px-8 max-w-7xl mx-auto left-0 right-0 shadow-[4px_4px_0_#1a1a1a]">
+<div class="flex items-center gap-8">
+<a class="font-headline text-xl font-bold text-on-surface uppercase tracking-tight" href="#">Campus Connect</a>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body font-bold" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body font-bold" href="#">Study Materials</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body font-bold" href="#">AI Tools</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body font-bold" href="#">Leaderboard</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label font-bold text-sm brutalist-button bg-surface text-on-surface px-4 py-2 rounded">Login</button>
+<button class="bg-primary text-on-primary font-label font-bold text-sm brutalist-button px-4 py-2 rounded">Get Started</button>
+</div>
+</nav>
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-8">
+<!-- Hero Section -->
+<section class="py-24 md:py-32 flex flex-col items-center text-center gap-6">
+<div class="inline-flex items-center gap-2 px-4 py-1 border-2 border-outline text-secondary font-label font-bold uppercase tracking-wider mb-4 brutalist-button bg-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>AI-Powered Excellence</span>
+</div>
+<h1 class="font-display text-4xl md:text-6xl font-bold text-on-surface max-w-4xl uppercase tracking-tighter">
+                Streamline Academic Resource Sharing &amp; Enhance Student Learning
+            </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-2xl mt-4 border-l-4 border-secondary pl-4 text-left mx-auto">
+                A robust Learning Management System designed to be your centralized hub. Access study materials, take automated quizzes, and track your progress on a gamified leaderboard with Gemini AI integration.
+            </p>
+<div class="flex gap-4 mt-8">
+<button class="bg-primary text-on-primary font-label font-bold text-lg px-8 py-4 rounded brutalist-button uppercase">
+                    Get Started
+                </button>
+<button class="bg-surface text-on-surface font-label font-bold text-lg px-8 py-4 rounded brutalist-button uppercase">
+                    Login
+                </button>
+</div>
+</section>
+<!-- Key Features Bento Grid -->
+<section class="py-16">
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-8 text-center uppercase border-y-2 border-outline py-4">Key Features</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Security & Access -->
+<div class="glass-card rounded-lg p-6 hover-lift col-span-1">
+<span class="material-symbols-outlined text-on-surface text-4xl mb-4 block">lock</span>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-2 uppercase">Security &amp; Access</h3>
+<ul class="font-body text-on-surface-variant space-y-2 list-none pl-0">
+<li class="border-b border-outline/20 pb-2"><strong class="text-on-surface">Role-Based Access Control:</strong> Secure authentication for Students (via USN), Teachers, and Admins.</li>
+<li class="pt-2"><strong class="text-on-surface">Subscription Model:</strong> Freemium architecture with Razorpay integration to unlock premium AI features.</li>
+</ul>
+</div>
+<!-- Academic Resources -->
+<div class="glass-card rounded-lg p-6 hover-lift col-span-1 md:col-span-2">
+<span class="material-symbols-outlined text-on-surface text-4xl mb-4 block">library_books</span>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-2 uppercase">Academic Resources</h3>
+<ul class="font-body text-on-surface-variant space-y-2 list-none pl-0">
+<li class="border-b border-outline/20 pb-2"><strong class="text-on-surface">Centralized Study Material:</strong> Hierarchical browsing (Branch → Semester → Subject → Module) to easily find specific notes.</li>
+<li class="pt-2"><strong class="text-on-surface">Advanced PDF Viewer:</strong> In-app PDF viewing with split-screen mode for simultaneous reading and AI chatting.</li>
+</ul>
+</div>
+<!-- AI-Powered Learning -->
+<div class="glass-card ai-glow rounded-lg p-6 hover-lift col-span-1 md:col-span-2 bg-primary text-on-primary">
+<div class="flex items-center gap-2 mb-4 border-b-2 border-on-primary pb-2 inline-flex">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label text-sm text-secondary uppercase font-bold tracking-wider">Gemini Integration</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-primary mb-4 uppercase">AI-Powered Learning</h3>
+<ul class="font-body text-on-primary/90 space-y-4 list-none pl-0">
+<li class="flex gap-2 items-start"><span class="text-secondary font-bold">→</span> <div><strong>Auto-Summarizer:</strong> Instantly generates concise summaries of PDF notes.</div></li>
+<li class="flex gap-2 items-start"><span class="text-secondary font-bold">→</span> <div><strong>Quiz Generator:</strong> Automatically creates 5-question quizzes from any uploaded document.</div></li>
+<li class="flex gap-2 items-start"><span class="text-secondary font-bold">→</span> <div><strong>Chat with PDF:</strong> Interactive Q&amp;A with study materials using context-aware AI.</div></li>
+</ul>
+</div>
+<!-- Gamification -->
+<div class="glass-card rounded-lg p-6 hover-lift col-span-1">
+<span class="material-symbols-outlined text-on-surface text-4xl mb-4 block" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-2 uppercase">Gamification</h3>
+<ul class="font-body text-on-surface-variant space-y-2 list-none pl-0">
+<li class="border-b border-outline/20 pb-2"><strong class="text-on-surface">Leaderboards:</strong> Real-time ranking of students based on quiz performance.</li>
+<li class="pt-2"><strong class="text-on-surface">Badges:</strong> Earn Gold, Silver, and Bronze badges for high scores.</li>
+</ul>
+</div>
+<!-- Management -->
+<div class="glass-card rounded-lg p-6 hover-lift col-span-1 md:col-span-3">
+<span class="material-symbols-outlined text-on-surface text-4xl mb-4 block">admin_panel_settings</span>
+<h3 class="font-headline text-xl font-bold text-on-surface mb-2 uppercase">Management</h3>
+<p class="font-body text-on-surface-variant">
+<strong class="text-on-surface">Teacher &amp; Admin Dashboards:</strong> Dedicated interfaces for managing users, uploading content, and resetting semester data.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-16">
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-8 text-center uppercase border-y-2 border-outline py-4">Tech Stack</h2>
+<div class="overflow-hidden rounded-lg border-2 border-outline bg-surface shadow-[4px_4px_0_#1a1a1a]">
+<table class="w-full text-left font-body">
+<thead class="bg-primary text-on-primary font-headline uppercase text-sm tracking-wider border-b-2 border-outline">
+<tr>
+<th class="px-6 py-4 border-r-2 border-outline w-1/3">Layer</th>
+<th class="px-6 py-4">Technologies</th>
+</tr>
+</thead>
+<tbody class="text-on-surface font-semibold">
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">Frontend</td>
+<td class="px-6 py-4 font-normal">React.js, CSS3 (Custom responsive design)</td>
+</tr>
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">Backend</td>
+<td class="px-6 py-4 font-normal">Node.js, Express.js</td>
+</tr>
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">Database</td>
+<td class="px-6 py-4 font-normal">MongoDB (Atlas)</td>
+</tr>
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors bg-secondary text-on-error">
+<td class="px-6 py-4 border-r-2 border-outline font-bold flex items-center gap-2 uppercase text-sm">
+<span class="material-symbols-outlined text-[18px]">memory</span> AI Engine
+                            </td>
+<td class="px-6 py-4 font-bold">Google Gemini API</td>
+</tr>
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">Auth</td>
+<td class="px-6 py-4 font-normal">JWT (JSON Web Tokens)</td>
+</tr>
+<tr class="border-b-2 border-outline hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">File Handling</td>
+<td class="px-6 py-4 font-normal">Multer, PDF-Lib</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 border-r-2 border-outline uppercase text-sm">Payments</td>
+<td class="px-6 py-4 font-normal">Razorpay (Test Mode)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary font-body w-full py-12 mt-16 border-t-4 border-secondary">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-8 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline text-xl font-bold uppercase tracking-tight mb-4 block">Campus Connect</span>
+<p class="text-on-primary/70 text-sm mb-4">© 2024 Campus Connect LMS. AI-Powered Excellence.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-6 justify-start md:justify-end font-bold">
+<a class="text-on-primary/80 hover:text-secondary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-on-primary/80 hover:text-secondary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Terms of Service</a>
+<a class="text-on-primary/80 hover:text-secondary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Resource Guide</a>
+<a class="text-on-primary/80 hover:text-secondary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

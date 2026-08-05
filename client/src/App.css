@@ -1,198 +1,333 @@
-/* ====== General App Styles ====== */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ================================================================
+   CAMPUS CONNECT — APP.CSS (Bauhaus Theme)
+   Login Page + Global App Container Styles
+   ================================================================ */
+
+/* ====== App Container ====== */
+.app-container {
+  min-height: 100vh;
 }
 
-.error-message { 
-  color: #d32f2f; 
-  text-align: center; 
-  margin-top: 1rem;
+/* ====== Error Message ====== */
+.error-message {
+  color: var(--accent-red);
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* ====== Login Page Layout ====== */
+/* ================================================================
+   LOGIN PAGE — Bauhaus Split Layout
+   ================================================================ */
 .login-page-layout {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
 
-/* ====== Welcome Section (Left Half) ====== */
+/* ====== Welcome Section (Left Half — Yellow) ====== */
 .welcome-section {
-  flex: 0 0 50%;
-  background-color: #2c3e50;
-  color: white;
+  flex: 0 0 48%;
+  background-color: var(--primary-yellow);
+  color: var(--text-dark);
   display: flex;
   flex-direction: column;
-  padding: 3rem 4rem;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 3rem 3.5rem;
+  justify-content: space-between;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Decorative shapes */
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: var(--accent-red);
+  transform: rotate(15deg);
+  z-index: 1;
+}
+
+.welcome-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 40px;
+  width: 180px;
+  height: 180px;
+  background: var(--accent-blue);
+  transform: rotate(-12deg);
+  z-index: 0;
+}
+
+/* Logo area */
 .logo-container {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
 }
 
 .campus-connect-logo {
-  font-size: 3rem;
-  font-weight: bold;
-  position: relative;
+  background-color: var(--bg-dark);
+  color: var(--primary-yellow);
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 1.2rem;
 }
 
 .campus-connect-logo .arrow {
-  color: #4CAF50;
-  position: absolute;
-  top: -15px;
-  left: 0;
-  transform: rotate(-30deg);
-  font-size: 0.8em;
-  opacity: 0.8;
+  display: none;
 }
-.campus-connect-logo .arrow:nth-child(2) {
-  left: 8px;
-  transform: rotate(0deg);
-  opacity: 1;
-}
-.campus-connect-logo .arrow:nth-child(3) {
-  left: 16px;
-  transform: rotate(30deg);
-  opacity: 0.8;
-}
+
 .campus-connect-logo .c-letter {
-  color: white;
-  font-size: 1em;
-  position: relative;
-  left: 20px;
+  font-weight: 900;
+  font-size: 1.4rem;
 }
 
 .logo-text {
-  font-size: 2.2rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin: 0;
-  padding-left: 15px;
+  color: var(--text-dark);
+}
+
+.logo-text::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--text-dark);
+  margin-top: 4px;
+}
+
+/* Welcome Content */
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 6rem;
 }
 
 .welcome-content h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
 }
+
 .welcome-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #e0e0e0;
-}
-
-.connect-succeed-box {
-  background-color: white;
-  color: #333;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-top: 3rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-.connect-succeed-box h3 {
-  font-size: 1.8rem;
-  color: #004d40;
-  margin-top: 0;
-}
-.connect-succeed-box p {
-  color: #555;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: var(--text-dark);
+  max-width: 380px;
+  border-left: 3px solid var(--text-dark);
+  padding-left: 1rem;
 }
 
-/* ====== Login Form Section (Right Half) ====== */
+/* Feature Cards */
+.connect-succeed-box {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  padding: 1.25rem 1.5rem;
+  border: 2px solid var(--border-dark);
+  border-radius: 0;
+  margin-top: 2rem;
+  box-shadow: 4px 4px 0px var(--border-dark);
+  position: relative;
+  z-index: 2;
+}
+
+.connect-succeed-box h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.connect-succeed-box p {
+  color: var(--text-medium);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+/* ====== Login Form Section (Right Half — Cream) ====== */
 .login-form-section {
-  flex: 0 0 50%;
-  background-color: #8bc34a;
+  flex: 0 0 52%;
+  background-color: var(--bg-cream);
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 2rem 4rem;
 }
 
 .login-form-card {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2.5rem 3rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .login-form-card h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-weight: normal;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-align: left;
+  margin-bottom: 0.5rem;
 }
 
+.login-form-card h2 + p,
+.login-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--text-dark);
+  padding-left: 0.75rem;
+}
+
+/* Form Group */
 .login-form-card .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .login-form-card .form-group label {
   display: block;
   text-align: left;
   margin-bottom: 0.5rem;
-  color: #555;
-  font-size: 0.9rem;
-  font-weight: 500;
+  color: var(--text-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .login-form-card .form-group input {
   width: 100%;
   box-sizing: border-box;
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
-  padding: 0.8rem 1rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border-dark);
+  padding: 0.75rem 0.5rem;
   font-size: 1rem;
-  border-radius: 5px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  transition: border-color var(--transition-fast);
+  box-shadow: none;
 }
 
+.login-form-card .form-group input:focus {
+  outline: none;
+  border-bottom-color: var(--primary-yellow);
+}
+
+.login-form-card .form-group input::placeholder {
+  color: var(--text-light);
+}
+
+/* Toggle Buttons (Student/Teacher) */
+.login-toggle-buttons {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 2px solid var(--border-dark);
+}
+
+.login-toggle-buttons button,
+.login-form-card div[style] button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all var(--transition-fast);
+  border-radius: 0 !important;
+}
+
+/* Forgot Password & Login Row */
 .forgot-password-and-login {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   margin-top: 2rem;
+  gap: 1rem;
 }
 
 .forgot-password-link {
-  color: #004d40;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-.forgot-password-link:hover {
+  color: var(--text-dark);
   text-decoration: underline;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: right;
 }
 
-.login-btn {
-  width: auto;
-  padding: 0.8rem 2rem;
-  background-color: #00796b;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.forgot-password-link:hover {
+  color: var(--accent-red);
 }
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
 .login-btn:hover {
-  background-color: #004d40;
+  background-color: var(--primary-yellow);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+.login-btn::after {
+  content: '→';
+  font-size: 1.2rem;
 }
 
 /* ====== Date of Birth Dropdowns ====== */
@@ -203,32 +338,91 @@ body {
 
 .dob-select-container select {
   flex: 1;
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
-  padding: 0.8rem 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border-dark);
+  padding: 0.75rem 0.5rem;
   font-size: 0.9rem;
-  border-radius: 5px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
-  font-family: inherit;
-  color: #333;
+  border-radius: 0;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+}
+
+.dob-select-container select:focus {
+  outline: none;
+  border-bottom-color: var(--primary-yellow);
 }
 
 .dob-select-container select:required:invalid {
-  color: #757575;
-}
-:root {
-  --background-dark: #202124; /* A dark gray instead of pure black */
-  --background-med: #2c3e50; /* The dark color from login */
-  --background-light: #3c4043; /* For cards and interactive elements */
-  --primary-teal: #00796b;
-  --primary-green: #8bc34a;
-  --font-light: #e8eaed;
-  --font-med: #bdc1c6;
-  --font-dark: #202124;
+  color: var(--text-light);
 }
 
-body {
-  background-color: var(--background-dark);
-  color: var(--font-light);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+/* ====== Upgrade Card (shared) ====== */
+.upgrade-card {
+  background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%);
+  border: 2px solid var(--border-dark);
+  padding: 2rem;
+  box-shadow: 4px 4px 0px var(--border-dark);
+  grid-column: 1 / -1;
+}
+
+.upgrade-card h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-card p {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.upgrade-btn {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border: 2px solid var(--border-dark);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.upgrade-btn:hover {
+  background: var(--bg-white);
+  color: var(--text-dark);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 900px) {
+  .login-page-layout {
+    flex-direction: column;
+  }
+  .welcome-section {
+    flex: none;
+    padding: 2rem;
+    min-height: 40vh;
+  }
+  .welcome-content h2 {
+    font-size: 2.5rem;
+  }
+  .login-form-section {
+    flex: none;
+    padding: 2rem;
+  }
 }

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#1a1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d6d1c9",
+                        "on-tertiary-fixed": "#1a1a1a",
+                        "secondary-container": "#ffdad6",
+                        "primary-fixed-dim": "#e6b800",
+                        "surface-variant": "#e8e3da",
+                        "primary-container": "#ffcc00",
+                        "on-secondary": "#1a1a1a",
+                        "tertiary": "#0055ff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#1a1a1a",
+                        "secondary-fixed-dim": "#ffb3ab",
+                        "on-secondary-container": "#1a1a1a",
+                        "surface": "#f5f0e8",
+                        "on-background": "#1a1a1a",
+                        "on-primary-fixed": "#1a1a1a",
+                        "surface-container-low": "#f2ede5",
+                        "secondary": "#e63b2e",
+                        "on-surface-variant": "#4a4a4a",
+                        "inverse-primary": "#f5f0e8",
+                        "on-primary-container": "#1a1a1a",
+                        "surface-container-high": "#e8e3da",
+                        "surface-tint": "#1a1a1a",
+                        "tertiary-container": "#d6e3ff",
+                        "surface-container": "#eee9e0",
+                        "on-error-container": "#93000a",
+                        "background": "#f5f0e8",
+                        "tertiary-fixed": "#d6e3ff",
+                        "on-secondary-fixed": "#1a1a1a",
+                        "primary": "#1a1a1a",
+                        "secondary-fixed": "#ffdad6",
+                        "on-surface": "#1a1a1a",
+                        "outline-variant": "#d0cbc3",
+                        "inverse-surface": "#1a1a1a",
+                        "surface-bright": "#faf7f2",
+                        "outline": "#1a1a1a",
+                        "surface-container-highest": "#e2ddd4",
+                        "on-tertiary-container": "#1a1a1a",
+                        "tertiary-fixed-dim": "#a8c6ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffcc00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error": "#cc0000",
+                        "inverse-on-surface": "#f5f0e8",
+                        "on-secondary-fixed-variant": "#1a1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .neo-brutal-border {
+            border: 3px solid #1a1a1a;
+        }
+        .neo-brutal-shadow {
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+        }
+        .neo-brutal-shadow-hover:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #1a1a1a;
+        }
+        .neo-brutal-shadow-active:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #1a1a1a;
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-body min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar (WEB) -->
+<nav class="bg-background border-r-4 border-primary hidden md:flex flex-col p-4 space-y-2 h-screen w-64 sticky top-0 shrink-0 z-40">
+<div class="mb-8 p-4 neo-brutal-border neo-brutal-shadow bg-surface-bright">
+<h1 class="font-headline text-lg font-bold uppercase text-primary tracking-tighter">STUDENT PORTAL</h1>
+<p class="font-label text-xs font-bold mt-1 text-on-surface-variant">V.2024</p>
+</div>
+<div class="flex-1 space-y-3">
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-label font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-label font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+                AI Assistant
+            </a>
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-label font-bold uppercase neo-brutal-shadow" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-label font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-label font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</div>
+<button class="mt-auto neo-brutal-border p-3 bg-secondary text-on-error font-headline font-bold uppercase neo-brutal-shadow neo-brutal-shadow-hover transition-all w-full flex items-center justify-center">
+<span class="material-symbols-outlined mr-2">logout</span>
+            LOGOUT
+        </button>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="bg-background w-full top-0 sticky border-b-4 border-primary shadow-[4px_4px_0px_0px_#1a1a1a] flex justify-between items-center px-6 py-4 z-30">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-primary uppercase font-headline tracking-tighter">CAMPUS CONNECT</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex relative neo-brutal-border neo-brutal-shadow focus-within:translate-x-1 focus-within:translate-y-1 focus-within:shadow-none transition-all">
+<input class="bg-surface-bright text-primary font-label font-bold px-4 py-2 outline-none border-none uppercase w-64" placeholder="SEARCH..." type="text"/>
+<button class="bg-primary text-on-primary px-3 py-2 flex items-center justify-center border-l-2 border-primary hover:bg-primary-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<button class="text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 neo-brutal-border bg-surface-bright neo-brutal-shadow active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 neo-brutal-border bg-surface-bright neo-brutal-shadow active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-6 md:p-12 overflow-y-auto pb-24 md:pb-12 bg-[#f5f0e8]" style="background-image: radial-gradient(#1a1a1a 1px, transparent 1px); background-size: 20px 20px;">
+<div class="max-w-6xl mx-auto space-y-12">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b-4 border-primary pb-6 bg-surface p-6 neo-brutal-border neo-brutal-shadow">
+<div>
+<h2 class="font-headline text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-2">RANKINGS</h2>
+<p class="font-body text-xl font-bold text-on-surface-variant uppercase">Global Student Leaderboard</p>
+</div>
+<div class="flex gap-4">
+<button class="neo-brutal-border bg-primary-container text-primary font-headline font-bold uppercase px-6 py-3 neo-brutal-shadow neo-brutal-shadow-active transition-all">
+                            GLOBAL
+                        </button>
+<button class="neo-brutal-border bg-surface-bright text-primary font-headline font-bold uppercase px-6 py-3 neo-brutal-shadow neo-brutal-shadow-active transition-all hover:bg-surface-variant">
+                            LOCAL
+                        </button>
+</div>
+</div>
+<!-- Podium Section -->
+<div class="flex flex-col md:flex-row justify-center items-end gap-4 h-[500px] mt-16 mb-24 px-4 relative">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center justify-end w-full md:w-1/3 order-2 md:order-1 relative group">
+<div class="neo-brutal-border bg-surface p-4 text-center mb-4 neo-brutal-shadow z-10 bg-surface-bright absolute -top-32 w-48 transition-transform group-hover:-translate-y-2">
+<img class="w-24 h-24 rounded-none neo-brutal-border mx-auto mb-3 object-cover grayscale" data-alt="A portrait of a young male student looking confident, shot in a high-contrast brutalist style with stark lighting against a bright blue background. He is wearing geometric modern clothing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LHC4SiA0pzgSPNfQtt-ICzuGOJdCYaoQZhXf4XN6Ms48euEw37loTsUquC_XwPz2qDZZhcsctVc5nU-yPd_1d_FXE0nyPYGlBFNkhWo-odGnsQVVnZkdScjDn99LaK6QD79e1e8TwLhZljpKK-Y2KygIIP5rMbv-KL478--nOHLrtY2YKM9-0YvjMnO74dPy0QI0YC55uR3f9Mjm5ukZKq9VVvP2CWvB7YcW-0Yptff59qvMFh0-0A"/>
+<h3 class="font-headline font-bold text-xl uppercase truncate">J. Doe</h3>
+<p class="font-body font-bold text-tertiary">8,450 PTS</p>
+</div>
+<div class="w-full bg-tertiary h-48 neo-brutal-border neo-brutal-shadow flex items-center justify-center relative overflow-hidden group-hover:h-52 transition-all duration-300">
+<div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+<span class="font-headline text-8xl font-black text-on-primary">2</span>
+</div>
+</div>
+<!-- 1st Place -->
+<div class="flex flex-col items-center justify-end w-full md:w-1/3 order-1 md:order-2 relative z-20 group">
+<span class="material-symbols-outlined text-6xl text-primary-container absolute -top-52 z-30 drop-shadow-[4px_4px_0px_#1a1a1a]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<div class="neo-brutal-border bg-surface p-5 text-center mb-4 neo-brutal-shadow z-10 bg-primary-container absolute -top-40 w-56 transition-transform group-hover:-translate-y-2">
+<img class="w-32 h-32 rounded-none neo-brutal-border mx-auto mb-3 object-cover grayscale" data-alt="A striking portrait of a young female student with an intense gaze, wearing minimalist industrial fashion. High contrast black and white photography with bold lighting. Set against a pure yellow background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaiJf0mJXbVOX-Fndp1GtZO6atiCmaEu8YOmEzhowo4uHzZRJjPyjypCm3R9BMKWHj1U25Eixz1kzw5VyYR3q-ivqLFIjA4iGg-XV3hidUDF7k0Y8w6Xps-Kr1uttGiuAfx4xRC64bYRwXBVZ6oKYP6psVjWXlC8zf6BoevLCYadKk5hNu1lobu0cdoYkPVV6urUAAH1Ss00uf1Depm6ibrKIMZCg6O6ncPFq_4IH-tM6bLqNw1ZxtYA"/>
+<h3 class="font-headline font-black text-2xl uppercase truncate">A. Smith</h3>
+<p class="font-body font-black text-primary text-xl">12,000 PTS</p>
+</div>
+<div class="w-full bg-primary h-72 neo-brutal-border neo-brutal-shadow flex items-center justify-center relative overflow-hidden group-hover:h-80 transition-all duration-300">
+<div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTAgMGgyMHYyMEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDEwaDIwTTEwIDB2MjAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3N2Zz4=')]"></div>
+<span class="font-headline text-9xl font-black text-primary-container drop-shadow-[4px_4px_0px_#ffffff]">1</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center justify-end w-full md:w-1/3 order-3 md:order-3 relative group">
+<div class="neo-brutal-border bg-surface p-4 text-center mb-4 neo-brutal-shadow z-10 bg-surface-bright absolute -top-28 w-48 transition-transform group-hover:-translate-y-2">
+<img class="w-24 h-24 rounded-none neo-brutal-border mx-auto mb-3 object-cover grayscale" data-alt="A portrait of a young student wearing a hoodie, styled with heavy neo-brutalist aesthetics. High contrast, sharp shadows, grayscale face against a vibrant stark red background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6YWWVXj_DwSqA1f1v409duSHWQxhYUJ8YsVDdBUhMLO0o9XWzPxjYdzO71Ui8uhJXUiAVAjbjFPJ_We4AUHAUwoMoTgQQuBg9OkchlFoZ4mgQgmIjoKUSoWqfIdLoUR64JdVWr9xAKeSYtYgl2Kqn44E-uuIqJGGK4YFGaZk4CbQR0oobGEjcgarstHA6MhutYYMMgQmSQjKfCt3N0HcgThrNG9-ut6bpW3FCrO2RiowkiDnaaG9zbA"/>
+<h3 class="font-headline font-bold text-xl uppercase truncate">M. Lee</h3>
+<p class="font-body font-bold text-secondary">7,200 PTS</p>
+</div>
+<div class="w-full bg-secondary h-36 neo-brutal-border neo-brutal-shadow flex items-center justify-center relative overflow-hidden group-hover:h-40 transition-all duration-300">
+<div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHBhdGggZD0iTTAgMGgxMHYxMEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDEwbDEwLTEwTTAtMTBsMjAgMjAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')]"></div>
+<span class="font-headline text-8xl font-black text-on-error">3</span>
+</div>
+</div>
+</div>
+<!-- Rankings List -->
+<div class="bg-surface neo-brutal-border neo-brutal-shadow mt-12 overflow-hidden">
+<div class="bg-primary text-on-primary p-4 border-b-4 border-primary flex items-center uppercase font-headline font-bold tracking-widest text-sm">
+<div class="w-16 text-center">RANK</div>
+<div class="flex-1 px-4">STUDENT</div>
+<div class="w-32 text-center">SCORE</div>
+<div class="w-24 text-center hidden sm:block">TREND</div>
+</div>
+<!-- List Items -->
+<div class="flex flex-col">
+<!-- Rank 4 -->
+<div class="flex items-center p-4 border-b-4 border-primary hover:bg-surface-variant transition-colors group">
+<div class="w-16 text-center font-headline font-black text-2xl text-primary">04</div>
+<div class="flex-1 px-4 flex items-center gap-4">
+<img class="w-12 h-12 neo-brutal-border object-cover grayscale" data-alt="Small thumbnail portrait of a student, high contrast black and white, neo-brutalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC28JQ0Zc69YEWaOthzufgj_uFBKc7jtVSuzC81N46sPDnL750fo5wVKrFZeogy01OEceUYYXux97WU7vHQL-ejnm2qy3nnvbrXXJvFZRZroL8YBkMhJD0bt4c_eBi6X35Mts1SmkT9g5tEhAP4VKb_OgKMwfa77J1Sqm8OeJEy5EdJ3PcPBJGwG4nO8XGaT3dr8RedNOsA-IbKO5b5xjC-R_Xa_SZd_dppcJ6ih9PxwtVDWj2OjoBEBA"/>
+<span class="font-headline font-bold text-xl uppercase">S. Connor</span>
+</div>
+<div class="w-32 text-center font-body font-black text-lg">6,800</div>
+<div class="w-24 text-center hidden sm:flex justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined font-bold">trending_up</span>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="flex items-center p-4 border-b-4 border-primary hover:bg-surface-variant transition-colors group">
+<div class="w-16 text-center font-headline font-black text-2xl text-primary">05</div>
+<div class="flex-1 px-4 flex items-center gap-4">
+<img class="w-12 h-12 neo-brutal-border object-cover grayscale" data-alt="Small thumbnail portrait of a student, high contrast black and white, neo-brutalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx5Gi0pvIAeb3rYhs3SZzNiQOGdiFYEvUvvcQChxxEtsOyYDnvFxgTDhIj9m9eVcqe0Zvy--1z9DIypLRs83S9sjiCkTHXjkBsitzcM5_MSqyKSZqT3BtV7vyHYJDMXMFFGlK3htIXB8GgJ8mKFx-4Z-D8Y6QB0iJZwXYPpO3kUl2TMN8XD_IDisrIt86WaIsogTeJLNsh9XxKUPaOU_BCmwO-STwVYEQd91T6vR8PD29tWXUjcAWAtg"/>
+<span class="font-headline font-bold text-xl uppercase">T. Stark</span>
+</div>
+<div class="w-32 text-center font-body font-black text-lg">6,100</div>
+<div class="w-24 text-center hidden sm:flex justify-center text-primary">
+<span class="material-symbols-outlined font-bold">trending_flat</span>
+</div>
+</div>
+<!-- Rank 6 -->
+<div class="flex items-center p-4 hover:bg-surface-variant transition-colors group">
+<div class="w-16 text-center font-headline font-black text-2xl text-primary">06</div>
+<div class="flex-1 px-4 flex items-center gap-4">
+<img class="w-12 h-12 neo-brutal-border object-cover grayscale" data-alt="Small thumbnail portrait of a student, high contrast black and white, neo-brutalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDfgKyy7K7pY0i-Zn2FVs-Y62PJFxd6iTgwPFQFpxRFIVe8hOgPIvu79ar23wgsBPlsSjHrsgX4JEuqLr4xO3EPIn0JATlc3Z1y5IxU8vLsOuX1l2d2-Fg_TyiBE7eS9KmlWHieG6yr0OvoSoGUd0ud0YfWhB_ZbDsfcy6edRa2V8uxrSmjoih0O2YLu8nwHhhNWMR8WwF-a-ckWQl6zORGN4c4KkGqdIqSYh7P0UifgMA2SBwtZ_tag"/>
+<span class="font-headline font-bold text-xl uppercase">B. Wayne</span>
+</div>
+<div class="w-32 text-center font-body font-black text-lg">5,950</div>
+<div class="w-24 text-center hidden sm:flex justify-center text-secondary">
+<span class="material-symbols-outlined font-bold">trending_down</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More Action -->
+<div class="flex justify-center mt-8">
+<button class="neo-brutal-border bg-surface-bright text-primary font-headline font-bold uppercase text-xl px-12 py-4 neo-brutal-shadow neo-brutal-shadow-active hover:bg-primary hover:text-on-primary transition-all flex items-center gap-3">
+                        LOAD MORE
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (MOBILE) -->
+<nav class="bg-background md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch z-50 border-t-4 border-primary">
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+            AI
+        </a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            Rank
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">library_books</span>
+            Books
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+            User
+        </a>
+</nav>
+</body></html>

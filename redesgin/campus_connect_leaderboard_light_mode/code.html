@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eee9e0",
+                    "surface-tint": "#1a1a1a",
+                    "on-error-container": "#93000a",
+                    "background": "#f5f0e8",
+                    "primary-fixed": "#ffcc00",
+                    "surface": "#f5f0e8",
+                    "tertiary-container": "#d6e3ff",
+                    "surface-dim": "#d6d1c9",
+                    "inverse-on-surface": "#f5f0e8",
+                    "surface-container-high": "#e8e3da",
+                    "on-tertiary-container": "#1a1a1a",
+                    "surface-container-low": "#f2ede5",
+                    "surface-container-highest": "#e2ddd4",
+                    "secondary": "#e63b2e",
+                    "on-secondary": "#1a1a1a",
+                    "primary-container": "#ffcc00",
+                    "on-secondary-fixed-variant": "#1a1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#faf7f2",
+                    "surface-variant": "#e8e3da",
+                    "primary-fixed-dim": "#e6b800",
+                    "on-secondary-fixed": "#1a1a1a",
+                    "inverse-surface": "#1a1a1a",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#1a1a1a",
+                    "inverse-primary": "#f5f0e8",
+                    "outline": "#1a1a1a",
+                    "on-surface-variant": "#4a4a4a",
+                    "primary": "#1a1a1a",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d0cbc3",
+                    "secondary-fixed": "#ffdad6",
+                    "on-primary-fixed-variant": "#1a1a1a",
+                    "on-primary-fixed": "#1a1a1a",
+                    "on-background": "#1a1a1a",
+                    "secondary-fixed-dim": "#ffb3ab",
+                    "tertiary": "#0055ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d6e3ff",
+                    "error": "#cc0000",
+                    "on-secondary-container": "#1a1a1a",
+                    "tertiary-fixed-dim": "#a8c6ff",
+                    "on-tertiary-fixed-variant": "#1a1a1a",
+                    "on-surface": "#1a1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#1a1a1a",
+                    "secondary-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Space Grotesk"
+                    ],
+                    "display": [
+                            "Space Grotesk"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Space Grotesk"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+        }
+        .neo-shadow-lg {
+            box-shadow: 8px 8px 0px 0px #1a1a1a;
+        }
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="font-body antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 border-r-4 border-primary bg-background dark:bg-background hidden md:flex flex-col p-4 space-y-2 z-40 relative">
+<div class="mb-8">
+<div class="text-xl font-black text-primary font-headline uppercase">STUDENT PORTAL</div>
+<div class="text-sm font-bold font-body">V.2024</div>
+</div>
+<div class="flex-1 flex flex-col space-y-2">
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                AI Assistant
+            </a>
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Settings
+            </a>
+</div>
+<div class="mt-auto pt-4 border-t-4 border-primary">
+<button class="w-full border-2 border-primary p-3 font-headline font-bold uppercase bg-background hover:bg-primary hover:text-on-primary transition-colors duration-100">
+                LOGOUT
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background w-full top-0 sticky border-b-4 border-primary dark:border-primary-fixed shadow-[4px_4px_0px_0px_#1a1a1a] z-30">
+<div class="flex justify-between items-center w-full px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 border-2 border-primary neo-shadow active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-primary hover:text-on-primary transition-colors duration-100">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-2xl font-black text-primary dark:text-primary-fixed uppercase font-headline">CAMPUS CONNECT</h1>
+</div>
+<div class="hidden md:flex items-center space-x-6 font-headline text-3xl font-black uppercase tracking-tighter">
+<!-- Nav items would go here for top nav if needed, but side nav takes precedence in layout -->
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 border-2 border-primary bg-background text-primary neo-shadow hover:bg-primary hover:text-on-primary transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<button class="p-2 border-2 border-primary bg-background text-primary neo-shadow hover:bg-primary hover:text-on-primary transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12 bg-surface-container pb-24 md:pb-12">
+<div class="max-w-6xl mx-auto space-y-12">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b-4 border-primary pb-6">
+<div>
+<h2 class="font-headline text-5xl md:text-7xl font-black uppercase tracking-tighter text-primary">GLOBAL RANKINGS</h2>
+<p class="font-body text-xl font-bold text-on-surface-variant mt-2">SPRING SEMESTER 2024</p>
+</div>
+<div class="flex gap-4">
+<button class="border-2 border-primary bg-primary-container text-on-primary-container font-headline font-bold uppercase px-6 py-3 neo-shadow hover:bg-primary hover:text-on-primary transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            THIS WEEK
+                        </button>
+<button class="border-2 border-primary bg-background text-primary font-headline font-bold uppercase px-6 py-3 neo-shadow hover:bg-primary hover:text-on-primary transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            ALL TIME
+                        </button>
+</div>
+</div>
+<!-- Podium Section -->
+<div class="flex flex-col md:flex-row items-end justify-center gap-4 md:gap-8 min-h-[400px] mt-12 mb-16 relative">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center order-2 md:order-1 w-full md:w-1/3 max-w-[250px] relative z-10 group">
+<div class="absolute -top-16 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-surface border-2 border-primary p-2 font-headline font-bold text-sm whitespace-nowrap neo-shadow z-20">
+                            Computer Science
+                        </div>
+<div class="w-24 h-24 rounded-full border-4 border-primary mb-4 overflow-hidden neo-shadow bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="font-headline font-black text-2xl uppercase mb-1">J. DOE</div>
+<div class="font-body font-bold text-lg mb-4 bg-tertiary text-on-tertiary px-3 py-1 border-2 border-primary">2,450 PTS</div>
+<div class="w-full h-32 md:h-48 border-4 border-primary border-b-0 bg-surface-dim flex items-start justify-center pt-4 relative overflow-hidden transition-all duration-300 hover:bg-surface-variant">
+<div class="font-headline text-6xl font-black text-primary opacity-20 absolute -right-2 -bottom-2">2</div>
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<!-- 1st Place -->
+<div class="flex flex-col items-center order-1 md:order-2 w-full md:w-1/3 max-w-[280px] relative z-20 group">
+<div class="absolute -top-24 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-primary-container border-2 border-primary p-2 font-headline font-bold text-sm whitespace-nowrap neo-shadow z-20">
+                            Engineering (Top 1%)
+                        </div>
+<div class="w-32 h-32 rounded-full border-4 border-primary mb-4 overflow-hidden neo-shadow-lg bg-primary-container flex items-center justify-center relative">
+<div class="absolute inset-0 border-4 border-primary rounded-full animate-ping opacity-20"></div>
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="font-headline font-black text-3xl md:text-4xl uppercase mb-1">A. SMITH</div>
+<div class="font-body font-bold text-xl mb-4 bg-secondary text-on-secondary px-4 py-1 border-2 border-primary neo-shadow">3,120 PTS</div>
+<div class="w-full h-40 md:h-64 border-4 border-primary border-b-0 bg-primary-fixed flex items-start justify-center pt-4 relative overflow-hidden transition-all duration-300 hover:bg-primary-fixed-dim shadow-[8px_-8px_0px_0px_#1a1a1a]">
+<div class="font-headline text-8xl font-black text-primary opacity-20 absolute -right-4 -bottom-4">1</div>
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">trophy</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center order-3 w-full md:w-1/3 max-w-[250px] relative z-10 group">
+<div class="absolute -top-16 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-surface border-2 border-primary p-2 font-headline font-bold text-sm whitespace-nowrap neo-shadow z-20">
+                            Business Admin
+                        </div>
+<div class="w-24 h-24 rounded-full border-4 border-primary mb-4 overflow-hidden neo-shadow bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">person_3</span>
+</div>
+<div class="font-headline font-black text-2xl uppercase mb-1">M. LEE</div>
+<div class="font-body font-bold text-lg mb-4 bg-tertiary text-on-tertiary px-3 py-1 border-2 border-primary">2,100 PTS</div>
+<div class="w-full h-24 md:h-36 border-4 border-primary border-b-0 bg-surface-dim flex items-start justify-center pt-4 relative overflow-hidden transition-all duration-300 hover:bg-surface-variant">
+<div class="font-headline text-6xl font-black text-primary opacity-20 absolute -right-2 -bottom-2">3</div>
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<!-- Podium Base Line -->
+<div class="absolute bottom-0 left-0 w-full h-4 bg-primary z-30"></div>
+</div>
+<!-- Rankings Table -->
+<div class="border-4 border-primary bg-background neo-shadow-lg mb-12">
+<div class="border-b-4 border-primary p-4 bg-surface-dim flex justify-between items-center">
+<h3 class="font-headline text-2xl font-black uppercase">FULL STANDINGS</h3>
+<div class="flex items-center gap-2 border-2 border-primary bg-background px-3 py-1">
+<span class="material-symbols-outlined">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-headline font-bold uppercase text-sm w-32 md:w-48 placeholder-on-surface-variant" placeholder="FIND STUDENT" type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-4 border-primary bg-surface-bright font-headline font-bold uppercase text-lg">
+<th class="p-4 w-20 text-center border-r-2 border-primary">#</th>
+<th class="p-4 border-r-2 border-primary">STUDENT</th>
+<th class="p-4 border-r-2 border-primary hidden sm:table-cell">MAJOR</th>
+<th class="p-4 text-right">SCORE</th>
+</tr>
+</thead>
+<tbody class="font-body font-medium">
+<tr class="border-b-2 border-primary hover:bg-surface-variant transition-colors group">
+<td class="p-4 text-center border-r-2 border-primary font-headline font-bold text-xl group-hover:bg-primary-container">4</td>
+<td class="p-4 border-r-2 border-primary flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-bold uppercase tracking-tight">S. Patel</span>
+</td>
+<td class="p-4 border-r-2 border-primary hidden sm:table-cell text-on-surface-variant uppercase text-sm font-bold">Physics</td>
+<td class="p-4 text-right font-headline font-bold text-xl">1,950</td>
+</tr>
+<tr class="border-b-2 border-primary hover:bg-surface-variant transition-colors group">
+<td class="p-4 text-center border-r-2 border-primary font-headline font-bold text-xl group-hover:bg-primary-container">5</td>
+<td class="p-4 border-r-2 border-primary flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-bold uppercase tracking-tight">E. Chen</span>
+</td>
+<td class="p-4 border-r-2 border-primary hidden sm:table-cell text-on-surface-variant uppercase text-sm font-bold">Art History</td>
+<td class="p-4 text-right font-headline font-bold text-xl">1,820</td>
+</tr>
+<tr class="border-b-2 border-primary hover:bg-surface-variant transition-colors group">
+<td class="p-4 text-center border-r-2 border-primary font-headline font-bold text-xl group-hover:bg-primary-container">6</td>
+<td class="p-4 border-r-2 border-primary flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-bold uppercase tracking-tight">D. Williams</span>
+</td>
+<td class="p-4 border-r-2 border-primary hidden sm:table-cell text-on-surface-variant uppercase text-sm font-bold">Mathematics</td>
+<td class="p-4 text-right font-headline font-bold text-xl">1,780</td>
+</tr>
+<tr class="border-b-2 border-primary hover:bg-surface-variant transition-colors group">
+<td class="p-4 text-center border-r-2 border-primary font-headline font-bold text-xl group-hover:bg-primary-container">7</td>
+<td class="p-4 border-r-2 border-primary flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-bold uppercase tracking-tight">K. Johnson</span>
+</td>
+<td class="p-4 border-r-2 border-primary hidden sm:table-cell text-on-surface-variant uppercase text-sm font-bold">Literature</td>
+<td class="p-4 text-right font-headline font-bold text-xl">1,650</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors bg-surface-container group">
+<td class="p-4 text-center border-r-2 border-primary font-headline font-bold text-xl group-hover:bg-primary-container">24</td>
+<td class="p-4 border-r-2 border-primary flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-black uppercase tracking-tight">YOU</span>
+</td>
+<td class="p-4 border-r-2 border-primary hidden sm:table-cell text-on-surface-variant uppercase text-sm font-bold">Undeclared</td>
+<td class="p-4 text-right font-headline font-bold text-xl">950</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t-4 border-primary flex justify-center bg-surface-bright">
+<button class="font-headline font-bold uppercase text-primary hover:text-secondary flex items-center gap-2 transition-colors">
+                            LOAD MORE <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch bg-background dark:bg-background z-50 border-t-4 border-primary">
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+            AI
+        </a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            Rank
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">library_books</span>
+            Books
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary font-label text-xs font-bold uppercase" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+            User
+        </a>
+</nav>
+</body></html>

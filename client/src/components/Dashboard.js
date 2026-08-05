@@ -6,7 +6,7 @@ import ViewPdfModal from './ViewPdfModal';
 import UploadModal from './UploadModal';
 import AiModal from './AiModal';
 import SubscriptionModal from './SubscriptionModal';
-import TestModal from './TestModal'; // 1. Ensure TestModal is imported
+import TestModal from './TestModal';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -31,6 +31,7 @@ const Dashboard = () => {
 
     // User info
     const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('userName') || 'Student';
     const userRole = localStorage.getItem('userRole');
     const isAdmin = userRole === 'admin' || userRole === 'teacher';
     const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
@@ -50,13 +51,12 @@ const Dashboard = () => {
 
      // --- AI Feature Handlers ---
     const handleAiFeature = async (noteId, mode) => {
-        setNoteIdForAI(noteId); // 1. Set the Note ID here
+        setNoteIdForAI(noteId);
         setAiMode(mode);
         setAiLoading(true);
         setAiContent('');
         setIsAiModalOpen(true); 
 
-        // Find the note to get the subject/title for the quiz topic
         const note = notes.find(n => n._id === noteId);
         const topic = note ? `${note.subject} - ${note.title}` : 'General Quiz';
         setQuizTopicName(topic);
@@ -90,15 +90,8 @@ const Dashboard = () => {
     const handlePaywall = () => setIsPaywallOpen(true);
     const handleViewFile = (noteId) => setFileToView(noteId);
 
-    const UpgradeCard = () => (
-        <div className="upgrade-card">
-            <h3>🚀 Unlock All Features</h3>
-            <p>Get full PDF access and AI-powered study tools by upgrading to Pro.</p>
-            <button className="upgrade-btn" onClick={handlePaywall}>
-                Upgrade Now
-            </button>
-        </div>
-    );
+    const recentNotes = notes.slice(0, 2);
+    const recommendedNote = notes.length > 2 ? notes[2] : notes[0];
 
     return (
         <>
@@ -106,51 +99,152 @@ const Dashboard = () => {
              {/* Modals */}
              {fileToView && <ViewPdfModal noteId={fileToView} closeModal={() => setFileToView(null)} />}
              {isAdmin && isUploadModalOpen && <UploadModal closeModal={() => setIsUploadModalOpen(false)} onUploadSuccess={handleUploadSuccess} />}
-             
-             {/* AI Modal (Summary/Loading) */}
              {isAiModalOpen && <AiModal mode={aiMode} content={aiContent} isLoading={aiLoading} closeModal={() => setIsAiModalOpen(false)} />}
-             
-             {/* Test Modal (Quiz) - FIXED: Passing noteId and topicName */}
              {isTestModalOpen && quizData && 
                 <TestModal 
                     quizData={quizData} 
-                    noteId={noteIdForAI}  // <--- This was likely missing
-                    topicName={quizTopicName} // <--- This was likely missing
+                    noteId={noteIdForAI}
+                    topicName={quizTopicName}
                     closeModal={() => setIsTestModalOpen(false)} 
                 />
              }
-             
              {isPaywallOpen && <SubscriptionModal closeModal={() => setIsPaywallOpen(false)} />}
 
              <div className="dashboard-container">
-                 <header className="dashboard-header">
-                    <h1>Study Materials</h1>
-                    {isAdmin && ( <button className="share-btn" onClick={() => setIsUploadModalOpen(true)}>Share Material</button> )}
-                 </header>
-
-                <main className="notes-grid">
-                    {loading ? <p className="status-message">Loading notes...</p> : error ? <p className="status-message error">{error}</p> : notes.length === 0 ? <p className="status-message">No notes shared yet.</p> : (
-                        <>
-                            {!isAdmin && !isSubscribed && <UpgradeCard />}
-                            {notes.map(note => (
-                                <NoteCard
-                                    key={note._id}
-                                    note={note}
-                                    onViewFile={handleViewFile}
-                                    isAdmin={isAdmin}
-                                    onSummarize={handleSummarize}
-                                    onQuiz={handleQuiz}
-                                    onChat={handleChat}
-                                    onPaywall={handlePaywall}
-                                    onEdit={() => {}}
-                                    onDelete={() => {}}
-                                />
-                            ))
-                            }
-                        </>
+                 {/* Welcome Banner */}
+                 <div className="dashboard-welcome">
+                    <div className="welcome-text">
+                        <h1>Welcome back, {userName}</h1>
+                        <p>You have {notes.length} study materials available. Keep up the good work!</p>
+                    </div>
+                    {isAdmin && (
+                        <button className="resume-study-btn" onClick={() => setIsUploadModalOpen(true)}>
+                            Upload Material
+                        </button>
                     )}
-                </main>
-            </div>
+                    {!isAdmin && (
+                        <button className="resume-study-btn" onClick={() => {}}>
+                            Resume Study
+                        </button>
+                    )}
+                 </div>
+
+                 <div className="dashboard-grid">
+                    {/* Main Content */}
+                    <div className="dashboard-main">
+                        {/* Recent Activity */}
+                        <section className="dashboard-section">
+                            <h2 className="section-title">Recent Activity</h2>
+                            <div className="activity-cards">
+                                {loading ? (
+                                    <div className="status-card"><p>Loading notes...</p></div>
+                                ) : error ? (
+                                    <div className="status-card error"><p>{error}</p></div>
+                                ) : recentNotes.length === 0 ? (
+                                    <div className="status-card"><p>No recent activity yet.</p></div>
+                                ) : (
+                                    recentNotes.map(note => (
+                                        <div key={note._id} className="activity-card" onClick={() => handleViewFile(note._id)}>
+                                            <div className="activity-icon">📄</div>
+                                            <div className="activity-info">
+                                                <h4>{note.title}</h4>
+                                                <p>{note.subject}</p>
+                                            </div>
+                                            <div className="activity-dashed"></div>
+                                            <span className="activity-time">Recent</span>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </section>
+
+                        {/* Recommended */}
+                        {recommendedNote && (
+                            <section className="dashboard-section">
+                                <h2 className="section-title">Recommended for You <span className="ai-sparkle">✦</span></h2>
+                                <div className="recommended-card">
+                                    <div className="recommended-content">
+                                        <h3>{recommendedNote.title}</h3>
+                                        <p>{recommendedNote.description || `Based on your recent activity, we suggest reviewing ${recommendedNote.subject}.`}</p>
+                                        <button className="ai-tutor-btn" onClick={() => handleViewFile(recommendedNote._id)}>
+                                            ⬡ Start AI Tutor Session
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        )}
+
+                        {/* All Notes Grid */}
+                        {!loading && notes.length > 0 && (
+                            <section className="dashboard-section">
+                                <h2 className="section-title">All Materials</h2>
+                                <div className="notes-grid">
+                                    {!isAdmin && !isSubscribed && (
+                                        <div className="upgrade-card">
+                                            <h3>🚀 Unlock All Features</h3>
+                                            <p>Get full PDF access and AI-powered study tools by upgrading to Pro.</p>
+                                            <button className="upgrade-btn" onClick={handlePaywall}>Upgrade Now</button>
+                                        </div>
+                                    )}
+                                    {notes.map(note => (
+                                        <NoteCard
+                                            key={note._id}
+                                            note={note}
+                                            onViewFile={handleViewFile}
+                                            isAdmin={isAdmin}
+                                            onSummarize={handleSummarize}
+                                            onQuiz={handleQuiz}
+                                            onChat={handleChat}
+                                            onPaywall={handlePaywall}
+                                            onEdit={() => {}}
+                                            onDelete={() => {}}
+                                        />
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+                    </div>
+
+                    {/* Performance Sidebar */}
+                    <aside className="dashboard-aside">
+                        <div className="perf-card">
+                            <h3 className="perf-title">Performance</h3>
+                            <div className="perf-score">
+                                <span className="perf-label">Average Quiz Score</span>
+                                <span className="perf-value">—</span>
+                            </div>
+                            <div className="perf-bar">
+                                <div className="perf-bar-fill" style={{width: '0%'}}></div>
+                            </div>
+                        </div>
+                        <div className="stat-mini-card blue">
+                            <div className="stat-mini-icon">📋</div>
+                            <div>
+                                <span className="stat-mini-label">Quizzes Taken</span>
+                                <span className="stat-mini-value">—</span>
+                            </div>
+                        </div>
+                        <div className="stat-mini-card red">
+                            <div className="stat-mini-icon">🔥</div>
+                            <div>
+                                <span className="stat-mini-label">Current Streak</span>
+                                <span className="stat-mini-value">—</span>
+                            </div>
+                        </div>
+                    </aside>
+                 </div>
+
+                 {/* Footer */}
+                 <footer className="dashboard-footer">
+                    <span>© 2024 Campus Connect. Empowering Education.</span>
+                    <div className="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#access">Accessibility</a>
+                        <a href="#support">Contact Support</a>
+                    </div>
+                 </footer>
+             </div>
         </>
     );
 };

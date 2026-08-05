@@ -54,7 +54,7 @@ const RatingModal = ({ noteId, closeModal, onReviewSubmitted }) => {
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                     />
-                    <button typeclassName="submit-btn">Submit Review</button>
+                    <button type="submit" className="submit-btn">Submit Review</button>
                     {message && <p className="status-message" style={{ marginTop: '1rem', color: 'white' }}>{message}</p>}
                 </form>
             </div>

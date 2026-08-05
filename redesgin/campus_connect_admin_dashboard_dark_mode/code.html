@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ff5352",
+                        "tertiary-container": "#cca800",
+                        "on-primary": "#68000b",
+                        "on-primary-fixed-variant": "#930014",
+                        "on-secondary-fixed-variant": "#004397",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#ffe17a",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#aec6ff",
+                        "surface-dim": "#131313",
+                        "inverse-primary": "#ba1724",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "outline-variant": "#5b403e",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#131313",
+                        "on-primary-fixed": "#410004",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary": "#ebc31c",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed": "#001a43",
+                        "surface-tint": "#ffb3ae",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#0661d2",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#4d3e00",
+                        "primary-fixed": "#ffdad7",
+                        "tertiary-fixed-dim": "#eac31b",
+                        "on-secondary": "#002e6b",
+                        "outline": "#ab8986",
+                        "on-primary-container": "#5c0008",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#aec6ff",
+                        "on-secondary-container": "#dbe4ff",
+                        "primary": "#ffb3ae",
+                        "on-tertiary-fixed": "#231b00",
+                        "on-tertiary": "#3b2f00",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-surface-variant": "#e4beba"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "md": "16px",
+                        "xl": "48px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "boxShadow": {
+                        'hard-primary': '4px 4px 0px 0px #ffb3ae',
+                        'hard-secondary': '4px 4px 0px 0px #aec6ff',
+                        'hard-tertiary': '4px 4px 0px 0px #ebc31c',
+                        'hard-black': '4px 4px 0px 0px #000000',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .hard-border { border: 2px solid #000000; }
+        /* Simulating the hard flat shadow offset for interaction */
+        .btn-press:active { transform: translate(4px, 4px); box-shadow: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface dark:bg-surface border-r-2 border-black py-lg px-md space-y-sm z-50">
+<div class="mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Admin Panel</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">LMS Management</p>
+</div>
+<div class="flex-grow space-y-sm">
+<a class="flex items-center space-x-sm px-sm py-sm bg-primary-container text-on-primary-container border-2 border-black font-bold font-label-md text-label-md hover:translate-x-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span>Courses</span>
+</a>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">settings_applications</span>
+<span>System</span>
+</a>
+</div>
+<div class="mt-auto space-y-sm">
+<button class="w-full py-sm border-2 border-black bg-tertiary text-on-tertiary font-label-md text-label-md shadow-hard-black btn-press mb-md">
+                System Status
+            </button>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center space-x-sm px-sm py-sm text-on-surface hover:bg-surface-variant font-label-md text-label-md hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-grow flex flex-col min-h-screen max-w-[1400px] mx-auto w-full">
+<!-- TopNavBar (Mobile mainly, but acts as header here) -->
+<header class="md:hidden flex justify-between items-center px-lg py-sm w-full z-40 bg-surface dark:bg-surface border-b-2 border-black sticky top-0 shadow-[0_4px_0_0_#000]">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">
+                Campus Connect
+            </div>
+<div class="flex space-x-sm">
+<button class="p-xs hover:bg-surface-variant transition-colors active:translate-y-0.5 active:translate-x-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs hover:bg-surface-variant transition-colors active:translate-y-0.5 active:translate-x-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Administrator Avatar" class="w-8 h-8 hard-border object-cover" data-alt="A small, stylized avatar profile picture of a male administrator wearing a headset, minimal color palette, high contrast neo-brutalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn4DahpVmvtuqgOjRjx78Kq3Bbdar8CIlbo4zOrewTroMFa_QHsBFfSUdZ8wkCuAquFQ5bByrTRQQVD9VGskMBeLkdQHEq3VWpqUDKhxIo4rkIsYmo-bF8I0Gcadl94fnY0P5aKVT6ym37W55iBjJfchC-GW1bDHwqtepo76Q8Jfv6Nq2yQuGmbtIS0BlrgQTFzIZAT1NC2KwAknPTfkfFvfPCIx40f9-iZF9WhP7GDcsFAvSwYMgi7g"/>
+</div>
+</header>
+<!-- Desktop Header Equivalent -->
+<header class="hidden md:flex justify-between items-center px-xl py-lg w-full bg-surface border-b-2 border-black mb-lg">
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">
+                Dashboard Overview
+            </div>
+<div class="flex items-center space-x-md">
+<div class="relative hard-border bg-surface-variant flex items-center px-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-xs">search</span>
+<input class="bg-transparent border-none text-on-surface focus:ring-0 font-body-md w-64 placeholder-on-surface-variant" placeholder="Search system..." type="text"/>
+</div>
+<button class="p-sm hard-border bg-surface hover:bg-surface-variant transition-colors btn-press shadow-hard-black">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="Administrator Avatar" class="w-12 h-12 hard-border object-cover" data-alt="A small, stylized avatar profile picture of a male administrator wearing a headset, minimal color palette, high contrast neo-brutalist style, deep blacks and sharp lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4r93EQtad4KTM9Q9XGWDLRiEORAAU5q6Hg-ZFFucyxqUWKE_cBmaygu_T9qvNl1zyeZhgDwc_FXyWMUVp2q-DleXs5efP9VMr-uCxX6FxYD3wMpaoKGBfj4bqmMws1yqdkO5JKyY7MDyZGpXw_Aap5xyVy1KHSgyqUA1UhOrCqpLISJqb95VP530cDOE5FU1KDEiC4zaZ6GT-QH18Ys_wBJpc6L7iTmkqB6Grf_hT_OVqk91pnDKi3Q"/>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-grow p-margin-mobile md:p-xl space-y-xl overflow-x-hidden">
+<!-- High-Level Stats -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="bg-surface hard-border p-md shadow-hard-primary hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Total Students</span>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div class="font-display text-display text-primary">12,450</div>
+<div class="font-label-md text-label-md text-secondary mt-xs flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">trending_up</span> +4.2% this month
+                    </div>
+</div>
+<div class="bg-surface hard-border p-md shadow-hard-secondary hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Active Courses</span>
+<span class="material-symbols-outlined text-secondary">school</span>
+</div>
+<div class="font-display text-display text-secondary">342</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-xs">
+                        Across 18 departments
+                    </div>
+</div>
+<div class="bg-surface hard-border p-md shadow-hard-tertiary hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Resource Uploads</span>
+<span class="material-symbols-outlined text-tertiary">cloud_upload</span>
+</div>
+<div class="font-display text-display text-tertiary">8.2k</div>
+<div class="font-label-md text-label-md text-primary mt-xs flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">warning</span> Storage at 85%
+                    </div>
+</div>
+<div class="bg-surface hard-border p-md shadow-hard-primary hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">AI Credits</span>
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+</div>
+<div class="font-display text-display text-on-surface">94%</div>
+<!-- Geometric Progress Bar -->
+<div class="w-full h-4 bg-surface-variant hard-border mt-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 94%;"></div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Main Content -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Recent Activity Table (Spans 2 cols) -->
+<div class="lg:col-span-2 bg-surface hard-border shadow-hard-black flex flex-col">
+<div class="p-md border-b-2 border-black flex justify-between items-center bg-surface-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h2>
+<button class="font-label-md text-label-md text-secondary hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto p-md">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-black">
+<th class="pb-sm font-label-md text-label-md text-on-surface-variant">User</th>
+<th class="pb-sm font-label-md text-label-md text-on-surface-variant">Role</th>
+<th class="pb-sm font-label-md text-label-md text-on-surface-variant">Action</th>
+<th class="pb-sm font-label-md text-label-md text-on-surface-variant text-right">Time</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b-2 border-surface-variant hover:bg-surface-container-high transition-colors">
+<td class="py-sm py-3 font-bold">Dr. A. Turing</td>
+<td class="py-sm"><span class="px-2 py-1 border-2 border-black bg-tertiary text-on-tertiary text-xs font-bold uppercase">Faculty</span></td>
+<td class="py-sm text-on-surface-variant">Published syllabus CS101</td>
+<td class="py-sm text-right text-on-surface-variant">10m ago</td>
+</tr>
+<tr class="border-b-2 border-surface-variant hover:bg-surface-container-high transition-colors">
+<td class="py-sm py-3 font-bold">J. Carmack</td>
+<td class="py-sm"><span class="px-2 py-1 border-2 border-black bg-secondary text-on-secondary text-xs font-bold uppercase">Student</span></td>
+<td class="py-sm text-on-surface-variant">Submitted Assignment 3</td>
+<td class="py-sm text-right text-on-surface-variant">45m ago</td>
+</tr>
+<tr class="border-b-2 border-surface-variant hover:bg-surface-container-high transition-colors">
+<td class="py-sm py-3 font-bold">System</td>
+<td class="py-sm"><span class="px-2 py-1 border-2 border-black bg-primary text-on-primary text-xs font-bold uppercase">Admin</span></td>
+<td class="py-sm text-on-surface-variant">Automated Backup Complete</td>
+<td class="py-sm text-right text-on-surface-variant">1h ago</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-sm py-3 font-bold">M. Hamilton</td>
+<td class="py-sm"><span class="px-2 py-1 border-2 border-black bg-secondary text-on-secondary text-xs font-bold uppercase">Student</span></td>
+<td class="py-sm text-on-surface-variant">Failed login attempt</td>
+<td class="py-sm text-right text-primary font-bold">2h ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- System Health & Quick Actions (1 col) -->
+<div class="flex flex-col space-y-md">
+<!-- System Health -->
+<div class="bg-surface hard-border shadow-hard-black p-md">
+<h2 class="font-headline-md text-headline-md text-on-surface border-b-2 border-black pb-xs mb-sm">System Health</h2>
+<div class="mb-md">
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span>Server Load</span>
+<span class="text-tertiary">78%</span>
+</div>
+<div class="w-full h-6 bg-surface-variant hard-border relative overflow-hidden flex">
+<div class="h-full bg-secondary border-r-2 border-black" style="width: 50%;"></div>
+<div class="h-full bg-tertiary border-r-2 border-black" style="width: 28%;"></div>
+<!-- Background pattern for remaining -->
+<div class="h-full flex-grow bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik0tMSwxIGwyLC0yIE0wLDQgbDQsLTQgTTMsNSBsMiwtMiIgc3Ryb2tlPSIjNTU0NTAwIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=')] opacity-20"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span>DB Connections</span>
+<span class="text-primary">99%</span>
+</div>
+<div class="w-full h-6 bg-surface-variant hard-border relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 99%;"></div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="bg-surface-variant hard-border p-md flex-grow flex flex-col justify-center gap-sm shadow-hard-black">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs hidden">Quick Actions</h2>
+<button class="w-full py-md border-2 border-black bg-secondary text-on-secondary font-label-md text-label-md shadow-hard-black btn-press flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined">upload_file</span>
+                            Upload New Course Data
+                        </button>
+<button class="w-full py-md border-2 border-black bg-tertiary text-on-tertiary font-label-md text-label-md shadow-hard-black btn-press flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined">campaign</span>
+                            Broadcast Announcement
+                        </button>
+<button class="w-full py-md border-2 border-black bg-primary text-on-primary font-label-md text-label-md shadow-hard-black btn-press flex justify-center items-center gap-xs mt-sm">
+<span class="material-symbols-outlined">restart_alt</span>
+                            Reset Semester Stats
+                        </button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

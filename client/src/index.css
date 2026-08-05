@@ -1,13 +1,123 @@
-body {
+/* ===== Google Font Import ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ===== Bauhaus Design Tokens ===== */
+:root {
+  /* Backgrounds */
+  --bg-cream: #F5F0E8;
+  --bg-white: #FFFFFF;
+  --bg-dark: #1A1A1A;
+  --bg-dark-hover: #2A2A2A;
+  --bg-card: #FFFFFF;
+
+  /* Primary */
+  --primary-yellow: #FFD600;
+  --primary-yellow-hover: #FFC107;
+  --primary-yellow-light: rgba(255, 214, 0, 0.15);
+
+  /* Accents */
+  --accent-red: #E53935;
+  --accent-red-light: rgba(229, 57, 53, 0.1);
+  --accent-blue: #2962FF;
+  --accent-blue-light: rgba(41, 98, 255, 0.1);
+  --accent-green: #2E7D32;
+  --accent-green-light: rgba(46, 125, 50, 0.1);
+
+  /* Text */
+  --text-dark: #1A1A1A;
+  --text-medium: #616161;
+  --text-light: #9E9E9E;
+  --text-on-dark: #F5F0E8;
+
+  /* Borders */
+  --border-dark: #1A1A1A;
+  --border-medium: #D0C8B8;
+  --border-light: #E8E0D0;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Sizing */
+  --sidebar-width: 220px;
+  --topbar-height: 64px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+/* ===== Global Reset ===== */
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ===== Typography Utilities ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-dark);
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--primary-yellow);
+  color: var(--text-dark);
 }

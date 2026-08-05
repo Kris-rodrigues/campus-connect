@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Student Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eee9e0",
+                    "surface-tint": "#1a1a1a",
+                    "on-error-container": "#93000a",
+                    "background": "#f5f0e8",
+                    "primary-fixed": "#ffcc00",
+                    "surface": "#f5f0e8",
+                    "tertiary-container": "#d6e3ff",
+                    "surface-dim": "#d6d1c9",
+                    "inverse-on-surface": "#f5f0e8",
+                    "surface-container-high": "#e8e3da",
+                    "on-tertiary-container": "#1a1a1a",
+                    "surface-container-low": "#f2ede5",
+                    "surface-container-highest": "#e2ddd4",
+                    "secondary": "#e63b2e",
+                    "on-secondary": "#1a1a1a",
+                    "primary-container": "#ffcc00",
+                    "on-secondary-fixed-variant": "#1a1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#faf7f2",
+                    "surface-variant": "#e8e3da",
+                    "primary-fixed-dim": "#e6b800",
+                    "on-secondary-fixed": "#1a1a1a",
+                    "inverse-surface": "#1a1a1a",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#1a1a1a",
+                    "inverse-primary": "#f5f0e8",
+                    "outline": "#1a1a1a",
+                    "on-surface-variant": "#4a4a4a",
+                    "primary": "#1a1a1a",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d0cbc3",
+                    "secondary-fixed": "#ffdad6",
+                    "on-primary-fixed-variant": "#1a1a1a",
+                    "on-primary-fixed": "#1a1a1a",
+                    "on-background": "#1a1a1a",
+                    "secondary-fixed-dim": "#ffb3ab",
+                    "tertiary": "#0055ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d6e3ff",
+                    "error": "#cc0000",
+                    "on-secondary-container": "#1a1a1a",
+                    "tertiary-fixed-dim": "#a8c6ff",
+                    "on-tertiary-fixed-variant": "#1a1a1a",
+                    "on-surface": "#1a1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#1a1a1a",
+                    "secondary-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Space Grotesk"
+                    ],
+                    "display": [
+                            "Space Grotesk"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Space Grotesk"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        /* Bauhaus Neo-Brutalist specifics */
+        .bauhaus-border {
+            border: 3px solid #1a1a1a;
+        }
+        .bauhaus-shadow {
+            box-shadow: 6px 6px 0px 0px #1a1a1a;
+        }
+        .bauhaus-button:hover {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        .bauhaus-button-secondary:hover {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        
+        /* Material symbols specific */
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 600,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col md:flex-row overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Top Bar (Hidden on md+) -->
+<header class="md:hidden flex justify-between items-center w-full px-6 py-4 bg-background dark:bg-background top-0 sticky z-50 border-b-4 border-primary dark:border-primary-fixed shadow-[4px_4px_0px_0px_#1a1a1a]">
+<h1 class="font-headline text-2xl font-black text-primary dark:text-primary-fixed uppercase tracking-tighter">CAMPUS CONNECT</h1>
+<div class="flex gap-4">
+<button class="text-primary dark:text-primary-fixed hover:bg-primary hover:text-on-primary p-2 transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary dark:text-primary-fixed hover:bg-primary hover:text-on-primary p-2 transition-colors duration-100 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Hidden on mobile) -->
+<nav class="hidden md:flex flex-col p-4 space-y-2 h-screen w-64 border-r-4 border-primary bg-background dark:bg-background sticky top-0 shrink-0">
+<div class="mb-8 p-2">
+<h2 class="font-headline text-xl font-black text-primary uppercase">STUDENT PORTAL</h2>
+<p class="font-headline text-sm font-bold uppercase mt-1">V.2024</p>
+</div>
+<div class="flex-1 space-y-2">
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+                AI Assistant
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</div>
+<div class="mt-auto">
+<button class="w-full text-center p-4 bg-primary text-on-primary font-headline text-lg font-bold uppercase bauhaus-button border-2 border-primary mt-4 active:scale-95 transition-transform">
+                LOGOUT
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-6 md:p-10 lg:p-14 mb-20 md:mb-0 relative">
+<!-- Top Bar for Web (Hidden on mobile) -->
+<div class="hidden md:flex justify-between items-end mb-12 border-b-4 border-primary pb-6">
+<div>
+<h1 class="font-headline text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-2">CAMPUS CONNECT</h1>
+<p class="font-headline text-2xl font-bold">Welcome back, Alex</p>
+</div>
+<div class="flex gap-4">
+<button class="w-14 h-14 bg-surface-container bauhaus-border bauhaus-shadow flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined text-3xl">search</span>
+</button>
+<button class="w-14 h-14 bg-surface-container bauhaus-border bauhaus-shadow flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors active:translate-x-1 active:translate-y-1 active:shadow-none relative">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+<span class="absolute -top-2 -right-2 w-5 h-5 bg-secondary border-2 border-primary rounded-full"></span>
+</button>
+<div class="w-14 h-14 bg-primary-container bauhaus-border bauhaus-shadow flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover grayscale contrast-125" data-alt="Close up portrait photo of a young male student in a bright studio setting with stark contrast lighting, wearing a graphic tee, brutalist raw aesthetic, bold high key light mode, black and yellow accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYKxTQE97Y9UViVgmy5g6P2rxvRImCXRLelL_QGraOOTKA1UAMAC3O517yqBeyg64bshqxFBwgOQOX3Rh4hLrOwTyc9TJmHziWi62RcUsC4It7ALcP5N6ZNGWofLiRDv4X6vVzN-JXXWcW148IwUEidpPc4a4oSBM2YyWExPXq7c7EGuWe53RQM1DX8jaSwpUo6WKJlZibbSUIziEDU3ymtrvdfC6qO3mFp5q75I7h37qB_oyK7lXVpg"/>
+</div>
+</div>
+</div>
+<!-- Mobile Welcome (Hidden on md+) -->
+<div class="md:hidden mb-8 border-b-4 border-primary pb-4">
+<h2 class="font-headline text-4xl font-black uppercase tracking-tighter leading-none">Welcome back,</h2>
+<h2 class="font-headline text-4xl font-black uppercase tracking-tighter text-secondary">Alex</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left Column: Activity & Recommendations -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Recent Activity Section -->
+<section>
+<div class="flex justify-between items-end mb-6 border-b-4 border-primary pb-2">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Recent Activity</h3>
+<a class="font-headline text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Card 1: Bio 101 -->
+<div class="bg-surface-container bauhaus-border bauhaus-shadow p-6 relative group transition-transform hover:-translate-y-1">
+<div class="absolute top-4 right-4 bg-tertiary text-on-tertiary px-3 py-1 font-headline text-xs font-bold uppercase border-2 border-primary">
+                                Assignment
+                            </div>
+<div class="mb-4">
+<span class="material-symbols-outlined text-4xl text-primary mb-2 block">science</span>
+<h4 class="font-headline text-2xl font-black uppercase">Bio 101</h4>
+<p class="text-sm font-medium mt-1">Cellular Structure Essay</p>
+</div>
+<div class="mt-8 pt-4 border-t-2 border-primary flex justify-between items-center">
+<div class="font-headline text-sm font-bold uppercase text-secondary flex items-center">
+<span class="material-symbols-outlined text-sm mr-1">schedule</span> Due in 2 days
+                                </div>
+<button class="bg-primary text-on-primary px-4 py-2 font-headline text-sm font-bold uppercase hover:bg-secondary transition-colors">
+                                    Continue
+                                </button>
+</div>
+</div>
+<!-- Card 2: Math 202 -->
+<div class="bg-surface-container bauhaus-border bauhaus-shadow p-6 relative group transition-transform hover:-translate-y-1">
+<div class="absolute top-4 right-4 bg-primary-container text-on-primary-container px-3 py-1 font-headline text-xs font-bold uppercase border-2 border-primary">
+                                Quiz
+                            </div>
+<div class="mb-4">
+<span class="material-symbols-outlined text-4xl text-primary mb-2 block">calculate</span>
+<h4 class="font-headline text-2xl font-black uppercase">Math 202</h4>
+<p class="text-sm font-medium mt-1">Linear Algebra Ch.4</p>
+</div>
+<div class="mt-8 pt-4 border-t-2 border-primary flex justify-between items-center">
+<div class="font-headline text-sm font-bold uppercase flex items-center">
+                                    Score: <span class="ml-2 text-xl">92%</span>
+</div>
+<button class="bg-surface text-on-surface border-2 border-primary px-4 py-2 font-headline text-sm font-bold uppercase hover:bg-primary hover:text-on-primary transition-colors">
+                                    Review
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Section -->
+<section>
+<div class="flex justify-between items-end mb-6 border-b-4 border-primary pb-2">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Recommended For You</h3>
+</div>
+<div class="bg-primary text-on-primary bauhaus-border bauhaus-shadow p-0 flex flex-col sm:flex-row overflow-hidden relative">
+<!-- Decorative graphic -->
+<div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 200px;">model_training</span>
+</div>
+<div class="p-8 sm:w-2/3 z-10">
+<div class="bg-primary-container text-on-primary-container inline-block px-3 py-1 font-headline text-xs font-bold uppercase border-2 border-primary mb-4">
+                                Deep Dive
+                            </div>
+<h4 class="font-headline text-4xl font-black uppercase leading-none mb-4">Genetics<br/>Deep Dive</h4>
+<p class="mb-8 font-medium max-w-md opacity-90">Based on your recent performance in Bio 101, explore advanced concepts in genetic sequencing to stay ahead of the curve.</p>
+<button class="bg-primary-container text-on-primary-container border-2 border-primary px-6 py-3 font-headline text-lg font-bold uppercase hover:bg-background transition-colors flex items-center gap-2">
+                                Start Module <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="sm:w-1/3 bg-background border-l-4 border-primary border-t-4 sm:border-t-0 p-6 flex flex-col justify-center relative">
+<div class="w-full aspect-square border-4 border-primary overflow-hidden relative group cursor-pointer">
+<img alt="Genetics graphic" class="w-full h-full object-cover grayscale contrast-150 group-hover:grayscale-0 transition-all duration-500" data-alt="Abstract brutalist graphic design composition representing genetics and DNA, stark geometric shapes, high contrast black lines on white background with vibrant yellow and blue accents, halftone patterns, raw modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5GihuAU4mwYuo862u9FBh7onN0bHSNpM0l2PMSqySsIuMB85AX2Aec_uVmM4LN255qESPxMLva2a9WplSM9soAyI7BdUezkRZ0HuZLhtoKcT8AginJrOOcjiUreV3rgFBwQSg0MVwBk8ZlLTKgeaLuHRovnS91pu5N270UplgaviSwiEtY040tgZNfwC11ImicuW7ovSHzru3BYqP_lO8whXMOuo5IPVaS1NI_x1AJaKS9T-yEj5VMw"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary text-5xl">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Performance Sidebar -->
+<div class="lg:col-span-4">
+<aside class="bg-surface-variant bauhaus-border bauhaus-shadow p-6 h-full flex flex-col">
+<h3 class="font-headline text-2xl font-black uppercase border-b-4 border-primary pb-4 mb-6">Performance</h3>
+<!-- Average Score -->
+<div class="mb-8 text-center bg-background border-4 border-primary p-6">
+<p class="font-headline text-sm font-bold uppercase mb-2">Average Score</p>
+<div class="font-headline text-7xl font-black tracking-tighter text-primary relative inline-block">
+                            86<span class="text-3xl absolute top-2 -right-6">%</span>
+</div>
+<div class="w-full h-4 bg-surface-dim border-2 border-primary mt-4 overflow-hidden">
+<div class="h-full bg-tertiary w-[86%]"></div>
+</div>
+</div>
+<!-- Streak -->
+<div class="mb-8 bg-primary-container border-4 border-primary p-6 relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[100px] opacity-20 text-primary">local_fire_department</span>
+<div class="relative z-10 flex items-center justify-between">
+<div>
+<p class="font-headline text-sm font-bold uppercase">Learning Streak</p>
+<div class="font-headline text-5xl font-black tracking-tighter">5 Days</div>
+</div>
+<div class="w-16 h-16 bg-background border-4 border-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Deadlines list -->
+<div class="mt-auto">
+<h4 class="font-headline text-lg font-bold uppercase mb-4 flex items-center">
+<span class="material-symbols-outlined mr-2">event</span>
+                            Upcoming
+                        </h4>
+<ul class="space-y-3">
+<li class="flex items-start border-b-2 border-outline-variant pb-3">
+<div class="bg-secondary w-3 h-3 border-2 border-primary mt-1.5 mr-3 shrink-0"></div>
+<div>
+<p class="font-bold">Bio 101 Essay</p>
+<p class="text-xs text-on-surface-variant font-medium uppercase mt-0.5">Tomorrow, 11:59 PM</p>
+</div>
+</li>
+<li class="flex items-start border-b-2 border-outline-variant pb-3">
+<div class="bg-primary-container w-3 h-3 border-2 border-primary mt-1.5 mr-3 shrink-0"></div>
+<div>
+<p class="font-bold">Math 202 Quiz</p>
+<p class="text-xs text-on-surface-variant font-medium uppercase mt-0.5">Friday, 10:00 AM</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="bg-tertiary w-3 h-3 border-2 border-primary mt-1.5 mr-3 shrink-0"></div>
+<div>
+<p class="font-bold">CS 301 Project</p>
+<p class="text-xs text-on-surface-variant font-medium uppercase mt-0.5">Next Monday</p>
+</div>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom NavBar (Hidden on md+) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch z-50 border-t-4 border-primary bg-background dark:bg-background">
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary active:bg-secondary active:text-on-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label text-xs font-bold uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent active:bg-secondary active:text-on-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+<span class="font-label text-xs font-bold uppercase">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent active:bg-secondary active:text-on-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">workspace_premium</span>
+<span class="font-label text-xs font-bold uppercase">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent active:bg-secondary active:text-on-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">library_books</span>
+<span class="font-label text-xs font-bold uppercase">Books</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent active:bg-secondary active:text-on-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label text-xs font-bold uppercase">User</span>
+</a>
+</nav>
+</body></html>

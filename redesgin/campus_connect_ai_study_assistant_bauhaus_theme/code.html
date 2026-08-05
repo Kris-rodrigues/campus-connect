@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - AI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#1a1a1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d6d1c9",
+                    "on-tertiary-fixed": "#1a1a1a",
+                    "secondary-container": "#ffdad6",
+                    "primary-fixed-dim": "#e6b800",
+                    "surface-variant": "#e8e3da",
+                    "primary-container": "#ffcc00",
+                    "on-secondary": "#1a1a1a",
+                    "tertiary": "#0055ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#1a1a1a",
+                    "secondary-fixed-dim": "#ffb3ab",
+                    "on-secondary-container": "#1a1a1a",
+                    "surface": "#f5f0e8",
+                    "on-background": "#1a1a1a",
+                    "on-primary-fixed": "#1a1a1a",
+                    "surface-container-low": "#f2ede5",
+                    "secondary": "#e63b2e",
+                    "on-surface-variant": "#4a4a4a",
+                    "inverse-primary": "#f5f0e8",
+                    "on-primary-container": "#1a1a1a",
+                    "surface-container-high": "#e8e3da",
+                    "surface-tint": "#1a1a1a",
+                    "tertiary-container": "#d6e3ff",
+                    "surface-container": "#eee9e0",
+                    "on-error-container": "#93000a",
+                    "background": "#f5f0e8",
+                    "tertiary-fixed": "#d6e3ff",
+                    "on-secondary-fixed": "#1a1a1a",
+                    "primary": "#1a1a1a",
+                    "secondary-fixed": "#ffdad6",
+                    "on-surface": "#1a1a1a",
+                    "outline-variant": "#d0cbc3",
+                    "inverse-surface": "#1a1a1a",
+                    "surface-bright": "#faf7f2",
+                    "outline": "#1a1a1a",
+                    "surface-container-highest": "#e2ddd4",
+                    "on-tertiary-container": "#1a1a1a",
+                    "tertiary-fixed-dim": "#a8c6ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffcc00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "error": "#cc0000",
+                    "inverse-on-surface": "#f5f0e8",
+                    "on-secondary-fixed-variant": "#1a1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk", "sans-serif"],
+                    "display": ["Space Grotesk", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Space Grotesk", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+        }
+        .neo-shadow-hover:hover {
+            box-shadow: 6px 6px 0px 0px #1a1a1a;
+            transform: translate(-2px, -2px);
+        }
+        .neo-shadow-active:active {
+            box-shadow: 0px 0px 0px 0px #1a1a1a;
+            transform: translate(4px, 4px);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f0e8;
+            border-left: 2px solid #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border: 2px solid #f5f0e8;
+        }
+        
+        .typewriter-cursor {
+            border-right: 4px solid #1a1a1a;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { border-color: transparent; } }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body h-screen flex flex-col md:flex-row overflow-hidden selection:bg-primary-container selection:text-primary">
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col p-4 space-y-2 h-screen w-64 border-r-4 border-primary bg-background shrink-0 z-20 relative">
+<div class="mb-8">
+<h1 class="text-xl font-black text-primary font-headline tracking-tighter">STUDENT PORTAL</h1>
+<p class="text-xs font-bold text-on-surface-variant font-label">V.2024</p>
+</div>
+<div class="flex-1 space-y-2">
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase neo-shadow" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                AI Assistant
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform font-headline text-lg font-bold uppercase" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Settings
+            </a>
+</div>
+<button class="w-full py-4 border-2 border-primary bg-secondary text-on-error font-headline font-black uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors neo-shadow-hover neo-shadow-active mt-auto">
+            LOGOUT
+        </button>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-6 py-4 bg-background w-full top-0 sticky border-b-4 border-primary z-20 relative shadow-[4px_4px_0px_0px_#1a1a1a]">
+<div class="text-2xl font-black text-primary uppercase font-headline tracking-tighter">CAMPUS CONNECT</div>
+<div class="flex space-x-4">
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 border-2 border-transparent hover:border-primary active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 border-2 border-transparent hover:border-primary active:translate-x-1 active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area - Split Screen -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden relative z-10 pb-16 md:pb-0 bg-surface-container">
+<!-- Left Pane: Content Viewer -->
+<section class="flex-1 md:w-1/2 flex flex-col border-b-4 md:border-b-0 md:border-r-4 border-primary bg-background overflow-hidden relative h-[512px] md:h-full">
+<!-- Toolbar -->
+<div class="border-b-4 border-primary bg-surface-variant p-4 flex items-center justify-between shrink-0">
+<div class="flex items-center space-x-4">
+<button class="p-2 border-2 border-primary bg-background hover:bg-primary hover:text-on-primary transition-colors neo-shadow-hover neo-shadow-active">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline font-bold text-xl truncate max-w-[200px] md:max-w-md uppercase tracking-tight">Introduction_To_Quantum_Mechanics_Ch3.pdf</h2>
+</div>
+<div class="flex items-center space-x-2">
+<button class="p-2 border-2 border-primary bg-background hover:bg-primary hover:text-on-primary transition-colors hidden sm:block">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<span class="font-label font-bold text-sm hidden sm:block border-2 border-primary bg-surface px-3 py-1">100%</span>
+<button class="p-2 border-2 border-primary bg-background hover:bg-primary hover:text-on-primary transition-colors hidden sm:block">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="p-2 border-2 border-primary bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors neo-shadow-hover neo-shadow-active ml-4">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 bg-surface-dim relative">
+<!-- Decorative element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary opacity-10 pointer-events-none" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+<div class="max-w-3xl mx-auto bg-background border-4 border-primary p-8 md:p-12 neo-shadow min-h-full">
+<h1 class="font-headline font-black text-4xl md:text-6xl mb-8 uppercase tracking-tighter border-b-4 border-primary pb-4">Chapter 3: Wave Functions</h1>
+<p class="font-body text-lg mb-6 leading-relaxed">
+                        In the previous chapter, we established that physical states in quantum mechanics are represented by vectors in a complex Hilbert space. However, for a single particle moving in one dimension, it is often more convenient to represent its state not by an abstract vector, but by a complex-valued function of position, denoted as <span class="font-headline font-bold bg-primary-container px-1">Ψ(x,t)</span>.
+                    </p>
+<div class="my-8 border-l-8 border-secondary pl-6 py-2 bg-surface p-4">
+<h3 class="font-headline font-bold text-xl uppercase mb-2">Born's Statistical Interpretation</h3>
+<p class="font-body italic text-on-surface-variant">
+                            The quantity |Ψ(x,t)|² dx represents the probability of finding the particle between x and x + dx at time t.
+                        </p>
+</div>
+<p class="font-body text-lg mb-6 leading-relaxed">
+                        Consequently, the wave function itself is completely determined by the Schrödinger equation, but its physical meaning only emerges when we consider its squared magnitude. This profound shift from deterministic trajectories to probabilistic outcomes marks the fundamental departure of quantum mechanics from classical physics.
+                    </p>
+<!-- Highlighted section by user -->
+<div class="bg-tertiary-container border-2 border-tertiary p-4 my-6 relative group cursor-pointer transition-colors hover:bg-tertiary hover:text-on-tertiary">
+<div class="absolute -top-3 -right-3 bg-tertiary text-on-tertiary p-1 border-2 border-primary hidden group-hover:block z-10">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+</div>
+<p class="font-body font-medium">
+                            The normalization condition requires that the total probability of finding the particle somewhere in space must be exactly 1. Mathematically, this is expressed as the integral of |Ψ|² over all space equating to 1.
+                        </p>
+</div>
+<img class="w-full border-4 border-primary my-8 neo-shadow object-cover h-64 grayscale contrast-125" data-alt="A highly stylized, minimalist diagram illustrating a quantum wave function (a sine wave enclosed in a Gaussian envelope) drawn in stark black lines on a textured off-white background. The axes are bold and strictly geometric. There is a single bright yellow highlight area indicating probability density. The aesthetic is raw, technical, and neo-brutalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjGi6NEp-I2wmRSdRsLXlfMUSr2AEJrXgxVliXB7KiJjFpjzifxeoeHWM8SOjPpfgnWhGxZHmMPqrEFr2NUe8BO8dSDgRWV8NQvkBPrLvstBODBHJzqoaNfTDFhnjMHdoX67n0QlA89U3RcHwQsZe3FW43erHBS9con-Yja0nMkDiamFhDyp6M4Eufz_mfj7INcouuoSn6gnr65guXsi_1tejXXZUHx7IzW3DGZQWRCAc1lQEYm_oOyw"/>
+<p class="font-body text-lg mb-6 leading-relaxed">
+                        If a wave function is initially normalized, does it stay normalized as time evolves? The answer is crucial for the consistency of the theory, and fortunately, it is yes, provided the potential energy function is real. This property is known as the conservation of probability.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Right Pane: AI Chat -->
+<section class="flex-1 md:w-1/2 flex flex-col bg-surface h-[512px] md:h-full relative">
+<!-- Chat Header -->
+<div class="border-b-4 border-primary bg-background p-4 flex items-center justify-between shrink-0">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-primary-container border-2 border-primary flex items-center justify-center neo-shadow">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">Study AI</h2>
+<span class="text-xs font-bold text-tertiary font-label uppercase tracking-widest flex items-center mt-1">
+<span class="w-2 h-2 bg-tertiary rounded-full mr-2 animate-pulse"></span> Online
+                        </span>
+</div>
+</div>
+<button class="p-2 border-2 border-primary hover:bg-secondary hover:text-on-error transition-colors text-primary bg-background">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Chat Messages -->
+<div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzFhMWExYSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=')]">
+<!-- AI Message -->
+<div class="flex items-start max-w-[90%]">
+<div class="w-10 h-10 bg-primary-container border-2 border-primary flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-primary text-xl">smart_toy</span>
+</div>
+<div class="bg-background border-4 border-primary p-4 neo-shadow relative">
+<!-- Connector triangle -->
+<div class="absolute -left-[14px] top-4 w-0 h-0 border-y-8 border-y-transparent border-r-[10px] border-r-primary"></div>
+<p class="font-body text-base">
+                            Hi there! I see you're reading <span class="font-headline font-bold uppercase">Chapter 3: Wave Functions</span>. How can I help you study today?
+                        </p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-start max-w-[90%] ml-auto flex-row-reverse">
+<div class="w-10 h-10 bg-tertiary border-2 border-primary flex items-center justify-center shrink-0 ml-4 text-on-tertiary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="bg-tertiary-container border-4 border-primary p-4 neo-shadow relative">
+<div class="absolute -right-[14px] top-4 w-0 h-0 border-y-8 border-y-transparent border-l-[10px] border-l-primary"></div>
+<div class="mb-3 border-l-4 border-tertiary pl-3 py-1 bg-background bg-opacity-50 text-sm font-body italic">
+                            "...integral of |Ψ|² over all space equating to 1."
+                        </div>
+<p class="font-body text-base font-bold">
+                            Can you explain what this normalization condition actually means in simple terms? Why must it equal exactly 1?
+                        </p>
+</div>
+</div>
+<!-- AI Message -->
+<div class="flex items-start max-w-[90%]">
+<div class="w-10 h-10 bg-primary-container border-2 border-primary flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-primary text-xl">smart_toy</span>
+</div>
+<div class="bg-background border-4 border-primary p-4 neo-shadow relative">
+<div class="absolute -left-[14px] top-4 w-0 h-0 border-y-8 border-y-transparent border-r-[10px] border-r-primary"></div>
+<p class="font-body text-base mb-4">
+                            Think of it like a game of hide-and-seek. The particle is definitely hiding *somewhere* in the universe. 
+                        </p>
+<ul class="list-none space-y-2 mb-4 font-body">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-2 shrink-0">arrow_right_alt</span>
+<span><span class="font-bold bg-primary-container px-1">|Ψ|²</span> gives you the probability of finding it in a specific small spot.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-2 shrink-0">arrow_right_alt</span>
+<span>If you add up (integrate) the probabilities of finding it in *every possible spot* across all of space, it must equal <span class="font-headline font-bold text-xl">100%</span> (which is 1 mathematically).</span>
+</li>
+</ul>
+<p class="font-body text-base">
+                            If it didn't equal 1, it would mean the particle has a chance of existing nowhere, or existing more than 100%, which breaks the rules of reality!
+                        </p>
+<!-- Suggested Actions -->
+<div class="mt-6 flex flex-wrap gap-2">
+<button class="border-2 border-primary bg-surface px-3 py-1 font-label text-xs uppercase font-bold hover:bg-primary hover:text-on-primary transition-colors">Show Formula</button>
+<button class="border-2 border-primary bg-surface px-3 py-1 font-label text-xs uppercase font-bold hover:bg-primary hover:text-on-primary transition-colors">Give Example</button>
+</div>
+</div>
+</div>
+<!-- Typing indicator -->
+<div class="flex items-start max-w-[90%] opacity-50">
+<div class="w-10 h-10 bg-primary-container border-2 border-primary flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-primary text-xl">smart_toy</span>
+</div>
+<div class="bg-background border-4 border-primary p-4 w-24 flex items-center justify-center space-x-2">
+<div class="w-2 h-2 bg-primary animate-bounce"></div>
+<div class="w-2 h-2 bg-primary animate-bounce" style="animation-delay: 0.1s"></div>
+<div class="w-2 h-2 bg-primary animate-bounce" style="animation-delay: 0.2s"></div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="border-t-4 border-primary bg-background p-4 shrink-0 z-10">
+<form class="relative flex items-end w-full" onsubmit="event.preventDefault();">
+<div class="flex-1 relative">
+<textarea class="w-full bg-surface-container-highest border-4 border-primary p-4 pr-12 font-body text-base focus:outline-none focus:ring-0 focus:border-tertiary focus:bg-background transition-colors resize-none neo-shadow" placeholder="Ask about Chapter 3..." rows="2"></textarea>
+<!-- Quick actions inside input -->
+<div class="absolute bottom-2 left-2 flex space-x-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">format_quote</span>
+</button>
+</div>
+</div>
+<button class="ml-4 h-14 w-14 bg-primary text-on-primary border-4 border-primary flex items-center justify-center hover:bg-secondary transition-colors neo-shadow-hover neo-shadow-active shrink-0" type="submit">
+<span class="material-symbols-outlined text-2xl font-bold" style="font-variation-settings: 'wght' 700;">send</span>
+</button>
+</form>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch fixed bottom-0 w-full z-50 border-t-4 border-primary bg-background shadow-none">
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary" href="#">
+<span class="material-symbols-outlined mb-1 text-xl">home</span>
+<span class="font-label text-xs font-bold uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary hover:bg-surface-container-high active:bg-secondary active:text-on-secondary" href="#">
+<span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label text-xs font-bold uppercase">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary" href="#">
+<span class="material-symbols-outlined mb-1 text-xl">workspace_premium</span>
+<span class="font-label text-xs font-bold uppercase">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary" href="#">
+<span class="material-symbols-outlined mb-1 text-xl">library_books</span>
+<span class="font-label text-xs font-bold uppercase">Books</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary" href="#">
+<span class="material-symbols-outlined mb-1 text-xl">person</span>
+<span class="font-label text-xs font-bold uppercase">User</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the chat input
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if(this.scrollHeight > 120) {
+                this.style.overflowY = 'auto';
+                this.style.height = '120px';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+    </script>
+</body></html>

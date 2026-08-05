@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#1a1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d6d1c9",
+                        "on-tertiary-fixed": "#1a1a1a",
+                        "secondary-container": "#ffdad6",
+                        "primary-fixed-dim": "#e6b800",
+                        "surface-variant": "#e8e3da",
+                        "primary-container": "#ffcc00",
+                        "on-secondary": "#1a1a1a",
+                        "tertiary": "#0055ff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#1a1a1a",
+                        "secondary-fixed-dim": "#ffb3ab",
+                        "on-secondary-container": "#1a1a1a",
+                        "surface": "#f5f0e8",
+                        "on-background": "#1a1a1a",
+                        "on-primary-fixed": "#1a1a1a",
+                        "surface-container-low": "#f2ede5",
+                        "secondary": "#e63b2e",
+                        "on-surface-variant": "#4a4a4a",
+                        "inverse-primary": "#f5f0e8",
+                        "on-primary-container": "#1a1a1a",
+                        "surface-container-high": "#e8e3da",
+                        "surface-tint": "#1a1a1a",
+                        "tertiary-container": "#d6e3ff",
+                        "surface-container": "#eee9e0",
+                        "on-error-container": "#93000a",
+                        "background": "#f5f0e8",
+                        "tertiary-fixed": "#d6e3ff",
+                        "on-secondary-fixed": "#1a1a1a",
+                        "primary": "#1a1a1a",
+                        "secondary-fixed": "#ffdad6",
+                        "on-surface": "#1a1a1a",
+                        "outline-variant": "#d0cbc3",
+                        "inverse-surface": "#1a1a1a",
+                        "surface-bright": "#faf7f2",
+                        "outline": "#1a1a1a",
+                        "surface-container-highest": "#e2ddd4",
+                        "on-tertiary-container": "#1a1a1a",
+                        "tertiary-fixed-dim": "#a8c6ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffcc00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error": "#cc0000",
+                        "inverse-on-surface": "#f5f0e8",
+                        "on-secondary-fixed-variant": "#1a1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .neo-shadow {
+            box-shadow: 6px 6px 0px 0px #1a1a1a;
+        }
+        .neo-shadow-hover:hover {
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+            transform: translate(2px, 2px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col md:flex-row">
+<!-- Top Navigation (Mobile & Desktop Header) -->
+<header class="bg-background text-primary font-headline text-3xl font-black uppercase tracking-tighter w-full top-0 sticky border-b-4 border-primary shadow-[4px_4px_0px_0px_#1a1a1a] flex justify-between items-center px-6 py-4 z-40 md:hidden">
+<div class="text-2xl font-black text-primary uppercase">CAMPUS CONNECT</div>
+<div class="flex gap-4">
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation (Desktop) -->
+<nav class="hidden md:flex flex-col p-4 space-y-2 bg-background text-primary font-headline text-lg font-bold uppercase h-screen w-64 border-r-4 border-primary sticky top-0 z-30 shrink-0">
+<div class="mb-8">
+<h1 class="text-xl font-black text-primary uppercase">STUDENT PORTAL</h1>
+<p class="text-xs font-bold text-on-surface-variant">V.2024</p>
+</div>
+<div class="flex-grow flex flex-col space-y-2">
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+                AI Assistant
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent hover:border-primary hover:bg-tertiary-container active:scale-95 transition-transform mt-auto" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</div>
+<button class="mt-8 border-4 border-primary bg-secondary text-on-primary font-bold py-3 uppercase hover:bg-primary transition-colors neo-shadow-hover">
+            LOGOUT
+        </button>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- Desktop Top Bar -->
+<div class="hidden md:flex bg-background text-primary font-headline text-3xl font-black uppercase tracking-tighter w-full border-b-4 border-primary shadow-[4px_4px_0px_0px_#1a1a1a] justify-between items-center px-6 py-4 shrink-0">
+<div class="text-2xl font-black text-primary uppercase">CAMPUS CONNECT</div>
+<div class="flex gap-4">
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none border-2 border-transparent">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<div class="p-6 md:p-12 pb-24 md:pb-12 max-w-7xl mx-auto w-full">
+<header class="mb-12 border-b-4 border-primary pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h2 class="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-none mb-2">Library</h2>
+<p class="font-body text-xl font-bold text-on-surface-variant max-w-xl border-l-4 border-primary-container pl-4">Access all course materials, notes, and study resources.</p>
+</div>
+<div class="w-full md:w-auto relative group flex-shrink-0 flex">
+<input class="bg-surface font-headline font-bold border-4 border-primary p-4 w-full md:w-80 uppercase placeholder-on-surface-variant focus:outline-none focus:bg-primary-container focus:text-primary transition-colors" placeholder="SEARCH RESOURCES..." type="text"/>
+<button class="bg-primary text-on-primary border-y-4 border-r-4 border-primary p-4 hover:bg-secondary transition-colors group-focus-within:bg-secondary">
+<span class="material-symbols-outlined font-bold">search</span>
+</button>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 shrink-0">
+<div class="bg-surface-container-high border-4 border-primary p-6 neo-shadow sticky top-24">
+<h3 class="font-headline font-black text-2xl uppercase border-b-4 border-primary pb-4 mb-4">Subjects</h3>
+<ul class="space-y-3 font-body font-bold">
+<li>
+<button class="w-full text-left p-2 border-2 border-primary bg-primary-container text-primary uppercase flex justify-between items-center neo-shadow-hover transition-all">
+                                    Computer Science
+                                    <span class="material-symbols-outlined">terminal</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left p-2 border-2 border-transparent hover:border-primary hover:bg-surface-variant uppercase flex justify-between items-center transition-all">
+                                    Mathematics
+                                    <span class="material-symbols-outlined">calculate</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left p-2 border-2 border-transparent hover:border-primary hover:bg-surface-variant uppercase flex justify-between items-center transition-all">
+                                    Physics
+                                    <span class="material-symbols-outlined">science</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left p-2 border-2 border-transparent hover:border-primary hover:bg-surface-variant uppercase flex justify-between items-center transition-all">
+                                    Literature
+                                    <span class="material-symbols-outlined">auto_stories</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left p-2 border-2 border-transparent hover:border-primary hover:bg-surface-variant uppercase flex justify-between items-center transition-all">
+                                    History
+                                    <span class="material-symbols-outlined">account_balance</span>
+</button>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Content Grid -->
+<div class="flex-1">
+<!-- Filters/Tabs -->
+<div class="flex flex-wrap gap-4 mb-8">
+<button class="font-headline font-black uppercase border-4 border-primary bg-primary text-on-primary px-6 py-2 neo-shadow-hover transition-all">All</button>
+<button class="font-headline font-black uppercase border-4 border-primary bg-surface px-6 py-2 hover:bg-primary-container neo-shadow-hover transition-all">Notes</button>
+<button class="font-headline font-black uppercase border-4 border-primary bg-surface px-6 py-2 hover:bg-primary-container neo-shadow-hover transition-all">Videos</button>
+<button class="font-headline font-black uppercase border-4 border-primary bg-surface px-6 py-2 hover:bg-primary-container neo-shadow-hover transition-all">Quizzes</button>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<article class="bg-surface-bright border-4 border-primary neo-shadow p-6 flex flex-col h-full group hover:bg-primary-container transition-colors duration-200">
+<div class="flex justify-between items-start mb-6 border-b-4 border-primary pb-4">
+<div class="bg-secondary text-on-primary font-headline font-bold uppercase px-3 py-1 text-sm inline-block border-2 border-primary">Notes</div>
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">description</span>
+</div>
+<h3 class="font-headline font-black text-2xl uppercase leading-tight mb-4">Data Structures &amp; Algorithms</h3>
+<p class="font-body font-medium text-on-surface-variant mb-6 flex-grow">Comprehensive notes covering arrays, linked lists, trees, graphs, and basic sorting algorithms.</p>
+<div class="flex justify-between items-center font-body text-sm font-bold mt-auto pt-4 border-t-2 border-primary border-dashed">
+<span class="text-on-surface-variant">Prof. Smith</span>
+<a class="text-tertiary hover:text-primary flex items-center uppercase gap-1" href="#">
+                                    View <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-bright border-4 border-primary neo-shadow p-6 flex flex-col h-full group hover:bg-tertiary-container transition-colors duration-200">
+<div class="flex justify-between items-start mb-6 border-b-4 border-primary pb-4">
+<div class="bg-tertiary text-on-primary font-headline font-bold uppercase px-3 py-1 text-sm inline-block border-2 border-primary">Video</div>
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">play_circle</span>
+</div>
+<h3 class="font-headline font-black text-2xl uppercase leading-tight mb-4">Calculus III Lecture Series</h3>
+<p class="font-body font-medium text-on-surface-variant mb-6 flex-grow">Recorded lectures for the entire semester focusing on multivariable calculus.</p>
+<div class="flex justify-between items-center font-body text-sm font-bold mt-auto pt-4 border-t-2 border-primary border-dashed">
+<span class="text-on-surface-variant">Prof. Johnson</span>
+<a class="text-tertiary hover:text-primary flex items-center uppercase gap-1" href="#">
+                                    Watch <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-bright border-4 border-primary neo-shadow p-6 flex flex-col h-full group hover:bg-secondary-container transition-colors duration-200">
+<div class="flex justify-between items-start mb-6 border-b-4 border-primary pb-4">
+<div class="bg-primary text-on-primary font-headline font-bold uppercase px-3 py-1 text-sm inline-block border-2 border-primary">Quiz</div>
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">quiz</span>
+</div>
+<h3 class="font-headline font-black text-2xl uppercase leading-tight mb-4">Midterm Practice: Quantum Mechanics</h3>
+<p class="font-body font-medium text-on-surface-variant mb-6 flex-grow">A 20-question practice quiz to prepare for the upcoming midterm exam.</p>
+<div class="flex justify-between items-center font-body text-sm font-bold mt-auto pt-4 border-t-2 border-primary border-dashed">
+<span class="text-on-surface-variant">20 Questions</span>
+<a class="text-tertiary hover:text-primary flex items-center uppercase gap-1" href="#">
+                                    Start <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-bright border-4 border-primary neo-shadow p-6 flex flex-col h-full group hover:bg-primary-container transition-colors duration-200">
+<div class="flex justify-between items-start mb-6 border-b-4 border-primary pb-4">
+<div class="bg-secondary text-on-primary font-headline font-bold uppercase px-3 py-1 text-sm inline-block border-2 border-primary">Notes</div>
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">description</span>
+</div>
+<h3 class="font-headline font-black text-2xl uppercase leading-tight mb-4">Modern World History Summary</h3>
+<p class="font-body font-medium text-on-surface-variant mb-6 flex-grow">Condensed notes on key global events from 1914 to present day.</p>
+<div class="flex justify-between items-center font-body text-sm font-bold mt-auto pt-4 border-t-2 border-primary border-dashed">
+<span class="text-on-surface-variant">Dr. Williams</span>
+<a class="text-tertiary hover:text-primary flex items-center uppercase gap-1" href="#">
+                                    View <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center gap-4">
+<button class="font-headline font-black uppercase border-4 border-primary bg-surface w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors neo-shadow-hover">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="font-headline font-black border-4 border-primary bg-primary text-on-primary w-12 h-12 flex items-center justify-center neo-shadow">1</button>
+<button class="font-headline font-black border-4 border-primary bg-surface w-12 h-12 flex items-center justify-center hover:bg-primary-container transition-colors neo-shadow-hover">2</button>
+<button class="font-headline font-black border-4 border-primary bg-surface w-12 h-12 flex items-center justify-center hover:bg-primary-container transition-colors neo-shadow-hover">3</button>
+<button class="font-headline font-black uppercase border-4 border-primary bg-surface w-12 h-12 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors neo-shadow-hover">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch bg-background text-primary font-label text-xs font-bold uppercase z-50 border-t-4 border-primary">
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+            AI
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">workspace_premium</span>
+            Rank
+        </a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">library_books</span>
+            Books
+        </a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+            User
+        </a>
+</nav>
+</body></html>

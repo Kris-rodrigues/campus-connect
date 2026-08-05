@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Study Materials Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "surface-bright": "#393939",
+                    "surface-dim": "#131313",
+                    "on-background": "#e5e2e1",
+                    "primary-fixed": "#ffdad7",
+                    "surface-variant": "#353534",
+                    "on-tertiary-container": "#4d3e00",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#ba1724",
+                    "tertiary-fixed": "#ffe17a",
+                    "on-primary-fixed-variant": "#930014",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#aec6ff",
+                    "surface-container": "#201f1f",
+                    "on-secondary-container": "#dbe4ff",
+                    "on-primary-fixed": "#410004",
+                    "secondary-fixed": "#d8e2ff",
+                    "background": "#131313",
+                    "inverse-surface": "#e5e2e1",
+                    "primary-container": "#ff5352",
+                    "on-secondary-fixed-variant": "#004397",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#eac31b",
+                    "outline": "#ab8986",
+                    "on-tertiary-fixed": "#231b00",
+                    "outline-variant": "#5b403e",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "on-secondary": "#002e6b",
+                    "on-secondary-fixed": "#001a43",
+                    "on-primary": "#68000b",
+                    "secondary": "#aec6ff",
+                    "tertiary": "#ebc31c",
+                    "primary": "#ffb3ae",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "on-primary-container": "#5c0008",
+                    "tertiary-container": "#cca800",
+                    "secondary-container": "#0661d2",
+                    "on-tertiary": "#3b2f00",
+                    "surface-tint": "#ffb3ae",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1c1b1b",
+                    "on-surface-variant": "#e4beba",
+                    "surface-container-highest": "#353534"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "xl": "48px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Space Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "label-md": [
+                            "Space Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Space Grotesk"
+                    ],
+                    "display": [
+                            "Space Grotesk"
+                    ],
+                    "body-lg": [
+                            "Space Grotesk"
+                    ],
+                    "headline-md": [
+                            "Space Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .hard-shadow { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1); }
+        .hard-shadow-sm { box-shadow: 2px 2px 0px 0px rgba(0,0,0,1); }
+        .hard-shadow-primary { box-shadow: 4px 4px 0px 0px var(--tw-color-primary, #ffb3ae); }
+        .hard-shadow-secondary { box-shadow: 4px 4px 0px 0px var(--tw-color-secondary, #aec6ff); }
+        .hard-shadow-tertiary { box-shadow: 4px 4px 0px 0px var(--tw-color-tertiary, #ebc31c); }
+        
+        .active-btn { transform: translate(4px, 4px); box-shadow: none !important; }
+        
+        /* Grid background pattern */
+        .grid-bg {
+            background-size: 20px 20px;
+            background-image:
+              linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md grid-bg min-h-screen">
+<!-- Top Navigation -->
+<nav class="flex justify-between items-center px-gutter py-md w-full sticky top-0 z-50 bg-background dark:bg-background w-full border-b-2 border-on-background">
+<div class="flex items-center gap-md">
+<!-- Mobile Menu Toggle (hidden on md) -->
+<button class="md:hidden p-xs border-2 border-on-background bg-surface-variant hover:bg-surface-variant transition-colors hard-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined text-primary dark:text-primary">menu</span>
+</button>
+<div class="font-display text-headline-md font-bold text-primary dark:text-primary tracking-tighter">Campus Connect</div>
+</div>
+<!-- Desktop Search (hidden on mobile) -->
+<div class="hidden md:flex flex-1 max-w-md mx-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-variant border-2 border-on-background text-on-background py-sm pl-xl pr-sm focus:outline-none focus:border-primary transition-colors hard-shadow-sm focus:hard-shadow-primary font-body-md" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm border-2 border-transparent text-on-surface-variant hover:bg-surface-variant transition-colors active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm border-2 border-transparent text-on-surface-variant hover:bg-surface-variant transition-colors active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 border-2 border-on-background overflow-hidden hard-shadow-sm ml-sm">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A neo-brutalist styled avatar of a student, using high contrast flat colors in a dark environment with blue and red geometric accents. Professional, bold, and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7iut9dmuXoVWlgZHQED6fdQTpVX4K9qozmhG9TwzdC8R2nlrBwOEPCcdbnsaBumog9KRi92eJ-vJE_DYn2lgSK-wLlySQxsMR018l6yottqIYqrzCvpJjlIauuOO-90WoWi9MYgdexgACObKTWj7eqlUFKMKrKN03ipEuIKIqehRbq5ENodbMIlcZESik8yPTmGwFEX8PUPGWLMx_9B_kX16H9-JDxv5yXDbymo2B49ShTZ-AUfKm2w"/>
+</div>
+</div>
+</nav>
+<div class="flex flex-col md:flex-row min-h-[calc(100vh-76px)]">
+<!-- Side Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col h-full fixed left-0 top-[76px] pt-xl pb-lg px-sm gap-unit bg-surface dark:bg-surface h-screen w-64 border-r-2 border-on-background">
+<div class="px-md mb-lg">
+<h2 class="font-display text-headline-md text-primary">Main Menu</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">LMS Dashboard</p>
+</div>
+<nav class="flex-1 flex flex-col gap-unit">
+<a class="flex items-center gap-md px-md py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-md px-md py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                    My Courses
+                </a>
+<a class="flex items-center gap-md px-md py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">construction</span>
+                    Study Tools
+                </a>
+<a class="flex items-center gap-md px-md py-sm font-label-md text-label-md bg-primary-container text-on-primary-container border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_books</span>
+                    Library
+                </a>
+<a class="flex items-center gap-md px-md py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                    Leaderboard
+                </a>
+</nav>
+<div class="mt-auto px-md">
+<button class="w-full py-sm bg-primary text-on-primary border-2 border-on-background font-label-md text-label-md hard-shadow hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all mb-lg">
+                    Join Study Group
+                </button>
+<div class="flex flex-col gap-unit border-t-2 border-on-background pt-md">
+<a class="flex items-center gap-md px-sm py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Help
+                    </a>
+<a class="flex items-center gap-md px-sm py-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop w-full">
+<!-- Mobile Search (visible only on mobile) -->
+<div class="md:hidden mb-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-variant border-2 border-on-background text-on-background py-sm pl-xl pr-sm focus:outline-none focus:border-primary transition-colors hard-shadow-sm font-body-md" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<!-- Header Section -->
+<header class="mb-xl border-b-2 border-on-background pb-md">
+<h1 class="font-display text-headline-lg-mobile md:text-headline-lg text-primary mb-sm">Study Materials Library</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Access curated notes, past papers, and video lectures. Filter by course or resource type to find exactly what you need.</p>
+</header>
+<!-- Filters -->
+<section class="mb-xl flex flex-col md:flex-row gap-md justify-between items-start md:items-center">
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm bg-primary text-on-primary border-2 border-on-background font-label-md text-label-md hard-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                        All Resources
+                    </button>
+<button class="px-md py-sm bg-surface text-on-surface border-2 border-on-background font-label-md text-label-md hover:bg-surface-variant hover:hard-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                        Notes
+                    </button>
+<button class="px-md py-sm bg-surface text-on-surface border-2 border-on-background font-label-md text-label-md hover:bg-surface-variant hover:hard-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                        Videos
+                    </button>
+<button class="px-md py-sm bg-surface text-on-surface border-2 border-on-background font-label-md text-label-md hover:bg-surface-variant hover:hard-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                        Quizzes
+                    </button>
+</div>
+<div class="flex items-center gap-sm w-full md:w-auto">
+<label class="font-label-md text-label-md text-on-surface-variant shrink-0">Sort By:</label>
+<select class="w-full md:w-auto bg-surface-variant border-2 border-on-background text-on-background py-sm px-md font-body-md focus:outline-none focus:border-primary cursor-pointer">
+<option>Most Recent</option>
+<option>Highest Rated</option>
+<option>Most Downloaded</option>
+</select>
+</div>
+</section>
+<!-- Resource Grid (Bento style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg md:gap-xl">
+<!-- Card 1: Featured Video (Spans 2 cols on lg) -->
+<article class="bg-surface border-2 border-on-background flex flex-col hard-shadow-primary hover:-translate-y-1 transition-transform lg:col-span-2 group">
+<div class="relative h-48 border-b-2 border-on-background overflow-hidden bg-surface-variant">
+<div class="bg-cover bg-center w-full h-full opacity-80 group-hover:opacity-100 transition-opacity mix-blend-luminosity group-hover:mix-blend-normal" data-alt="A neo-brutalist illustration depicting complex computer science algorithms and data structures floating in a dark void. Primary colors red, blue, and yellow are used for geometric nodes and connections. High contrast, sharp edges, digital blueprint aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC0elHIoZigl2EiqwzngBXYWbdpA--mZjvBomjF-EYlLBeGimtk1uAG7lxdFLR9OakpN_vN9Z-XbYVAjuZmRuytpbOWj7A65iEYwPfpMuTg_7IOn8gTHUjJd-KmO-jf_cHF5oiNke0OUMBQZ02AMcFY3dNGjrO4TMjnTGF5t_IZlMeiOtBSjpTzuT_cbKol2ymrqyAreaKVNhShr9GyiWHeXikW7EqsSDYfhjgUj-V4HxAp5_Yt0D-nUA')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-16 h-16 bg-primary text-on-primary border-2 border-on-background flex items-center justify-center hard-shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<span class="absolute top-sm left-sm bg-secondary text-on-secondary px-sm py-xs border-2 border-on-background font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">smart_display</span> Video
+                        </span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Data Structures: Advanced Trees</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">A comprehensive lecture covering AVL, Red-Black, and B-Trees with practical implementation examples in C++ and Python.</p>
+<div class="flex justify-between items-end border-t-2 border-surface-variant pt-sm mt-auto">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 border-2 border-on-background overflow-hidden bg-primary-container">
+<img alt="Prof. Alan Turing" class="w-full h-full object-cover" data-alt="Minimalist abstract portrait in brutalist style, flat dark colors, red border, academic context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANX7PxAn67sBC6lqNV0aC0G7xfmpijJDwwRtaDldBw-Ud4cbH2iJTRz3GmY2u7KPRrGPE8UcYiSIMVIT66jl5IZL_VfIePqJ0MuiG9Nw7m1iddVteoXw8grp8jXt0hABbzDf9oFBMQiJgwGw8l-cTzXsN_-VZbLMn4iscdZ9pmQvg1JCKOlaF7jXnXeweivcbh-h3SslBwm5paol0aHTGi4UkpPjE31vB5jPiV1zrvPAx3p3AsFdhzIA"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Prof. Turing</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">CS301 • 1h 24m</span>
+</div>
+</div>
+</article>
+<!-- Card 2: Notes -->
+<article class="bg-surface border-2 border-on-background flex flex-col hover:-translate-y-1 hover:hard-shadow-secondary transition-all">
+<div class="p-md flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-tertiary text-on-tertiary px-sm py-xs border-2 border-on-background font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">description</span> Notes
+                            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Linear Algebra Formula Sheet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1 line-clamp-3">Comprehensive summary of matrices, vector spaces, eigenvalues, and transformations for the final exam.</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-xs py-xs border-2 border-on-background text-on-surface-variant font-label-md text-[10px]">MATH202</span>
+<span class="px-xs py-xs border-2 border-on-background text-on-surface-variant font-label-md text-[10px]">Midterm</span>
+</div>
+<div class="border-t-2 border-surface-variant pt-sm mt-auto flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant text-[12px]">Updated 2 days ago</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs text-[12px]">
+<span class="material-symbols-outlined text-[14px]">star</span> 4.9
+                            </span>
+</div>
+</div>
+</article>
+<!-- Card 3: Quiz -->
+<article class="bg-surface border-2 border-on-background flex flex-col hover:-translate-y-1 hover:hard-shadow-tertiary transition-all">
+<div class="p-md flex-1 flex flex-col bg-surface-variant/30">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-error text-on-error px-sm py-xs border-2 border-on-background font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">quiz</span> Quiz
+                            </span>
+<span class="px-xs py-xs border-2 border-error text-error font-label-md text-[10px]">DUE SOON</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Microeconomics: Market Structures</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">Practice quiz focusing on perfect competition, monopolies, and oligopolies.</p>
+<!-- Progress indicator -->
+<div class="mb-md">
+<div class="flex justify-between font-label-md text-[12px] mb-xs">
+<span class="text-on-surface">Difficulty</span>
+<span class="text-tertiary">Hard</span>
+</div>
+<div class="h-2 w-full border-2 border-on-background bg-surface flex">
+<div class="w-2/3 bg-tertiary h-full"></div>
+</div>
+</div>
+<div class="border-t-2 border-surface-variant pt-sm mt-auto">
+<button class="w-full py-sm bg-surface-bright text-on-surface border-2 border-on-background font-label-md text-label-md hover:bg-tertiary hover:text-on-tertiary transition-colors flex items-center justify-center gap-sm">
+                                Start Practice <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: Abstract Visual Card (Shader/Animation Placeholder) -->
+<article class="bg-surface border-2 border-on-background flex flex-col md:col-span-2 lg:col-span-1 relative overflow-hidden h-64 md:h-auto">
+<div class="absolute inset-0 border-b-2 md:border-b-0 border-on-background">
+
+</div>
+<div class="relative z-10 p-md flex flex-col h-full justify-between bg-gradient-to-t from-background via-background/80 to-transparent">
+<span class="self-start bg-primary text-on-primary px-sm py-xs border-2 border-on-background font-label-md text-label-md">Interactive Lab</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Physics: Quantum Mechanics Sandbox</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Visualize wave-function collapse in real-time.</p>
+</div>
+</div>
+</article>
+<!-- Card 5: Notes -->
+<article class="bg-surface border-2 border-on-background flex flex-col hover:-translate-y-1 hover:hard-shadow-secondary transition-all">
+<div class="p-md flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-tertiary text-on-tertiary px-sm py-xs border-2 border-on-background font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">description</span> Notes
+                            </span>
+<button class="text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">UX Research Methodologies</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1 line-clamp-3">Qualitative vs Quantitative research, user interviewing scripts, and contextual inquiry guides.</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-xs py-xs border-2 border-on-background text-on-surface-variant font-label-md text-[10px]">DES410</span>
+</div>
+<div class="border-t-2 border-surface-variant pt-sm mt-auto flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant text-[12px]">By Sarah J.</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs text-[12px]">
+<span class="material-symbols-outlined text-[14px]">download</span> 1.2k
+                            </span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination (Geometric style) -->
+<div class="mt-xl flex justify-center items-center gap-xs border-t-2 border-on-background pt-lg">
+<button class="w-10 h-10 border-2 border-on-background flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 border-2 border-on-background bg-primary text-on-primary font-label-md flex items-center justify-center hard-shadow-sm">1</button>
+<button class="w-10 h-10 border-2 border-on-background bg-surface text-on-surface hover:bg-surface-variant font-label-md flex items-center justify-center transition-colors">2</button>
+<button class="w-10 h-10 border-2 border-on-background bg-surface text-on-surface hover:bg-surface-variant font-label-md flex items-center justify-center transition-colors">3</button>
+<span class="w-10 h-10 flex items-center justify-center text-on-surface-variant">...</span>
+<button class="w-10 h-10 border-2 border-on-background bg-surface text-on-surface hover:bg-surface-variant font-label-md flex items-center justify-center transition-colors">8</button>
+<button class="w-10 h-10 border-2 border-on-background flex items-center justify-center text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

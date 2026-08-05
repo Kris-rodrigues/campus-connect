@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect Homepage</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container": "#eee9e0",
+                            "surface-tint": "#1a1a1a",
+                            "on-error-container": "#93000a",
+                            "background": "#f5f0e8",
+                            "primary-fixed": "#ffcc00",
+                            "surface": "#f5f0e8",
+                            "tertiary-container": "#d6e3ff",
+                            "surface-dim": "#d6d1c9",
+                            "inverse-on-surface": "#f5f0e8",
+                            "surface-container-high": "#e8e3da",
+                            "on-tertiary-container": "#1a1a1a",
+                            "surface-container-low": "#f2ede5",
+                            "surface-container-highest": "#e2ddd4",
+                            "secondary": "#e63b2e",
+                            "on-secondary": "#1a1a1a",
+                            "primary-container": "#ffcc00",
+                            "on-secondary-fixed-variant": "#1a1a1a",
+                            "error-container": "#ffdad6",
+                            "surface-bright": "#faf7f2",
+                            "surface-variant": "#e8e3da",
+                            "primary-fixed-dim": "#e6b800",
+                            "on-secondary-fixed": "#1a1a1a",
+                            "inverse-surface": "#1a1a1a",
+                            "on-error": "#ffffff",
+                            "on-primary-container": "#1a1a1a",
+                            "inverse-primary": "#f5f0e8",
+                            "outline": "#1a1a1a",
+                            "on-surface-variant": "#4a4a4a",
+                            "primary": "#1a1a1a",
+                            "on-primary": "#ffffff",
+                            "outline-variant": "#d0cbc3",
+                            "secondary-fixed": "#ffdad6",
+                            "on-primary-fixed-variant": "#1a1a1a",
+                            "on-primary-fixed": "#1a1a1a",
+                            "on-background": "#1a1a1a",
+                            "secondary-fixed-dim": "#ffb3ab",
+                            "tertiary": "#0055ff",
+                            "surface-container-lowest": "#ffffff",
+                            "tertiary-fixed": "#d6e3ff",
+                            "error": "#cc0000",
+                            "on-secondary-container": "#1a1a1a",
+                            "tertiary-fixed-dim": "#a8c6ff",
+                            "on-tertiary-fixed-variant": "#1a1a1a",
+                            "on-surface": "#1a1a1a",
+                            "on-tertiary": "#ffffff",
+                            "on-tertiary-fixed": "#1a1a1a",
+                            "secondary-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                            "headline": [
+                                    "Space Grotesk"
+                            ],
+                            "display": [
+                                    "Space Grotesk"
+                            ],
+                            "body": [
+                                    "Inter"
+                            ],
+                            "label": [
+                                    "Space Grotesk"
+                            ]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        /* Neo-Brutalist utilities */
+        .brutal-border {
+            border: 3px solid #1a1a1a;
+        }
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px #1a1a1a;
+        }
+        .brutal-shadow-hover:hover {
+            box-shadow: 2px 2px 0px 0px #1a1a1a;
+            transform: translate(4px, 4px);
+        }
+        .brutal-transition {
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-body min-h-screen flex flex-col antialiased">
+<!-- Top Navigation (Web) -->
+<nav class="hidden md:flex w-full top-0 sticky z-50 bg-background border-b-4 border-primary shadow-[4px_4px_0px_0px_#1a1a1a] flex justify-between items-center px-6 py-4">
+<div class="flex items-center space-x-8">
+<a class="text-2xl font-black text-primary uppercase font-headline tracking-tighter" href="#">CAMPUS CONNECT</a>
+<div class="flex space-x-6">
+<!-- Labels from BottomNavBar/SideNavBar intent -->
+<a class="text-secondary font-bold underline decoration-4 font-headline uppercase text-lg" href="#">Home</a>
+<a class="text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 py-1 font-headline uppercase text-lg" href="#">AI Assistant</a>
+<a class="text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 py-1 font-headline uppercase text-lg" href="#">Library</a>
+<a class="text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors duration-100 px-2 py-1 font-headline uppercase text-lg" href="#">Leaderboard</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<!-- Search on right per JSON -->
+<div class="relative hidden lg:block">
+<input class="bg-surface border-b-4 border-primary font-headline uppercase placeholder-on-surface-variant px-2 py-1 focus:outline-none focus:border-secondary w-64" placeholder="SEARCH RESOURCES..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-primary">search</span>
+</div>
+<button class="hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 brutal-transition active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<button class="hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 brutal-transition active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col md:flex-row relative">
+<!-- Mobile Header (Visible only on small screens) -->
+<header class="md:hidden w-full bg-background border-b-4 border-primary p-4 flex justify-between items-center sticky top-0 z-40 brutal-shadow">
+<span class="text-xl font-black text-primary uppercase font-headline tracking-tighter">CAMPUS CONNECT</span>
+<div class="flex space-x-2">
+<button class="p-1 border-2 border-primary bg-primary-container brutal-shadow active:translate-x-1 active:translate-y-1 active:shadow-none brutal-transition"><span class="material-symbols-outlined">search</span></button>
+<button class="p-1 border-2 border-primary bg-surface brutal-shadow active:translate-x-1 active:translate-y-1 active:shadow-none brutal-transition"><span class="material-symbols-outlined">notifications</span></button>
+</div>
+</header>
+<!-- Sidebar Navigation (Web) - Suppressed for Home/Landing context usually, but keeping as it's a primary app shell in the JSON context, though homepage might be a hybrid. Will include structurally but focus on content canvas -->
+<!-- Suppressing sidebar for landing page feel, prioritizing TopNav for global navigation based on the 'Destination Rule' filter for top-level ecosystem -->
+<!-- Canvas -->
+<div class="flex-grow flex flex-col">
+<!-- Hero Section -->
+<section class="relative w-full border-b-4 border-primary overflow-hidden bg-primary-container flex flex-col md:flex-row min-h-[716px]">
+<!-- Abstract Graphic / Hero Background (Brutalist Style) -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#1a1a1a 2px, transparent 2px); background-size: 24px 24px;"></div>
+<div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center z-10 border-b-4 md:border-b-0 md:border-r-4 border-primary bg-surface">
+<div class="inline-block border-2 border-primary bg-tertiary text-on-tertiary px-3 py-1 font-headline font-bold text-sm uppercase w-max mb-6 brutal-shadow">
+                        Beta V.2024
+                    </div>
+<h1 class="font-headline text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-primary mb-6">
+                        Streamline<br/>
+<span class="text-secondary inline-block brutal-transition hover:translate-x-2">Academic</span><br/>
+                        Resource<br/>
+                        Sharing.
+                    </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant font-medium mb-8 max-w-md border-l-4 border-primary pl-4">
+                        The ultimate neo-brutalist hub for students. Upload, discover, and conquer your coursework with AI-powered insights. Form follows function.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary font-headline text-xl font-bold uppercase py-4 px-8 border-4 border-primary brutal-shadow brutal-transition brutal-shadow-hover hover:bg-surface hover:text-primary">
+                            Get Started
+                        </button>
+<button class="bg-surface text-primary font-headline text-xl font-bold uppercase py-4 px-8 border-4 border-primary brutal-shadow brutal-transition brutal-shadow-hover hover:bg-primary-container">
+                            Explore Library
+                        </button>
+</div>
+</div>
+<div class="w-full md:w-1/2 bg-primary-container flex items-center justify-center p-8 relative z-10">
+<!-- Brutalist Abstract Composition / Image -->
+<div class="relative w-full aspect-square max-w-lg border-4 border-primary bg-secondary brutal-shadow p-4 flex flex-col">
+<div class="flex justify-between border-b-4 border-primary pb-2 mb-4">
+<div class="flex gap-2">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary"></div>
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary"></div>
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary"></div>
+</div>
+<span class="font-headline font-bold uppercase text-on-secondary">Sys.Active</span>
+</div>
+<div class="flex-grow bg-surface border-4 border-primary overflow-hidden relative">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-80 hover:opacity-100 transition-opacity duration-300" data-alt="A striking digital composition in neo-brutalist style featuring bold, abstract geometric shapes representing academic resources like books and folders. The scene is illuminated by high-key, harsh light creating strong black drop shadows, maintaining a bright, modern light-mode aesthetic. The palette heavily utilizes stark white, deep black, and primary colors like bright yellow and electric blue. The mood is energetic, raw, and highly functional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAglntYvfZPPWEDRGuIPPTYWLRt9l98CQPPL550yLT98NGKJAMq3_ySu7qmTHccYJyOC3TzO7p_2m51NTPeOJy201bhzcBSqJgYjvBarZbE1Ra_63H-uBmrHepUEoGn4wYfWp2yHqgTephkQ-cs2kkpskKtdo9Tl7GcgtvI2MGw-okFOCar9M5RYoVrah6dZXXNobrlqY3ZIFUJH6p8a2cJn9cK-nA-Fnb-eRMo-E8bthQN6hTqVEijJQ"/>
+<!-- Floating Elements -->
+<div class="absolute top-4 left-4 bg-tertiary text-on-tertiary border-4 border-primary px-4 py-2 font-headline font-bold text-xl uppercase brutal-shadow transform -rotate-3">
+                                  +250 Docs
+                              </div>
+<div class="absolute bottom-8 right-8 bg-primary-fixed text-on-primary-fixed border-4 border-primary p-4 rounded-full brutal-shadow flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Marquee Divider -->
+<div class="w-full bg-primary text-on-primary border-b-4 border-primary overflow-hidden py-3 flex items-center whitespace-nowrap">
+<div class="animate-[marquee_20s_linear_infinite] flex space-x-8 font-headline font-bold uppercase tracking-wider text-xl">
+<span>• Share Notes</span>
+<span>• AI Summaries</span>
+<span>• Top Rankings</span>
+<span>• Global Access</span>
+<span>• Share Notes</span>
+<span>• AI Summaries</span>
+<span>• Top Rankings</span>
+<span>• Global Access</span>
+<span>• Share Notes</span>
+<span>• AI Summaries</span>
+<span>• Top Rankings</span>
+<span>• Global Access</span>
+</div>
+<style>
+                    @keyframes marquee {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                </style>
+</div>
+<!-- Key Features Section (Bento Grid Style) -->
+<section class="p-6 md:p-12 bg-surface">
+<div class="flex justify-between items-end mb-10 border-b-4 border-primary pb-4">
+<h2 class="font-headline text-4xl md:text-6xl font-black uppercase text-primary tracking-tighter">
+                        Core Modules.
+                    </h2>
+<span class="font-headline text-xl font-bold uppercase text-on-surface-variant hidden md:block">V.01 - Features</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+<!-- Feature 1: AI Assistant (Large Span) -->
+<div class="md:col-span-2 border-4 border-primary bg-tertiary-container brutal-shadow p-6 flex flex-col md:flex-row group cursor-pointer hover:-translate-y-2 brutal-transition">
+<div class="flex-grow pr-4">
+<div class="w-12 h-12 bg-primary text-on-primary border-2 border-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="font-headline text-3xl font-black uppercase text-on-tertiary-container mb-4 group-hover:text-tertiary transition-colors">AI Assistant</h3>
+<p class="font-body text-lg text-on-surface font-medium border-l-4 border-primary pl-4">
+                                Harness machine learning to instantly summarize 50-page PDFs. Extract key concepts and generate practice quizzes on the fly.
+                            </p>
+</div>
+<div class="mt-6 md:mt-0 w-full md:w-48 aspect-square border-4 border-primary bg-secondary relative overflow-hidden flex-shrink-0">
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="w-full h-full bg-surface border-2 border-primary brutal-shadow transform rotate-3 flex items-center justify-center group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-6xl text-secondary">smart_toy</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 2: Leaderboard -->
+<div class="border-4 border-primary bg-primary-container brutal-shadow p-6 flex flex-col group cursor-pointer hover:-translate-y-2 brutal-transition">
+<div class="w-12 h-12 bg-surface text-primary border-4 border-primary flex items-center justify-center mb-6 brutal-shadow">
+<span class="material-symbols-outlined text-3xl">workspace_premium</span>
+</div>
+<h3 class="font-headline text-3xl font-black uppercase text-on-primary-container mb-4">Rank.</h3>
+<p class="font-body text-lg text-on-surface font-medium mt-auto">
+                            Climb the leaderboard. Earn points for uploading quality notes and helping peers.
+                        </p>
+<div class="mt-6 w-full h-12 border-4 border-primary bg-surface flex items-center relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-secondary w-3/4 border-r-4 border-primary"></div>
+<span class="relative z-10 font-headline font-bold px-4 text-on-surface uppercase">Top 10%</span>
+</div>
+</div>
+<!-- Feature 3: Library -->
+<div class="border-4 border-primary bg-surface brutal-shadow p-6 flex flex-col group cursor-pointer hover:-translate-y-2 brutal-transition">
+<div class="w-12 h-12 bg-secondary text-on-secondary border-4 border-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+<h3 class="font-headline text-3xl font-black uppercase text-primary mb-4">Vault.</h3>
+<p class="font-body text-lg text-on-surface-variant font-medium">
+                            A massive, organized repository of past exams, study guides, and lecture slides.
+                        </p>
+</div>
+<!-- Feature 4: Community (Wide) -->
+<div class="md:col-span-2 border-4 border-primary bg-[#1a1a1a] text-[#f5f0e8] brutal-shadow p-6 flex flex-col md:flex-row items-center justify-between group cursor-pointer hover:-translate-y-2 brutal-transition">
+<div class="flex-grow pr-4">
+<h3 class="font-headline text-4xl font-black uppercase text-primary-fixed mb-2">Join the Collective</h3>
+<p class="font-body text-lg text-surface-dim max-w-md">
+                                 Connect with over 10,000 students across 50 campuses globally.
+                             </p>
+</div>
+<button class="mt-6 md:mt-0 bg-secondary text-on-secondary border-4 border-[#f5f0e8] px-8 py-4 font-headline text-xl font-bold uppercase hover:bg-[#f5f0e8] hover:text-[#1a1a1a] transition-colors brutal-shadow-hover">
+                             Register Now
+                         </button>
+</div>
+</div>
+</section>
+<!-- Spacer for bottom nav on mobile -->
+<div class="h-24 md:hidden w-full bg-background"></div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch z-50 bg-background border-t-4 border-primary">
+<!-- Labels, Icons, and Styles from JSON explicitly applied -->
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label text-xs font-bold uppercase mt-1">Home</span>
+</a>
+<!-- AI (Inactive) -->
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label text-xs font-bold uppercase mt-1">AI</span>
+</a>
+<!-- Rank (Inactive) -->
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label text-xs font-bold uppercase mt-1">Rank</span>
+</a>
+<!-- Books (Inactive) -->
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label text-xs font-bold uppercase mt-1">Books</span>
+</a>
+<!-- User (Inactive) -->
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label text-xs font-bold uppercase mt-1">User</span>
+</a>
+</nav>
+</body></html>

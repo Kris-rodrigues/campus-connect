@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eee9e0",
+                        "surface-tint": "#1a1a1a",
+                        "on-error-container": "#93000a",
+                        "background": "#f5f0e8",
+                        "primary-fixed": "#ffcc00",
+                        "surface": "#f5f0e8",
+                        "tertiary-container": "#d6e3ff",
+                        "surface-dim": "#d6d1c9",
+                        "inverse-on-surface": "#f5f0e8",
+                        "surface-container-high": "#e8e3da",
+                        "on-tertiary-container": "#1a1a1a",
+                        "surface-container-low": "#f2ede5",
+                        "surface-container-highest": "#e2ddd4",
+                        "secondary": "#e63b2e",
+                        "on-secondary": "#1a1a1a",
+                        "primary-container": "#ffcc00",
+                        "on-secondary-fixed-variant": "#1a1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#faf7f2",
+                        "surface-variant": "#e8e3da",
+                        "primary-fixed-dim": "#e6b800",
+                        "on-secondary-fixed": "#1a1a1a",
+                        "inverse-surface": "#1a1a1a",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#1a1a1a",
+                        "inverse-primary": "#f5f0e8",
+                        "outline": "#1a1a1a",
+                        "on-surface-variant": "#4a4a4a",
+                        "primary": "#1a1a1a",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d0cbc3",
+                        "secondary-fixed": "#ffdad6",
+                        "on-primary-fixed-variant": "#1a1a1a",
+                        "on-primary-fixed": "#1a1a1a",
+                        "on-background": "#1a1a1a",
+                        "secondary-fixed-dim": "#ffb3ab",
+                        "tertiary": "#0055ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#d6e3ff",
+                        "error": "#cc0000",
+                        "on-secondary-container": "#1a1a1a",
+                        "tertiary-fixed-dim": "#a8c6ff",
+                        "on-tertiary-fixed-variant": "#1a1a1a",
+                        "on-surface": "#1a1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1a1a",
+                        "secondary-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+        }
+        .neo-shadow-hover:hover {
+            box-shadow: 6px 6px 0px 0px #1a1a1a;
+            transform: translate(-2px, -2px);
+        }
+        .neo-border {
+            border: 3px solid #1a1a1a;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col md:flex-row selection:bg-primary-fixed selection:text-primary">
+<!-- Desktop SideNav -->
+<nav class="hidden md:flex flex-col h-screen w-64 border-r-4 border-primary bg-background p-4 space-y-2 sticky top-0 shrink-0">
+<div class="mb-8">
+<h1 class="font-headline text-xl font-black text-primary uppercase">STUDENT PORTAL</h1>
+<p class="font-body text-xs font-bold text-on-surface-variant">V.2024</p>
+</div>
+<div class="flex-1 flex flex-col space-y-2">
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+                AI Assistant
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="bg-primary-container text-on-primary-container border-2 border-primary mb-2 flex items-center p-3 font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-all neo-shadow" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                Library
+            </a>
+<a class="text-primary hover:bg-surface-variant mb-2 flex items-center p-3 border-2 border-transparent font-headline text-lg font-bold uppercase hover:border-primary hover:bg-tertiary-container active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</div>
+<button class="w-full neo-border bg-secondary text-on-error p-3 font-headline font-bold uppercase hover:bg-primary transition-colors neo-shadow-hover active:scale-95 mt-auto">
+            LOGOUT
+        </button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 pb-20 md:pb-0">
+<!-- Top App Bar (Mobile Only for Title, or Desktop Top Nav area if desired, sticking to JSON instructions mostly) -->
+<header class="w-full sticky top-0 bg-background border-b-4 border-primary z-40 px-6 py-4 flex justify-between items-center shadow-[4px_4px_0px_0px_#1a1a1a] md:hidden">
+<h1 class="font-headline text-3xl font-black uppercase tracking-tighter text-primary">CAMPUS CONNECT</h1>
+<div class="flex gap-4">
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+</button>
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Desktop Search & Header Bar (Not TopNav JSON, but functional for Library) -->
+<div class="hidden md:flex sticky top-0 bg-background z-30 p-6 border-b-4 border-primary justify-between items-center bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNkNmQxYzkiLz48L3N2Zz4=')]">
+<h2 class="font-headline text-5xl font-black uppercase tracking-tighter bg-background px-4 py-2 neo-border neo-shadow">STUDY MATERIALS</h2>
+<div class="flex-1 max-w-xl mx-8 relative flex bg-background neo-border neo-shadow focus-within:ring-4 focus-within:ring-primary-fixed">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-transparent border-none font-headline font-bold text-primary placeholder-on-surface-variant focus:ring-0 uppercase" placeholder="Search Data Structures, Calculus..." type="text"/>
+<button class="bg-primary text-on-primary px-6 font-headline font-bold uppercase hover:bg-secondary transition-colors border-l-2 border-primary">
+                    Search
+                </button>
+</div>
+<div class="flex gap-4 bg-background p-2 neo-border">
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors p-2">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+</button>
+<button class="text-primary hover:bg-primary hover:text-on-primary transition-colors p-2">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</div>
+<div class="p-4 md:p-8 space-y-12">
+<!-- Mobile Search -->
+<div class="md:hidden flex relative neo-border bg-background neo-shadow focus-within:ring-4 focus-within:ring-primary-fixed">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full pl-10 pr-3 py-3 bg-transparent border-none font-headline font-bold text-primary focus:ring-0 uppercase" placeholder="Search Materials..." type="text"/>
+<button class="bg-primary text-on-primary px-4 font-headline font-bold uppercase hover:bg-secondary border-l-2 border-primary">Go</button>
+</div>
+<!-- Subjects Navigation Bento -->
+<section>
+<h3 class="font-headline text-2xl md:text-4xl font-black uppercase tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl">category</span>
+                    Subjects Directory
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<a class="group block neo-border p-6 bg-tertiary-container neo-shadow-hover transition-all relative overflow-hidden" href="#">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary rounded-full mix-blend-multiply opacity-20 -mr-6 -mt-6 transition-transform group-hover:scale-150"></div>
+<span class="material-symbols-outlined text-5xl mb-4 text-tertiary">terminal</span>
+<h4 class="font-headline text-2xl font-bold uppercase text-primary">Computer Science</h4>
+<p class="font-body text-sm font-medium mt-2">Algorithms, Data Structures, Architecture</p>
+<div class="mt-6 flex justify-between items-end">
+<span class="font-headline font-bold text-xs bg-background px-2 py-1 neo-border">142 FILES</span>
+<span class="material-symbols-outlined text-tertiary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="group block neo-border p-6 bg-primary-container neo-shadow-hover transition-all relative overflow-hidden" href="#">
+<div class="absolute bottom-0 right-0 w-32 h-32 border-8 border-primary mix-blend-overlay opacity-30 -mr-12 -mb-12 rotate-45 transition-transform group-hover:rotate-90"></div>
+<span class="material-symbols-outlined text-5xl mb-4 text-primary">functions</span>
+<h4 class="font-headline text-2xl font-bold uppercase text-primary">Mathematics</h4>
+<p class="font-body text-sm font-medium mt-2">Calculus, Linear Algebra, Discrete Math</p>
+<div class="mt-6 flex justify-between items-end">
+<span class="font-headline font-bold text-xs bg-background px-2 py-1 neo-border">89 FILES</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="group block neo-border p-6 bg-error-container neo-shadow-hover transition-all relative overflow-hidden" href="#">
+<div class="absolute top-1/2 right-4 w-16 h-16 bg-secondary mix-blend-multiply opacity-20 rotate-12 transition-transform group-hover:-translate-y-4"></div>
+<span class="material-symbols-outlined text-5xl mb-4 text-secondary">science</span>
+<h4 class="font-headline text-2xl font-bold uppercase text-primary">Physics</h4>
+<p class="font-body text-sm font-medium mt-2">Quantum Mechanics, Thermodynamics</p>
+<div class="mt-6 flex justify-between items-end">
+<span class="font-headline font-bold text-xs bg-background px-2 py-1 neo-border">64 FILES</span>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Featured Resources Content Dense -->
+<section>
+<div class="flex justify-between items-end mb-6 border-b-4 border-primary pb-2">
+<h3 class="font-headline text-2xl md:text-4xl font-black uppercase tracking-tight">Recent Uploads</h3>
+<button class="font-headline font-bold uppercase text-tertiary hover:text-secondary underline decoration-2 flex items-center gap-1">
+                        View All <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<article class="neo-border bg-surface flex flex-col md:flex-row neo-shadow group">
+<div class="w-full md:w-1/3 border-b-4 md:border-b-0 md:border-r-4 border-primary bg-surface-variant relative overflow-hidden min-h-[200px]">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-80 filter grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A stark, minimalist textbook cover design in Bauhaus style for Data Structures. Bright yellow background with massive black geometric shapes intersecting. High contrast, sharp edges, no soft shadows. Light mode studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCdqqPZHzbXrsQGIOpmxs7VRYerPb92AVircFjW5sq1bw6kqL9Xd9rruXVRADAw3JIS5-nVYgC1hP8teD533Fl9v_-8wqeFKK4z4lqyiOGDjgwP2ciCH-RahZlL_VPHmFC5ioV-zzincG8K6-hyGFblM6FOmz1Jz8CvNLvQU_cbF0y2KL7rIzj1XHAwVSvVCbes8M4lM2XSPSwD_spH34ZBVGmMufENVDv9R5KQWoM8Dz0HUcLXzk36w"/>
+<div class="absolute top-2 left-2 bg-primary text-on-primary px-2 py-1 font-headline text-xs font-bold uppercase border-2 border-primary">PDF</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-3">
+<span class="bg-tertiary-container text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">CompSci</span>
+<span class="bg-surface-dim text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">CS201</span>
+</div>
+<h4 class="font-headline text-2xl font-black uppercase text-primary leading-tight mb-2 group-hover:text-tertiary transition-colors">Advanced Data Structures &amp; Algorithms</h4>
+<p class="font-body text-sm font-medium text-on-surface-variant mb-4">Comprehensive lecture notes covering Red-Black Trees, Graphs, and Dynamic Programming. Dr. Smith's Fall 2023 session.</p>
+</div>
+<div class="flex items-center justify-between mt-4 pt-4 border-t-2 border-primary border-dashed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold text-sm">4.9 (128)</span>
+</div>
+<button class="neo-border bg-primary-container hover:bg-primary hover:text-on-primary px-4 py-2 font-headline font-bold uppercase text-sm transition-colors flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined">download</span> Download
+                                </button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="neo-border bg-surface flex flex-col md:flex-row neo-shadow group">
+<div class="w-full md:w-1/3 border-b-4 md:border-b-0 md:border-r-4 border-primary bg-surface-variant relative overflow-hidden min-h-[200px]">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-80 filter grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A raw, brutalist academic study guide cover for Calculus III. Harsh black intersecting lines over a stark white background forming a 3D grid. A solitary bright red dot provides focus. High key lighting, very graphic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiZTPJq5qNyqfNvlkUlP07hFz3xrdm9JZfbYkcgbsPDBeur7UkmVVRG9WxQaCWZOEXaBYMkN_CjAoPfuaxdXurdKvuBCrMZK_ONFY0-jTXs_BZa4FhbbSDooZdtKcFEGv6qOwNhbX9Ao0urD0ByWlR03KsC4fMM7S2eDVab_1rzai5FF6bmsADHM0eexJgV-YckANT1fdxxnwdZNg1GP07cWxoYR2imod04MwtmRLniAudF6UEcCQk7A"/>
+<div class="absolute top-2 left-2 bg-primary text-on-primary px-2 py-1 font-headline text-xs font-bold uppercase border-2 border-primary">DOCX</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-3">
+<span class="bg-primary-container text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">Math</span>
+<span class="bg-surface-dim text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">MATH301</span>
+</div>
+<h4 class="font-headline text-2xl font-black uppercase text-primary leading-tight mb-2 group-hover:text-primary-fixed-dim transition-colors">Calculus III: Multivariable Final Review</h4>
+<p class="font-body text-sm font-medium text-on-surface-variant mb-4">Practice problems and solutions for Stokes' Theorem, line integrals, and partial derivatives.</p>
+</div>
+<div class="flex items-center justify-between mt-4 pt-4 border-t-2 border-primary border-dashed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold text-sm">4.7 (85)</span>
+</div>
+<button class="neo-border bg-primary-container hover:bg-primary hover:text-on-primary px-4 py-2 font-headline font-bold uppercase text-sm transition-colors flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined">download</span> Download
+                                </button>
+</div>
+</div>
+</article>
+<!-- Card 3 (Full width span on large screens to break grid monotony) -->
+<article class="neo-border bg-inverse-surface text-inverse-on-surface flex flex-col md:flex-row neo-shadow group lg:col-span-2">
+<div class="w-full md:w-1/4 border-b-4 md:border-b-0 md:border-r-4 border-primary bg-background relative overflow-hidden min-h-[200px] flex items-center justify-center">
+<!-- Using graphic instead of photo for variety -->
+<span class="material-symbols-outlined text-[120px] text-primary opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 group-hover:text-secondary">video_library</span>
+<div class="absolute top-2 left-2 bg-secondary text-on-error px-2 py-1 font-headline text-xs font-bold uppercase border-2 border-primary">VIDEO</div>
+</div>
+<div class="p-6 md:p-8 flex-1 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="max-w-2xl">
+<div class="flex gap-2 mb-3">
+<span class="bg-error-container text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">Physics</span>
+<span class="bg-surface-dim text-primary font-headline text-xs font-bold uppercase px-2 py-1 border-2 border-primary">PHYS400</span>
+</div>
+<h4 class="font-headline text-3xl font-black uppercase text-inverse-on-surface leading-tight mb-3">Quantum Mechanics Lecture Series</h4>
+<p class="font-body text-base font-medium text-surface-variant">Full recorded semester covering wave functions, Schrödinger equation, and quantum entanglement. Includes transcriptions and interactive quizzes.</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-4 w-full md:w-auto">
+<div class="flex items-center gap-2 bg-primary px-3 py-1 neo-border">
+<span class="material-symbols-outlined text-primary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold text-sm text-primary-fixed">5.0 (200+)</span>
+</div>
+<button class="w-full md:w-auto neo-border bg-secondary hover:bg-background hover:text-primary px-8 py-4 font-headline text-lg font-bold uppercase transition-colors flex items-center justify-center gap-2 active:scale-95 shadow-[4px_4px_0px_0px_#f5f0e8] hover:shadow-[6px_6px_0px_0px_#f5f0e8] text-on-error">
+<span class="material-symbols-outlined">play_circle</span> Watch Now
+                                </button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (JSON Driven) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-stretch z-50 border-t-4 border-primary bg-background shadow-[0px_-4px_0px_0px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label text-xs font-bold uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label text-xs font-bold uppercase">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label text-xs font-bold uppercase">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed h-full w-full border-x-2 border-primary hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-label text-xs font-bold uppercase">Books</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary h-full w-full border-x-2 border-transparent hover:bg-surface-container-high active:bg-secondary active:text-on-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label text-xs font-bold uppercase">User</span>
+</a>
+</nav>
+</body></html>

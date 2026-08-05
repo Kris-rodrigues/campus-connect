@@ -1,88 +1,358 @@
-.dashboard-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-}
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-.dashboard-header h1 { 
-    font-size: 2rem; 
-    font-weight: 600; 
-    color: var(--font-light);
-}
-.share-btn {
-    background-color: var(--primary-teal);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-.share-btn:hover { background-color: #009688; }
+/* ================================================================
+   DASHBOARD — Bauhaus Theme
+   ================================================================ */
 
+.dashboard-container {
+  margin-left: var(--sidebar-width);
+  padding-top: var(--topbar-height);
+  min-height: 100vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* ====== Welcome Banner ====== */
+.dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 2px dashed var(--border-medium);
+  margin-bottom: 2rem;
+}
+
+.welcome-text h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+}
+
+.welcome-text p {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+}
+
+.resume-study-btn {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border: 2px solid var(--border-dark);
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.resume-study-btn:hover {
+  background: var(--primary-yellow);
+  color: var(--text-dark);
+}
+
+/* ====== Grid Layout ====== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.dashboard-main {
+  min-width: 0;
+}
+
+/* ====== Section Title ====== */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-sparkle {
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+}
+
+.dashboard-section {
+  margin-bottom: 2.5rem;
+}
+
+/* ====== Activity Cards ====== */
+.activity-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.activity-card {
+  background: var(--bg-white);
+  border: 2px solid var(--border-dark);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity-card:hover {
+  box-shadow: 4px 4px 0px var(--border-dark);
+  transform: translate(-2px, -2px);
+}
+
+.activity-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-cream);
+}
+
+.activity-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.125rem;
+}
+
+.activity-info p {
+  color: var(--text-medium);
+  font-size: 0.85rem;
+}
+
+.activity-dashed {
+  border-top: 2px dashed var(--border-medium);
+}
+
+.activity-time {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+}
+
+.status-card {
+  background: var(--bg-white);
+  border: 2px solid var(--border-dark);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-medium);
+  grid-column: 1 / -1;
+}
+
+.status-card.error {
+  color: var(--accent-red);
+}
+
+/* ====== Recommended Card ====== */
+.recommended-card {
+  background: var(--primary-yellow);
+  border: 2px solid var(--border-dark);
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.recommended-content h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.recommended-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+}
+
+.ai-tutor-btn {
+  background: var(--accent-blue);
+  color: white;
+  border: 2px solid var(--border-dark);
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-tutor-btn:hover {
+  background: #1a47cc;
+}
+
+/* ====== Notes Grid ====== */
 .notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
 }
 
 .status-message {
-    font-size: 1.1rem;
-    color: var(--font-med);
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    grid-column: 1 / -1; /* Make it span the full grid */
-}
-.status-message.error {
-    color: #f48fb1; /* A light red for errors */
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-medium);
+  grid-column: 1 / -1;
 }
 
-/* --- Styles for Upgrade Card --- */
-.upgrade-card {
-    background-color: var(--background-med);
-    border: 2px dashed var(--primary-green);
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 1; 
+/* ====== Performance Sidebar ====== */
+.dashboard-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: calc(var(--topbar-height) + 2rem);
 }
-.upgrade-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: var(--primary-green);
-    font-size: 1.4rem;
+
+.perf-card {
+  background: var(--bg-white);
+  border: 2px solid var(--border-dark);
+  padding: 1.5rem;
 }
-.upgrade-card p {
-    color: var(--font-med);
-    margin-bottom: 1.5rem;
-    max-width: 300px;
-    font-size: 0.95rem;
-    line-height: 1.5;
+
+.perf-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
-.upgrade-btn {
-    background-color: var(--primary-green);
-    color: var(--font-dark);
-    font-weight: 700;
-    border: none;
-    border-radius: 6px;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+
+.perf-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
 }
-.upgrade-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(139, 195, 74, 0.4);
+
+.perf-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-medium);
+}
+
+.perf-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent-blue);
+}
+
+.perf-bar {
+  height: 10px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-dark);
+  position: relative;
+}
+
+.perf-bar-fill {
+  height: 100%;
+  background: var(--bg-dark);
+  transition: width 0.5s ease;
+}
+
+/* Mini Stat Cards */
+.stat-mini-card {
+  background: var(--bg-white);
+  border: 2px solid var(--border-dark);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-mini-card.blue {
+  background: var(--accent-blue-light);
+}
+
+.stat-mini-card.red {
+  background: var(--accent-red-light);
+}
+
+.stat-mini-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-white);
+}
+
+.stat-mini-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-medium);
+}
+
+.stat-mini-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+/* ====== Footer ====== */
+.dashboard-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-medium);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: var(--text-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-aside {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .dashboard-aside > * {
+    flex: 1;
+    min-width: 200px;
+  }
 }

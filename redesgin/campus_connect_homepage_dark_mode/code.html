@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Connect - Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary-fixed-variant": "#554500",
+                      "surface-bright": "#393939",
+                      "surface-dim": "#131313",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed": "#ffdad7",
+                      "surface-variant": "#353534",
+                      "on-tertiary-container": "#4d3e00",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#ba1724",
+                      "tertiary-fixed": "#ffe17a",
+                      "on-primary-fixed-variant": "#930014",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#aec6ff",
+                      "surface-container": "#201f1f",
+                      "on-secondary-container": "#dbe4ff",
+                      "on-primary-fixed": "#410004",
+                      "secondary-fixed": "#d8e2ff",
+                      "background": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-container": "#ff5352",
+                      "on-secondary-fixed-variant": "#004397",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#eac31b",
+                      "outline": "#ab8986",
+                      "on-tertiary-fixed": "#231b00",
+                      "outline-variant": "#5b403e",
+                      "on-surface": "#e5e2e1",
+                      "primary-fixed-dim": "#ffb3ae",
+                      "on-secondary": "#002e6b",
+                      "on-secondary-fixed": "#001a43",
+                      "on-primary": "#68000b",
+                      "secondary": "#aec6ff",
+                      "tertiary": "#ebc31c",
+                      "primary": "#ffb3ae",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container-high": "#2a2a2a",
+                      "surface": "#131313",
+                      "on-primary-container": "#5c0008",
+                      "tertiary-container": "#cca800",
+                      "secondary-container": "#0661d2",
+                      "on-tertiary": "#3b2f00",
+                      "surface-tint": "#ffb3ae",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#1c1b1b",
+                      "on-surface-variant": "#e4beba",
+                      "surface-container-highest": "#353534"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "20px",
+                      "unit": "4px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "xl": "48px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-md": ["Space Grotesk"],
+                      "headline-lg-mobile": ["Space Grotesk"],
+                      "label-md": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "display": ["Space Grotesk"],
+                      "body-lg": ["Space Grotesk"],
+                      "headline-md": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .neo-brutalist-border {
+            border: 2px solid #e5e2e1; /* on-background */
+        }
+        .neo-brutalist-shadow-primary {
+            box-shadow: 4px 4px 0px 0px #ffb3ae; /* primary */
+        }
+        .neo-brutalist-shadow-secondary {
+            box-shadow: 4px 4px 0px 0px #aec6ff; /* secondary */
+        }
+        .neo-brutalist-shadow-tertiary {
+            box-shadow: 4px 4px 0px 0px #ebc31c; /* tertiary */
+        }
+        .flat-offset-shadow {
+             box-shadow: 4px 4px 0px 0px #e5e2e1;
+        }
+        .hover-lift:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #e5e2e1;
+            transition: all 0.2s ease-in-out;
+        }
+        .active-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #e5e2e1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation (Shared Component) -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary font-body-md text-body-md w-full border-b-2 border-on-background flat-offset-shadow flex justify-between items-center px-gutter py-md sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="font-display text-headline-md font-bold text-primary dark:text-primary tracking-tighter">Campus Connect</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-sm neo-brutalist-border active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined block">search</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-sm neo-brutalist-border active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined block">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-sm neo-brutalist-border active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined block">settings</span>
+</button>
+<div class="w-10 h-10 bg-surface-variant neo-brutalist-border overflow-hidden cursor-pointer">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A neo-brutalist, dark mode avatar placeholder showing a high-contrast, geometric profile silhouette in stark white against a deep black background, reflecting an intellectual and digital craftsmanship aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVstkdaUG5Wz3iqcnrN1YzkKg2OYVY8lvnkrLb7-F770LAQ0HWMw5Uaq_OedImvMY25OC6ZTkVzr54sQ4jkqaRJvMKR0Hd0amHTEJTWH6Zj06Ou7QmqmjvF_LUA7DNjS-0BGTYy80ZfwM3-TmJvOHqAgkXm52CclFHfXkfg8GCXnFFQ4h5JrNPnPRT99rzScJLwGL7VYRxSLcaBlWc4JEAgZdlBmtEb7qUVkZvliaGvtQm98YAePmGqQ"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Side Navigation (Shared Component) - Hidden on Mobile, Flex on Desktop -->
+<nav class="hidden md:flex flex-col h-full fixed left-0 top-0 pt-xl pb-lg px-sm gap-unit bg-surface dark:bg-surface text-secondary dark:text-secondary font-label-md text-label-md h-screen w-64 border-r-2 border-on-background z-40 mt-[76px]">
+<div class="mb-lg px-sm">
+<div class="font-display text-headline-md text-primary font-bold">Main Menu</div>
+<div class="text-on-surface-variant text-sm mt-xs">LMS Dashboard</div>
+</div>
+<div class="flex flex-col gap-unit flex-1">
+<a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                    My Courses
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">construction</span>
+                    Study Tools
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">library_books</span>
+                    Library
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                    Leaderboard
+                </a>
+</div>
+<div class="mt-auto px-sm mb-sm">
+<button class="w-full py-sm bg-tertiary text-on-tertiary font-label-md neo-brutalist-border neo-brutalist-shadow-tertiary hover-lift active-press text-center">
+                    Join Study Group
+                </button>
+</div>
+<div class="border-t-2 border-on-background pt-sm flex flex-col gap-unit">
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Help
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface hover:bg-surface-variant border-2 border-transparent hover:border-on-background hover:shadow-[2px_2px_0px_0px_rgba(229,226,225,1)] hover:-translate-y-0.5 active:translate-y-0 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-gutter md:p-margin-desktop overflow-y-auto w-full">
+<!-- Hero Section -->
+<section class="mb-xl relative">
+<div class="bg-surface-container border-2 border-on-background p-lg md:p-xl flat-offset-shadow relative overflow-hidden z-10">
+<div class="relative z-20 max-w-3xl">
+<h1 class="font-display text-display text-primary mb-md">Redefining the Student Experience</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-2xl">
+                            A centralized, high-performance platform for academic excellence and campus connectivity. Navigate your coursework, collaborate efficiently, and manage your university life with geometric precision.
+                        </p>
+<div class="flex flex-wrap gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm font-label-md text-label-md border-2 border-on-background neo-brutalist-shadow-primary hover-lift active-press">
+                                Explore Courses
+                            </button>
+<button class="bg-surface-variant text-on-surface px-lg py-sm font-label-md text-label-md border-2 border-on-background flat-offset-shadow hover-lift active-press flex items-center gap-sm">
+<span class="material-symbols-outlined">play_arrow</span>
+                                Watch Overview
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
