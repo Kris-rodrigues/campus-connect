@@ -34,13 +34,7 @@ function App() {
           {/* --- UPDATE DEFAULT ROUTE --- */}
           <Route 
             path="/" 
-            element={
-              <Navigate to={
-                token 
-                  ? (isAdminOrTeacher ? '/admin/dashboard' : '/study-materials') 
-                  : "/login"
-              } />
-            } 
+            element={<Navigate to="/login" />} 
           />
           
           <Route path="*" element={<Navigate to="/login" />} />

@@ -91,10 +91,13 @@
 }
 
 /* Rating */
+.card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .card-average-rating {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   background: var(--primary-yellow);
   color: var(--text-dark);
   padding: 0.2rem 0.5rem;

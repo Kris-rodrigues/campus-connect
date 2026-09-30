@@ -17,6 +17,7 @@ const TestModal = ({ quizData, noteId, topicName, closeModal }) => {
         } else if (timeLeft === 0 && !showResult) {
             handleSubmit();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeLeft, showResult]);
 
     const formatTime = (seconds) => {

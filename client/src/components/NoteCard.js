@@ -11,15 +11,16 @@ const NoteCard = ({ note, onViewFile, isAdmin, onEdit, onDelete, onSummarize, on
       {/* Type Badge */}
       <div className="card-header-row">
         <span className="card-type-badge notes">Notes</span>
-        <span className="card-icon-btn">📄</span>
-      </div>
-
-      {note.averageRating > 0 && (
-        <div className="card-average-rating">
-          ★ {note.averageRating.toFixed(1)} 
-          <span className="review-count">({note.reviewCount})</span>
+        <div className="card-header-right">
+          {note.averageRating > 0 && (
+            <div className="card-average-rating">
+              ★ {note.averageRating.toFixed(1)} 
+              <span className="review-count">({note.reviewCount})</span>
+            </div>
+          )}
+          <span className="card-icon-btn">📄</span>
         </div>
-      )}
+      </div>
 
       <h3 className="card-title">{note.title}</h3>
       <p className="card-description">{note.description || 'No description provided.'}</p>

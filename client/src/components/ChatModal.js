@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './ChatModal.css'; // We'll create this
 
 const ChatModal = ({ noteId, closeModal }) => {
@@ -59,8 +61,8 @@ const ChatModal = ({ noteId, closeModal }) => {
                 
                 <div className="chat-message-area">
                     {messages.map((msg, index) => (
-                        <div key={index} className={`chat-message ${msg.sender}`}>
-                            <p>{msg.text}</p>
+                        <div key={index} className={`chat-message ${msg.sender} markdown-body`}>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
                         </div>
                     ))}
                     {isLoading && (

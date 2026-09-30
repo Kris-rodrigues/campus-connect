@@ -4,36 +4,7 @@ const Review = require('../models/Review');
 const fs = require('fs').promises; // Use 'fs/promises'
 const path = require('path');
 const { PDFDocument } = require('pdf-lib'); // Import pdf-lib
-const { PDFExtract } = require('pdf.js-extract'); // Import pdf.js-extract
 const mongoose = require('mongoose'); // Import mongoose
-
-// API Key and Model setup for Gemini
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-if (!process.env.GEMINI_API_KEY) {
-    console.error("FATAL ERROR: GEMINI_API_KEY is not defined in .env file.");
-}
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest"});
-
-
-// --- PDF Text Extraction Function ---
-async function getTextFromPdf(filePath) {
-    try {
-        if (!fs.existsSync(filePath)) {
-            throw new Error(`PDF file not found at path: ${filePath}`);
-        }
-        const pdfExtract = new PDFExtract();
-        const options = {}; 
-        const data = await pdfExtract.extract(filePath, options);
-        const pdfText = data.pages.map(page => 
-            page.content.map(item => item.str).join(' ')
-        ).join('\n');
-        return pdfText;
-    } catch (error) {
-        console.error("Error parsing PDF with pdf.js-extract:", error);
-        throw new Error(`Could not read or parse the PDF file: ${error.message}`);
-    }
-}
 
 // --- Note Controllers ---
 exports.getAllNotes = async (req, res) => {
@@ -228,37 +199,6 @@ exports.getNoteReviews = async (req, res) => {
   }
 };
 
-// --- AI Controllers ---
-
-exports.summarizeNote = async (req, res) => {
-    try {
-        const { noteId } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(noteId)) {
-             return res.status(400).json({ message: "Invalid Note ID format." });
-        }
-        const note = await Note.findById(noteId);
-        if (!note || !note.fileUrl) {
-            return res.status(404).json({ message: "Note or associated file URL not found." });
-        }
-        const filePath = path.join(__dirname, '..', note.fileUrl);
-        const pdfText = await getTextFromPdf(filePath); 
-        if (!pdfText || pdfText.trim().length < 50) {
-             return res.status(400).json({ message: "Could not extract sufficient text from the PDF to summarize." });
-        }
-        const prompt = `Please provide a concise summary of the following academic notes text. Focus on the main topics and key takeaways:\n\n---\n${pdfText}\n---\n\nSummary:`;
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const summary = await response.text();
-        res.status(200).json({ summary });
-    } catch (error) {
-        console.error("Error in summarizeNote controller:", error);
-        if (error.message.includes("Could not read or parse")) {
-             res.status(500).json({ message: "Error processing the PDF file." });
-        } else {
-             res.status(500).json({ message: "An unexpected error occurred while generating the summary.", error: error.message });
-        }
-    }
-};
 // 4. Add or update a review for a note
 exports.addOrUpdateReview = async (req, res) => {
   try {
@@ -295,63 +235,4 @@ exports.addOrUpdateReview = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Failed to add review.', error });
   }
-};
-exports.generateQuiz = async (req, res) => {
-    try {
-        const { noteId } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(noteId)) {
-             return res.status(400).json({ message: "Invalid Note ID format." });
-        }
-        const note = await Note.findById(noteId);
-        if (!note || !note.fileUrl) {
-            return res.status(404).json({ message: "Note or file not found." });
-        }
-        const filePath = path.join(__dirname, '..', note.fileUrl);
-        const pdfText = await getTextFromPdf(filePath);
-        if (!pdfText || pdfText.trim().length < 50) {
-             return res.status(400).json({ message: "Could not extract sufficient text from PDF." });
-        }
-        const prompt = `Based on the following academic notes text, generate a 5-question multiple-choice quiz. For each question, provide 4 options (A, B, C, D) and clearly indicate the correct answer.\n\n---\n${pdfText}\n---\n\nFormat the output like this:\n1. [Question 1]\nA) [Option A]\nB) [Option B]\nC) [Option C]\nD) [Option D]\nAnswer: [Correct Option Letter]\n\n2. [Question 2]\n...`;
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const quiz = await response.text(); 
-        res.status(200).json({ quiz }); 
-    } catch (error) {
-        console.error("Error in generateQuiz controller:", error);
-         if (error.message.includes("Could not read or parse")) {
-             res.status(500).json({ message: "Error processing the PDF file." });
-        } else {
-             res.status(500).json({ message: "An unexpected error occurred while generating quiz.", error: error.message });
-        }
-    }
-};
-
-exports.generateDescriptiveQA = async (req, res) => {
-     try {
-        const { noteId } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(noteId)) {
-             return res.status(400).json({ message: "Invalid Note ID format." });
-        }
-        const note = await Note.findById(noteId);
-        if (!note || !note.fileUrl) {
-            return res.status(404).json({ message: "Note or file not found." });
-        }
-        const filePath = path.join(__dirname, '..', note.fileUrl);
-        const pdfText = await getTextFromPdf(filePath);
-        if (!pdfText || pdfText.trim().length < 50) {
-             return res.status(400).json({ message: "Could not extract sufficient text from PDF." });
-        }
-        const prompt = `Based on the following academic notes text, generate 3-5 descriptive questions that require explanatory answers. For each question, provide a concise answer derived solely from the text:\n\n---\n${pdfText}\n---\n\nFormat the output like this:\nQ1: [Question 1]\nA1: [Answer 1]\n\nQ2: [Question 2]\nA2: [Answer 2]\n...`;
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const qaPairs = await response.text();
-        res.status(200).json({ qaPairs });
-    } catch (error) {
-        console.error("Error in generateDescriptiveQA controller:", error);
-         if (error.message.includes("Could not read or parse")) {
-             res.status(500).json({ message: "Error processing the PDF file." });
-        } else {
-             res.status(500).json({ message: "An unexpected error occurred while generating Q&A.", error: error.message });
-        }
-    }
 };

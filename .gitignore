@@ -1,11 +1,14 @@
 # Dependencies
 node_modules/
 
-# Environment variables (NEVER commit these)
+# Environment variables & API keys (NEVER commit these)
 .env
-.env.local
-.env.production
-.env.staging
+.env.*
+!.env.example
+*.env
+**/.env
+**/.env.*
+!**/.env.example
 
 # Build output
 client/build/

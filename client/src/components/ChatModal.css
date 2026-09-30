@@ -124,3 +124,27 @@
 .chat-send-btn:hover {
   background: #1a47cc;
 }
+
+/* Markdown specific styling in Chat */
+.chat-message.markdown-body p {
+  margin-bottom: 0.8rem;
+}
+.chat-message.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+.chat-message.markdown-body ul, .chat-message.markdown-body ol {
+  margin-left: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.chat-message.markdown-body li {
+  margin-bottom: 0.3rem;
+}
+.chat-message.markdown-body strong {
+  font-weight: 800;
+}
+.chat-message.markdown-body code {
+  background: rgba(0,0,0,0.1);
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+  font-family: monospace;
+}

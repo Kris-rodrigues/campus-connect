@@ -14,8 +14,7 @@ if (!process.env.GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // 2. Initialize Model
-// using 'gemini-1.5-flash' is recommended for speed and efficiency.
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
 // 3. Helper: PDF Text Extraction
 async function getTextFromPdf(filePath) {
@@ -68,7 +67,7 @@ exports.summarizeNote = async (req, res) => {
 
         console.log(`Extracted ~${pdfText.length} characters from PDF: ${note.fileName}`);
         
-        const prompt = `Please provide a concise summary of the following academic notes text. Focus on the main topics and key takeaways:\n\n---\n${truncatedText}\n---\n\nSummary:`;
+        const prompt = `Please provide a concise summary of the following academic notes text. Focus on the main topics and key takeaways. IMPORTANT: Do NOT use LaTeX math notation (no dollar signs like $x$ or $$x$$). Write all math expressions in plain text (e.g., "2^n" instead of "$2^n$", "n × 2^n" instead of "$n \\times 2^n$").\n\n---\n${truncatedText}\n---\n\nSummary:`;
         
         console.log("Sending request to Gemini for summary...");
         const result = await model.generateContent(prompt);
@@ -217,7 +216,7 @@ exports.chatWithNote = async (req, res) => {
         const maxLength = 25000;
         const truncatedText = pdfText.substring(0, maxLength);
 
-        const prompt = `You are a helpful study assistant. Use the following text context to answer the user's question. If the answer is not in the text, say "I cannot find the answer to that in this document."\n\nCONTEXT:\n---\n${truncatedText}\n---\n\nCHAT HISTORY:\n${chatContext}\n\nUser: ${question}\n\nAssistant:`;
+        const prompt = `You are a helpful study assistant. Use the following text context to answer the user's question. If the answer is not in the text, say "I cannot find the answer to that in this document." IMPORTANT: Do NOT use LaTeX math notation (no dollar signs). Write math in plain text.\n\nCONTEXT:\n---\n${truncatedText}\n---\n\nCHAT HISTORY:\n${chatContext}\n\nUser: ${question}\n\nAssistant:`;
         
         console.log("Sending Chat request to Gemini...");
         const result = await model.generateContent(prompt);
@@ -234,5 +233,39 @@ exports.chatWithNote = async (req, res) => {
     } catch (error) {
         console.error("Error in chatWithNote controller:", error);
          res.status(500).json({ message: "An unexpected error occurred while generating an answer.", error: error.message });
+    }
+};
+
+// --- FEATURE 5: General AI Study Assistant (No PDF) ---
+exports.generalChat = async (req, res) => {
+    try {
+        const { question, history } = req.body;
+
+        if (!question) {
+            return res.status(400).json({ message: "A question is required." });
+        }
+
+        // Build conversation context from recent history
+        let chatContext = '';
+        if (history && history.length > 0) {
+            const recent = history.slice(-6);
+            chatContext = recent
+                .map(msg => `${msg.sender === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
+                .join('\n');
+        }
+
+        const prompt = `You are an expert AI Study Assistant for college students. You help with explaining academic concepts, solving problems step-by-step, providing study tips, and answering questions across subjects. Be concise, friendly, and use markdown formatting when helpful.\n\n${chatContext ? 'CONVERSATION HISTORY:\n' + chatContext + '\n\n' : ''}User: ${question}\n\nAssistant:`;
+
+        console.log("Sending General Chat request to Gemini...");
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const answer = await response.text();
+        console.log("Received General Chat Answer from Gemini.");
+
+        res.status(200).json({ answer });
+
+    } catch (error) {
+        console.error("Error in generalChat controller:", error);
+        res.status(500).json({ message: "An unexpected error occurred.", error: error.message });
     }
 };

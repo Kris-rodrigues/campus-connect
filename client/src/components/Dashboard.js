@@ -36,6 +36,21 @@ const Dashboard = () => {
     const isAdmin = userRole === 'admin' || userRole === 'teacher';
     const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
 
+    const [stats, setStats] = useState({ avgScore: 0, quizzesTaken: 0, streak: 0 });
+    const [searchQuery, setSearchQuery] = useState('');
+
+    useEffect(() => {
+        // Load mock stats from localStorage or initialize them
+        const storedStats = localStorage.getItem('userStats');
+        if (storedStats) {
+            setStats(JSON.parse(storedStats));
+        } else {
+            const initialStats = { avgScore: 85, quizzesTaken: 12, streak: 5 };
+            localStorage.setItem('userStats', JSON.stringify(initialStats));
+            setStats(initialStats);
+        }
+    }, []);
+
     const fetchNotes = useCallback(async () => {
         setLoading(true); setError('');
         try {
@@ -93,9 +108,14 @@ const Dashboard = () => {
     const recentNotes = notes.slice(0, 2);
     const recommendedNote = notes.length > 2 ? notes[2] : notes[0];
 
+    const filteredNotes = notes.filter(note => 
+        note.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        note.subject.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <>
-             <Navbar />
+             <Navbar onSearch={setSearchQuery} />
              {/* Modals */}
              {fileToView && <ViewPdfModal noteId={fileToView} closeModal={() => setFileToView(null)} />}
              {isAdmin && isUploadModalOpen && <UploadModal closeModal={() => setIsUploadModalOpen(false)} onUploadSuccess={handleUploadSuccess} />}
@@ -120,11 +140,6 @@ const Dashboard = () => {
                     {isAdmin && (
                         <button className="resume-study-btn" onClick={() => setIsUploadModalOpen(true)}>
                             Upload Material
-                        </button>
-                    )}
-                    {!isAdmin && (
-                        <button className="resume-study-btn" onClick={() => {}}>
-                            Resume Study
                         </button>
                     )}
                  </div>
@@ -186,7 +201,7 @@ const Dashboard = () => {
                                             <button className="upgrade-btn" onClick={handlePaywall}>Upgrade Now</button>
                                         </div>
                                     )}
-                                    {notes.map(note => (
+                                    {filteredNotes.map(note => (
                                         <NoteCard
                                             key={note._id}
                                             note={note}
@@ -200,6 +215,9 @@ const Dashboard = () => {
                                             onDelete={() => {}}
                                         />
                                     ))}
+                                    {filteredNotes.length === 0 && (
+                                        <div className="status-card"><p>No materials found matching your search.</p></div>
+                                    )}
                                 </div>
                             </section>
                         )}
@@ -211,24 +229,24 @@ const Dashboard = () => {
                             <h3 className="perf-title">Performance</h3>
                             <div className="perf-score">
                                 <span className="perf-label">Average Quiz Score</span>
-                                <span className="perf-value">—</span>
+                                <span className="perf-value">{stats.avgScore}%</span>
                             </div>
                             <div className="perf-bar">
-                                <div className="perf-bar-fill" style={{width: '0%'}}></div>
+                                <div className="perf-bar-fill" style={{width: `${stats.avgScore}%`}}></div>
                             </div>
                         </div>
                         <div className="stat-mini-card blue">
                             <div className="stat-mini-icon">📋</div>
                             <div>
                                 <span className="stat-mini-label">Quizzes Taken</span>
-                                <span className="stat-mini-value">—</span>
+                                <span className="stat-mini-value">{stats.quizzesTaken}</span>
                             </div>
                         </div>
                         <div className="stat-mini-card red">
                             <div className="stat-mini-icon">🔥</div>
                             <div>
                                 <span className="stat-mini-label">Current Streak</span>
-                                <span className="stat-mini-value">—</span>
+                                <span className="stat-mini-value">{stats.streak} Days</span>
                             </div>
                         </div>
                     </aside>

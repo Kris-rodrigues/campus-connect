@@ -3,8 +3,8 @@ const User = require('../models/User');
 // This middleware runs AFTER authMiddleware
 module.exports = async function (req, res, next) {
     try {
-        // Admins always have access
-        if (req.user.role === 'admin') {
+        // Admins and teachers always have access
+        if (req.user.role === 'admin' || req.user.role === 'teacher') {
             return next();
         }
 

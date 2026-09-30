@@ -3,18 +3,25 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import UploadModal from './UploadModal';
 import EditNoteModal from './EditNoteModal';
+import EditStudentModal from './EditStudentModal';
+import EditTeacherModal from './EditTeacherModal';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
     const [students, setStudents] = useState([]);
     const [teachers, setTeachers] = useState([]);
-    const [subscribedStudents, setSubscribedStudents] = useState([]);
     const [notes, setNotes] = useState([]);
     const [quizResults, setQuizResults] = useState([]); 
     
     const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedNote, setSelectedNote] = useState(null);
+    
+    const [isEditStudentModalOpen, setIsEditStudentModalOpen] = useState(false);
+    const [selectedStudent, setSelectedStudent] = useState(null);
+
+    const [isEditTeacherModalOpen, setIsEditTeacherModalOpen] = useState(false);
+    const [selectedTeacher, setSelectedTeacher] = useState(null);
     
     // Default view based on role? We'll handle that in useEffect or render
     const [view, setView] = useState('students'); 
@@ -53,9 +60,6 @@ const AdminDashboard = () => {
 
             // Fetch Admin-Only Data
             if (isAdmin) {
-                const subRes = await axios.get('/api/users/subscribed', { headers: { 'x-auth-token': token } });
-                setSubscribedStudents(subRes.data);
-
                 try {
                     const teachRes = await axios.get('/api/users/teachers', { headers: { 'x-auth-token': token } });
                     setTeachers(teachRes.data);
@@ -131,10 +135,32 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleEditStudentClick = (student) => { setSelectedStudent(student); setIsEditStudentModalOpen(true); };
+    const handleDeleteStudentClick = async (studentId) => {
+        if (window.confirm('Are you sure you want to delete this student permanently?')) {
+            try {
+                await axios.delete(`/api/users/delete-student/${studentId}`, { headers: { 'x-auth-token': token } });
+                fetchData();
+            } catch (err) { console.error(err); alert('Error deleting student.'); }
+        }
+    };
+
+    const handleEditTeacherClick = (teacher) => { setSelectedTeacher(teacher); setIsEditTeacherModalOpen(true); };
+    const handleDeleteTeacherClick = async (teacherId) => {
+        if (window.confirm('Are you sure you want to delete this teacher permanently?')) {
+            try {
+                await axios.delete(`/api/users/delete-teacher/${teacherId}`, { headers: { 'x-auth-token': token } });
+                fetchData();
+            } catch (err) { console.error(err); alert('Error deleting teacher.'); }
+        }
+    };
+
     const currentYear = new Date().getFullYear();
     const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
     const months = [ { value: '01', name: 'January' }, { value: '02', name: 'February' }, { value: '03', name: 'March' }, { value: '04', name: 'April' }, { value: '05', name: 'May' }, { value: '06', name: 'June' }, { value: '07', name: 'July' }, { value: '08', name: 'August' }, { value: '09', name: 'September' }, { value: '10', name: 'October' }, { value: '11', name: 'November' }, { value: '12', name: 'December' } ];
     const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
+
+    const subscribedCount = students.filter(s => s.isSubscribed).length;
 
 
     return (
@@ -142,6 +168,8 @@ const AdminDashboard = () => {
             <Navbar />
             {isUploadModalOpen && <UploadModal closeModal={() => setIsUploadModalOpen(false)} onUploadSuccess={fetchData} />}
             {isEditModalOpen && <EditNoteModal note={selectedNote} closeModal={() => setIsEditModalOpen(false)} onUpdateSuccess={fetchData} />}
+            {isEditStudentModalOpen && <EditStudentModal student={selectedStudent} closeModal={() => setIsEditStudentModalOpen(false)} onUpdateSuccess={fetchData} isAdmin={isAdmin} />}
+            {isEditTeacherModalOpen && <EditTeacherModal teacher={selectedTeacher} closeModal={() => setIsEditTeacherModalOpen(false)} onUpdateSuccess={fetchData} />}
             
             <div className="admin-container">
                 <header className="page-header">
@@ -156,7 +184,7 @@ const AdminDashboard = () => {
                     {isAdmin && (
                         <>
                             <div className="stat-card"><h2>{teachers.length}</h2><p>Total Teachers</p></div>
-                            <div className="stat-card"><h2>{subscribedStudents.length}</h2><p>Total Subscriptions</p></div>
+                            <div className="stat-card"><h2>{subscribedCount}</h2><p>Total Subscriptions</p></div>
                         </>
                     )}
                 </div>
@@ -170,7 +198,7 @@ const AdminDashboard = () => {
                         {isAdmin && (
                             <>
                                 <button onClick={() => setView('teachers')} className={view === 'teachers' ? 'active' : ''}>Manage Teachers</button>
-                                <button onClick={() => setView('subscribed')} className={view === 'subscribed' ? 'active' : ''}>Subscribed Users</button>
+                                <button onClick={() => setView('subscribed')} className={view === 'subscribed' ? 'active' : ''}>Subscriptions</button>
                             </>
                         )}
                         
@@ -201,11 +229,32 @@ const AdminDashboard = () => {
                             <div className="student-list">
                                 <h3>All Students</h3>
                                 <table>
-                                    <thead><tr><th>Name</th><th>USN</th><th>Branch</th></tr></thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>USN</th>
+                                            <th>Branch</th>
+                                            {isAdmin && <th>Date of Birth</th>}
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         {students.length > 0 ? (
-                                            students.map(s => <tr key={s._id}><td>{s.name}</td><td>{s.usn}</td><td>{s.branch}</td></tr>)
-                                        ) : ( <tr><td colSpan="3" style={{ textAlign: 'center' }}>No students added yet.</td></tr> )}
+                                            students.map(s => (
+                                                <tr key={s._id}>
+                                                    <td>{s.name}</td>
+                                                    <td>{s.usn}</td>
+                                                    <td>{s.branch}</td>
+                                                    {isAdmin && <td>{s.dateOfBirth ? new Date(s.dateOfBirth).toLocaleDateString() : 'N/A'}</td>}
+                                                    <td>
+                                                        <div className="action-buttons">
+                                                            <button className="edit-btn" onClick={() => handleEditStudentClick(s)}>✏️ Edit</button>
+                                                            <button className="delete-btn" onClick={() => handleDeleteStudentClick(s._id)}>🗑️ Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : ( <tr><td colSpan={isAdmin ? "5" : "4"} style={{ textAlign: 'center' }}>No students added yet.</td></tr> )}
                                     </tbody>
                                 </table>
                             </div>
@@ -232,11 +281,30 @@ const AdminDashboard = () => {
                             <div className="student-list">
                                 <h3>All Teachers</h3>
                                 <table>
-                                    <thead><tr><th>Name</th><th>Branch</th></tr></thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Branch</th>
+                                            <th>Date of Birth</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         {teachers.length > 0 ? (
-                                            teachers.map(t => <tr key={t._id}><td>{t.name}</td><td>{t.branch}</td></tr>)
-                                        ) : ( <tr><td colSpan="2" style={{ textAlign: 'center' }}>No teachers added yet.</td></tr> )}
+                                            teachers.map(t => (
+                                                <tr key={t._id}>
+                                                    <td>{t.name}</td>
+                                                    <td>{t.branch}</td>
+                                                    <td>{t.dateOfBirth ? new Date(t.dateOfBirth).toLocaleDateString() : 'N/A'}</td>
+                                                    <td>
+                                                        <div className="action-buttons">
+                                                            <button className="edit-btn" onClick={() => handleEditTeacherClick(t)}>✏️ Edit</button>
+                                                            <button className="delete-btn" onClick={() => handleDeleteTeacherClick(t._id)}>🗑️ Delete</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : ( <tr><td colSpan="4" style={{ textAlign: 'center' }}>No teachers added yet.</td></tr> )}
                                     </tbody>
                                 </table>
                             </div>
@@ -245,13 +313,26 @@ const AdminDashboard = () => {
 
                     {isAdmin && view === 'subscribed' && (
                         <div className="subscribed-users-list">
-                            <h3>Subscribed Users</h3>
+                            <h3>Student Subscriptions</h3>
                             <table>
-                                <thead><tr><th>Name</th><th>USN</th><th>Branch</th></tr></thead>
+                                <thead><tr><th>Name</th><th>USN</th><th>Branch</th><th>Status</th></tr></thead>
                                 <tbody>
-                                    {subscribedStudents.length > 0 ? (
-                                        subscribedStudents.map(s => <tr key={s._id}><td>{s.name}</td><td>{s.usn}</td><td>{s.branch}</td></tr>)
-                                    ) : ( <tr><td colSpan="3" style={{ textAlign: 'center' }}>No subscribed users found.</td></tr> )}
+                                    {students.length > 0 ? (
+                                        students.map(s => (
+                                            <tr key={s._id}>
+                                                <td>{s.name}</td>
+                                                <td>{s.usn}</td>
+                                                <td>{s.branch}</td>
+                                                <td>
+                                                    {s.isSubscribed ? (
+                                                        <span style={{ background: 'var(--accent-green)', color: 'white', padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold' }}>✅ Premium</span>
+                                                    ) : (
+                                                        <span style={{ background: 'var(--bg-dark)', color: 'white', padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold' }}>❌ Free</span>
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        ))
+                                    ) : ( <tr><td colSpan="4" style={{ textAlign: 'center' }}>No students found.</td></tr> )}
                                 </tbody>
                             </table>
                         </div>

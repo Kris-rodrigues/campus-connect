@@ -36,9 +36,8 @@ router.post('/:noteId/rate', authMiddleware, addOrUpdateReview);
 
 // --- ADMIN-ONLY ROUTES ---
 // These routes require the user to be an admin
-router.put('/update/:id', [authMiddleware, adminMiddleware, upload.single('file')], updateNote);
 router.post('/upload', [authMiddleware, adminMiddleware, upload.single('file')], uploadNote);
-router.put('/update/:id', [authMiddleware, adminMiddleware], updateNote);
+router.put('/update/:id', [authMiddleware, adminMiddleware, upload.single('file')], updateNote);
 router.delete('/delete/:id', [authMiddleware, adminMiddleware], deleteNote);
 
 module.exports = router;

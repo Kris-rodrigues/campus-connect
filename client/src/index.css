@@ -121,3 +121,61 @@ a:hover {
   background: var(--primary-yellow);
   color: var(--text-dark);
 }
+
+/* ===== Themes (Ocean, Forest, Sunset) ===== */
+body.theme-ocean {
+  --bg-cream: #E0F2F1;
+  --bg-white: #FFFFFF;
+  --bg-dark: #004D40;
+  --bg-dark-hover: #00695C;
+  --bg-card: #FFFFFF;
+  --primary-yellow: #4DB6AC;
+  --primary-yellow-hover: #26A69A;
+  --primary-yellow-light: rgba(77, 182, 172, 0.15);
+  --accent-red: #E57373;
+  --accent-blue: #0277BD;
+  --accent-green: #388E3C;
+  --text-dark: #004D40;
+  --border-dark: #004D40;
+  --border-medium: #B2DFDB;
+  --border-light: #E0F2F1;
+  --text-on-dark: #E0F2F1;
+}
+
+body.theme-forest {
+  --bg-cream: #F1F8E9;
+  --bg-white: #FFFFFF;
+  --bg-dark: #33691E;
+  --bg-dark-hover: #558B2F;
+  --bg-card: #FFFFFF;
+  --primary-yellow: #8BC34A;
+  --primary-yellow-hover: #7CB342;
+  --primary-yellow-light: rgba(139, 195, 74, 0.15);
+  --accent-red: #FF7043;
+  --accent-blue: #29B6F6;
+  --accent-green: #388E3C;
+  --text-dark: #33691E;
+  --border-dark: #33691E;
+  --border-medium: #C5E1A5;
+  --border-light: #DCEDC8;
+  --text-on-dark: #F1F8E9;
+}
+
+body.theme-sunset {
+  --bg-cream: #FFF3E0;
+  --bg-white: #FFFFFF;
+  --bg-dark: #E65100;
+  --bg-dark-hover: #EF6C00;
+  --bg-card: #FFFFFF;
+  --primary-yellow: #FFB300;
+  --primary-yellow-hover: #FFA000;
+  --primary-yellow-light: rgba(255, 179, 0, 0.15);
+  --accent-red: #D81B60;
+  --accent-blue: #5E35B1;
+  --accent-green: #43A047;
+  --text-dark: #4E342E;
+  --border-dark: #E65100;
+  --border-medium: #FFCC80;
+  --border-light: #FFE0B2;
+  --text-on-dark: #FFF3E0;
+}

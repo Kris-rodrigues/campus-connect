@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [loginType, setLoginType] = useState('student'); // 'student' or 'teacher'
@@ -10,7 +9,14 @@ const LoginPage = () => {
     dob: { day: '', month: '', year: '' } 
   });
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Clear any existing session when the login page is loaded
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isSubscribed');
+  }, []);
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
   
@@ -56,11 +62,10 @@ const LoginPage = () => {
 
       // Teachers get sent to Admin Dashboard
       if (res.data.role === 'admin' || res.data.role === 'teacher') {
-        navigate('/admin/dashboard');
+        window.location.href = '/admin/dashboard';
       } else {
-        navigate('/study-materials');
+        window.location.href = '/dashboard';
       }
-      window.location.reload();
 
     } catch (err) {
       setError(err.response?.data?.message || 'Login Failed.');
@@ -207,18 +212,9 @@ const LoginPage = () => {
             {error && <p className="error-message">{error}</p>}
 
             <div className="forgot-password-and-login">
-                <a href="#" className="forgot-password-link">Forgot Password?</a>
+                <button type="button" className="forgot-password-link" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit', textDecoration: 'underline'}}>Forgot Password?</button>
                 <button type="submit" className="btn login-btn">LOG IN</button>
             </div>
-
-            <p style={{
-              textAlign: 'center', 
-              marginTop: '1.5rem', 
-              fontSize: '0.9rem', 
-              color: 'var(--text-medium)'
-            }}>
-              Don't have an account? <span style={{fontWeight: 700, color: 'var(--text-dark)', cursor: 'pointer'}}>Sign up</span>
-            </p>
           </form>
         </div>
       </div>

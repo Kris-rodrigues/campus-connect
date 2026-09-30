@@ -17,9 +17,9 @@
   background: var(--bg-dark);
   border: 3px solid var(--border-dark);
   box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
-  width: 95%;
-  max-width: 1100px;
-  height: 90vh;
+  width: 95vw;
+  max-width: none;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -157,6 +157,31 @@
 
 .floating-chat-btn:hover {
   background: #1a47cc;
+  transform: translateY(-2px);
+}
+
+/* Markdown specific styling in Chat */
+.chat-message.markdown-body p {
+  margin-bottom: 0.8rem;
+}
+.chat-message.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+.chat-message.markdown-body ul, .chat-message.markdown-body ol {
+  margin-left: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.chat-message.markdown-body li {
+  margin-bottom: 0.3rem;
+}
+.chat-message.markdown-body strong {
+  font-weight: 800;
+}
+.chat-message.markdown-body code {
+  background: rgba(0,0,0,0.1);
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+  font-family: monospace;
 }
 
 /* ====== Split Layout: PDF left, Chat right ====== */
@@ -356,4 +381,89 @@
 .chat-input-form button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* ====== Premium Paywall in Chat ====== */
+.chat-container.locked {
+  position: relative;
+}
+
+.chat-paywall-overlay {
+  position: absolute;
+  top: 50px; /* Below header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 2rem;
+}
+
+.chat-paywall-content {
+  background: var(--bg-white);
+  border: 3px solid var(--border-dark);
+  box-shadow: 6px 6px 0px var(--border-dark);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 90%;
+}
+
+.chat-paywall-content .lock-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.chat-paywall-content h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-red);
+  margin: 0;
+}
+
+.chat-paywall-content p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.upgrade-tutor-btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--primary-yellow);
+  color: var(--text-dark);
+  border: 2px solid var(--border-dark);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--border-dark);
+  transition: all var(--transition-fast);
+}
+
+.upgrade-tutor-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--border-dark);
+  background: var(--accent-blue);
+  color: white;
+}
+
+.blurred {
+  filter: blur(4px) grayscale(0.5);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+}
+
+.disabled {
+  pointer-events: none;
 }
